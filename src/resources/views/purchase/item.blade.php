@@ -1,0 +1,41 @@
+@extends('layouts.app')
+
+@section('css')
+@endsection
+
+@include('layouts.header')
+
+@section('main')
+<div>
+    <div>
+        <span>商品画像</span>
+        <span>商品名</span>
+        <span>金額</span>
+    </div>
+    <div>
+        <span>支払い方法</span>
+        <span>変更する</span>
+    </div>
+    <div>
+        <span>配送先</span>
+        <span>変更する</span>
+    </div>
+</div>
+<div>
+    <div>
+        <div>
+            <span>商品代金</span>
+            <span>金額</span>
+        </div>
+        <div>
+            <span>支払い金額</span>
+            <span>金額</span>
+        </div>
+        <div>
+            <span>支払い方法</span>
+            <span>支払い方法の種類</span>
+        </div>
+    </div>
+    <div>購入する</div>
+</div>
+@endsection

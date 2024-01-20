@@ -1,7 +1,18 @@
+body {
+    margin: 10px auto;
+}
+
 div {
     border:1px solid #6a9482;
+    margin: 10px;
+    padding: 5px;
 }
 
 span {
-    border: 1px solid #b27ed0;
+    border: 1px solid #a914ff;
+    margin: 10px;
+}
+
+li {
+    margin-left: 10px;
 }

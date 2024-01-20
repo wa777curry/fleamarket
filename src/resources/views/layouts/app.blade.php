@@ -12,6 +12,8 @@
 
 <body>
     @yield('header')
+    @yield('header2')
+    @yield('header3')
     @yield('main')
 </body>
 

@@ -15,3 +15,12 @@ use App\Http\Controllers\ViewController;
 */
 
 Route::get('/', [ViewController::class, 'index']);
+Route::get('/auth/login', [ViewController::class, 'login']);
+Route::get('/auth/register', [ViewController::class, 'register']);
+Route::get('/item/comment', [ViewController::class, 'comment']);
+Route::get('/item/item', [ViewController::class, 'item']);
+Route::get('/mypage/profile', [ViewController::class, 'profile']);
+Route::get('/purchase/address/item', [ViewController::class, 'address']);
+Route::get('/purchase/item', [ViewController::class, 'purchase']);
+Route::get('/mypage', [ViewController::class, 'mypage']);
+Route::get('/sell', [ViewController::class, 'sell']);
