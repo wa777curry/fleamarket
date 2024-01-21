@@ -1,5 +1,5 @@
 @section('header2')
 <header>
-    <span>ロゴ部分</span>
+    <img src="/storage/image/logo.svg">
 </header>
 @endsection

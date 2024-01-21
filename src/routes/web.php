@@ -24,3 +24,5 @@ Route::get('/purchase/address/item', [ViewController::class, 'address']);
 Route::get('/purchase/item', [ViewController::class, 'purchase']);
 Route::get('/mypage', [ViewController::class, 'mypage']);
 Route::get('/sell', [ViewController::class, 'sell']);
+
+Route::post('/upload', [ViewController::class, 'upload']);

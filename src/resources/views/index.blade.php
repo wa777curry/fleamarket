@@ -25,4 +25,13 @@
     <li><a href="/mypage">マイページ</a></li>
     <li><a href="/sell">出品ページ</a></li>
 </div>
+
+<div>
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="image">
+        <button>アップロード</button>
+    </form>
+</div>
+
 @endsection
