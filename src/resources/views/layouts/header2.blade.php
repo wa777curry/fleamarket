@@ -1,7 +1,5 @@
 @section('header2')
 <header>
-    <div>
-        <span>ロゴ部分</span>
-    </div>
+    <span>ロゴ部分</span>
 </header>
 @endsection

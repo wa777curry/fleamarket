@@ -1,5 +1,11 @@
 body {
-    margin: 10px auto;
+    margin: 0 auto;
+}
+
+header {
+    background: #000;
+    color: #fff;
+    height: 60px;
 }
 
 div {
