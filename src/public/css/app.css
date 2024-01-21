@@ -4,63 +4,12 @@ body {
     min-width: 768px;
 }
 
-header {
-    align-items: center;
-    background: #000;
-    color: #fff;
-    display: flex;
-    height: 60px;
-    justify-content: space-between;
-    padding: 10px 30px;
-}
-
-header div {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-header a {
-    color: #fff;
-}
-
-header a:hover {
-    color: #ff5555;
-}
-
-header img {
-    max-height: 100%;
-}
-
-header input {
-    font-size: 105%;
-    height: 100%;
-    margin: 0 20px;
-    padding: 10px;
-    width: 30%;
-}
-
-header span {
-    margin-right: 20px;
-}
-
-header button {
-    font-size: 105%;
-    height: 100%;
-    padding: 0 20px;
-}
-
-header button:hover {
-    background: #ff5555;
-    color: #fff;
-}
-
 a {
     text-decoration: none;
 }
 
-input,
-button {
+button,
+input {
     border: none;
     border-radius: 5px;
 }
