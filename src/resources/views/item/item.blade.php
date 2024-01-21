@@ -17,9 +17,8 @@
         <span>お気に入りアイコン</span>
         <span>コメントアイコン</span>
     </div>
-    <div>購入する</div>
+    <div><button class="button" type="submit">購入する</button></div>
     <div>商品説明</div>
-    <div>カラー：グレー</div>
     <div>商品の概要</div>
     <div>商品の情報</div>
     <div>

@@ -9,10 +9,10 @@
 <div>
     <div>ログイン</div>
     <div>メールアドレス</div>
-    <div>メアドフォーム</div>
+    <div><input type="email" name="email" value="{{ old('email') }}"></div>
     <div>パスワード</div>
-    <div>パスフォーム</div>
-    <div>ログインする</div>
+    <div><input type="password" name="password"></div>
+    <div><button class="button" type="submit">ログインする</button></div>
     <div>会員登録はこちら</div>
 </div>
 @endsection

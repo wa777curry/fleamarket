@@ -8,17 +8,25 @@
 @section('main')
 <div>
     <div>
-        <span>商品画像</span>
-        <span>商品名</span>
-        <span>金額</span>
+        商品画像
+    </div>
+    <div>
+        <div>商品名</div>
+        <div>金額</div>
     </div>
     <div>
         <span>支払い方法</span>
         <span>変更する</span>
     </div>
     <div>
+        <span>支払い方法の内容</span>
+    </div>
+    <div>
         <span>配送先</span>
         <span>変更する</span>
+    </div>
+    <div>
+        <span>配送先の内容</span>
     </div>
 </div>
 <div>
@@ -36,6 +44,6 @@
             <span>支払い方法の種類</span>
         </div>
     </div>
-    <div>購入する</div>
+    <div><button class="button" type="submit">購入する</button></div>
 </div>
 @endsection

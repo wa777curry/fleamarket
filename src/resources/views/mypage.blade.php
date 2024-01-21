@@ -10,7 +10,7 @@
     <div>
         <span>ユーザーアイコン</span>
         <span>ユーザー名</span>
-        <span>プロフィールを編集</span>
+        <button class="button" type="submit">プロフィールを編集</button>
     </div>
     <div>
         <span>出品した商品</span>

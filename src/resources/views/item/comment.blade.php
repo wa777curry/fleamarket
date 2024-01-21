@@ -24,7 +24,7 @@
     <div>名前アイコン　名前</div>
     <div>コメント内容</div>
     <div>商品へのコメント</div>
-    <div>コメントボックス</div>
-    <div>コメントを送信する</div>
+    <div><textarea name="comment">{{ old('comment') }}</textarea></div>
+    <div><button class="button" type="submit">コメントを送信する</button></div>
 </div>
 @endsection
