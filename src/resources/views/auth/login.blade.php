@@ -13,6 +13,6 @@
     <div>パスワード</div>
     <div><input type="password" name="password"></div>
     <div><button class="button" type="submit">ログインする</button></div>
-    <div>会員登録はこちら</div>
+    <div><a href="/auth/register">会員登録はこちら</a></div>
 </div>
 @endsection

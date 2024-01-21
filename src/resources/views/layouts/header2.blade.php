@@ -1,5 +1,3 @@
 @section('header2')
-<header>
-    <img src="/storage/image/logo.svg">
-</header>
+<a href="/"><img src="/storage/image/logo.svg"></a>
 @endsection
