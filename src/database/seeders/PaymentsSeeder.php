@@ -15,14 +15,17 @@ class PaymentsSeeder extends Seeder
     public function run()
     {
         DB::table('payments')->insert([
+            'user_id' => 1,
             'payment' => 'クレジットカード払い',
         ]);
 
         DB::table('payments')->insert([
+            'user_id' => 1,
             'payment' => 'コンビニ払い',
         ]);
 
         DB::table('payments')->insert([
+            'user_id' => 1,
             'payment' => '銀行振込',
         ]);
     }
