@@ -39,3 +39,8 @@ main span {
 li {
     margin-left: 10px;
 }
+
+.form__error {
+    color: #ff5555;
+    font-size: 90%;
+}

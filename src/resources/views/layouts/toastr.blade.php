@@ -14,7 +14,11 @@
     }
 
     $(function() {
-        toastr.success('{{ session("login_msg") }}');
+        @if(session('login_ttl') === '成功')
+            toastr.success('{{ session("login_msg") }}', '{{ session("login_ttl") }}');
+        @else
+            toastr.error('{{ session("login_msg") }}', '{{ session("login_ttl") }}');
+        @endif
     });
 </script>
 @endif

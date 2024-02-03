@@ -17,7 +17,6 @@ use App\Http\Controllers\ViewController;
 */
 
 Route::get('/', [ViewController::class, 'index'])->name('index');
-Route::get('/register', [ViewController::class, 'register']);
 Route::get('/item/comment', [ViewController::class, 'comment']);
 Route::get('/item/item', [ViewController::class, 'item']);
 Route::get('/mypage/profile', [ViewController::class, 'profile']);
@@ -28,6 +27,9 @@ Route::get('/sell', [ViewController::class, 'sell']);
 
 Route::get('/login', [UserController::class, 'getLogin'])->name('getLogin');
 Route::post('/login', [UserController::class, 'postLogin'])->name('postLogin');
+
+Route::get('/register', [UserController::class, 'getRegister'])->name('getRegister');
+Route::post('/register', [UserController::class, 'postRegister'])->name('postRegister');
 
 Route::post('/upload', [ViewController::class, 'upload']);
 

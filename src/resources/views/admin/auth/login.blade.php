@@ -12,8 +12,18 @@
         @csrf
         <div>メールアドレス</div>
         <div><input type="email" name="email" value="{{ old('email') }}"></div>
+        <div class="form__error">
+            @error('email')
+            {{ $message }}
+            @enderror
+        </div>
         <div>パスワード</div>
         <div><input type="password" name="password"></div>
+        <div class="form__error">
+            @error('password')
+            {{ $message }}
+            @enderror
+        </div>
         <div><button class="button" type="submit">ログインする</button></div>
     </form>
 </div>
