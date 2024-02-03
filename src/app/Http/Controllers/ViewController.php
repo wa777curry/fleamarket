@@ -12,11 +12,6 @@ class ViewController extends Controller
         return view('index');
     }
 
-    public function login()
-    {
-        return view('auth.login');
-    }
-
     public function register()
     {
         return view('auth.register');
@@ -57,15 +52,10 @@ class ViewController extends Controller
         return view('sell');
     }
 
-    public function admin()
-    {
-        return view('admin.admin');
-    }
-
     public function upload(Request $request)
     {
         // ディレクトリ名
-        $dir = 'image';
+        $dir = 'icon';
         // アップロードされたファイル名を取得
         $file_name = $request->file('image')->getClientOriginalName();
         // 取得したファイル名で保存
