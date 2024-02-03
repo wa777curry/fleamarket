@@ -57,6 +57,11 @@ class ViewController extends Controller
         return view('sell');
     }
 
+    public function admin()
+    {
+        return view('admin.admin');
+    }
+
     public function upload(Request $request)
     {
         // ディレクトリ名

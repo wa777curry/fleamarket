@@ -24,6 +24,7 @@
     <li><a href="/purchase/item">購入ページ</a></li>
     <li><a href="/mypage">マイページ</a></li>
     <li><a href="/sell">出品ページ</a></li>
+    <li><a href="/admin/admin">管理ページ</a></li>
 </div>
 
 <div>
