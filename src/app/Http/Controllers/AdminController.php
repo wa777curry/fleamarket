@@ -19,18 +19,14 @@ class AdminController extends Controller
         $credentials = $request->only(['email', 'password']);
 
         if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('viewAdmin')->with([
-                'login_msg' => 'ログインしました。',
-            ]);
+            return redirect()->route('viewAdmin')->with(
+                'login_msg', 'ログインしました',
+            );
         }
-        // 認証に失敗した場合
-        return back()->withErrors([
-            'login_error_msg' => ['ログインに失敗しました'],
-        ]);
     }
 
     //　管理者画面表示
-    public function admin()
+    public function viewAdmin()
     {
         return view('admin.admin');
     }

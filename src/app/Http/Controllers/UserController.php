@@ -19,11 +19,9 @@ class UserController extends Controller
         $accepts = $request->only('email', 'password');
 
         if (Auth::attempt($accepts)) {
-            return redirect()->route('index');
+            return redirect()->route('index')->with(
+                'login_msg', 'ログインしました',
+            );
         }
-        // 認証に失敗した場合
-        return back()->withErrors([
-            'login_error_msg' => ['ログインに失敗しました'],
-        ]);
     }
 }
