@@ -28,7 +28,7 @@
 </div>
 
 <div>
-    <form method="POST" action="/upload" enctype="multipart/form-data">
+    <form method="post" action="/upload" enctype="multipart/form-data">
         @csrf
         <input type="file" name="image">
         <button>アップロード</button>

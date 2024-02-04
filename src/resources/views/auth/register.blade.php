@@ -25,6 +25,7 @@
             @enderror
         </div>
         <div><button class="button" type="submit">登録する</button></div>
-        <div><a href=/login>ログインはこちら</a></div>
+    </form>
+    <div><a href=/login>ログインはこちら</a></div>
 </div>
 @endsection
