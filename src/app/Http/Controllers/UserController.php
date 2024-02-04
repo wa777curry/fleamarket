@@ -22,11 +22,11 @@ class UserController extends Controller
 
         if (Auth::attempt($accepts)) {
             return redirect()->route('index')->with([
-                'login_ttl' => '成功', 'login_msg' => 'ログインしました',
+                'flash_ttl' => '成功', 'flash_msg' => 'ログインしました',
             ]);
         } else {
             return redirect()->route('getLogin')->with([
-                'login_ttl' => '失敗', 'login_msg' => 'ログインに失敗しました',
+                'flash_ttl' => '失敗', 'flash_msg' => 'ログインに失敗しました',
             ]);
         }
     }
@@ -41,12 +41,21 @@ class UserController extends Controller
     public function postRegister(RegisterRequest $request)
     {
         User::create([
-            'admin_id' =>1,
+            'admin_id' => 1,
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);
         return redirect()->route('index')->with([
-            'login_ttl' => '成功', 'login_msg' => '登録しました',
-            ]);
+            'flash_ttl' => '成功', 'flash_msg' => '登録しました',
+        ]);
+    }
+
+    // ログアウト関連
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('index')->with([
+            'flash_ttl' => '成功', 'flash_msg' => 'ログアウトしました',
+        ]);
     }
 }

@@ -20,11 +20,11 @@ class AdminController extends Controller
 
         if (Auth::guard('admin')->attempt($credentials)) {
             return redirect()->route('viewAdmin')->with([
-                'login_ttl' => '成功', 'login_msg' => 'ログインしました',
+                'flash_ttl' => '成功', 'flash_msg' => 'ログインしました',
             ]);
         } else {
             return redirect()->route('getAdminLogin')->with([
-                'login_ttl' => '失敗', 'login_msg' => 'ログインに失敗しました',
+                'flash_ttl' => '失敗', 'flash_msg' => 'ログインに失敗しました',
             ]);
         }
     }
@@ -33,5 +33,14 @@ class AdminController extends Controller
     public function viewAdmin()
     {
         return view('admin.admin');
+    }
+
+    // ログアウト関連
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('getAdminLogin')->with([
+            'flash_ttl' => '成功', 'flash_msg' => 'ログアウトしました',
+        ]);
     }
 }

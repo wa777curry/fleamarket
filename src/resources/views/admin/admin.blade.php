@@ -3,7 +3,7 @@
 @section('css')
 @endsection
 
-@include('layouts.header2')
+@include('layouts.header-admin')
 
 @section('main')
 <div>

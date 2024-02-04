@@ -33,6 +33,10 @@ Route::post('/register', [UserController::class, 'postRegister'])->name('postReg
 
 Route::post('/upload', [ViewController::class, 'upload']);
 
+//　ログイン後の承認ページ
+Route::middleware('auth')->group(function () {
+    Route::get('/logout', [UserController::class, 'logout']);
+});
 
 // 管理者用
 Route::prefix('admin')->group(function () {
@@ -42,4 +46,5 @@ Route::prefix('admin')->group(function () {
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'viewAdmin'])->name('viewAdmin');
+    Route::get('/logout', [AdminController::class, 'logout']);
 });

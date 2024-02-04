@@ -1,8 +1,8 @@
 /* フラッシュメッセージOK・NGの条件分岐 */
 $(function () {
-    if (loginTtl === '成功') {
-        toastr.success(loginMsg, loginTtl);
+    if (flashTtl === '成功') {
+        toastr.success(flashMsg, flashTtl);
     } else {
-        toastr.error(loginMsg, loginTtl);
+        toastr.error(flashMsg, flashTtl);
     }
 });
