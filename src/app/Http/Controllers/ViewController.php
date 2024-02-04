@@ -27,11 +27,6 @@ class ViewController extends Controller
         return view('item.item');
     }
 
-    public function profile()
-    {
-        return view('mypage.profile');
-    }
-
     public function address()
     {
         return view('purchase.address.item');
@@ -42,7 +37,7 @@ class ViewController extends Controller
         return view('purchase.item');
     }
 
-    public function mypage()
+    public function getMypage()
     {
         return view('mypage');
     }

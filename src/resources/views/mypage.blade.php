@@ -10,7 +10,7 @@
     <div>
         <span>ユーザーアイコン</span>
         <span>ユーザー名</span>
-        <button class="button" type="submit">プロフィールを編集</button>
+        <a href="{{ route('getProfile') }}"><button class="button" type="submit">プロフィールを編集</button></a>
     </div>
     <div>
         <span>出品した商品</span>

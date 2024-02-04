@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
 
@@ -19,10 +20,9 @@ use App\Http\Controllers\ViewController;
 Route::get('/', [ViewController::class, 'index'])->name('index');
 Route::get('/item/comment', [ViewController::class, 'comment']);
 Route::get('/item/item', [ViewController::class, 'item']);
-Route::get('/mypage/profile', [ViewController::class, 'profile']);
 Route::get('/purchase/address/item', [ViewController::class, 'address']);
 Route::get('/purchase/item', [ViewController::class, 'purchase']);
-Route::get('/mypage', [ViewController::class, 'mypage']);
+
 Route::get('/sell', [ViewController::class, 'sell']);
 
 Route::get('/login', [UserController::class, 'getLogin'])->name('getLogin');
@@ -36,6 +36,10 @@ Route::post('/upload', [ViewController::class, 'upload']);
 //　ログイン後の承認ページ
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [UserController::class, 'logout']);
+
+    Route::get('/mypage', [ViewController::class, 'getMypage'])->name('getMypage');
+    Route::get('/mypage/profile', [ProfileController::class, 'getProfile'])->name('getProfile');
+    Route::post('/mypage/profile', [ProfileController::class, 'postProfile'])->name('postProfile');
 });
 
 
@@ -47,5 +51,5 @@ Route::prefix('admin')->group(function () {
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'viewAdmin'])->name('viewAdmin');
-    Route::get('/logout', [AdminController::class, 'logout']);
+    Route::get('/admin/logout', [AdminController::class, 'logout']);
 });
