@@ -21,6 +21,11 @@
             <button class="button" type="button" onclick="document.getElementById('fileInput').click()">画像を選択する</button>
             <input type="file" name="icon" id="fileInput" onchange="previewImage(event)" style="display: none;" accept="image/*">
         </div>
+        <div class="form__error">
+            @error('icon_url')
+            {{ $message }}
+            @enderror
+        </div>
         <div>ユーザー名</div>
         <div><input type="text" name="username" value="{{ old('username', $profile->username ?? '') }}"></div>
         <div class="form__error">
