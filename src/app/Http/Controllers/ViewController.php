@@ -37,11 +37,6 @@ class ViewController extends Controller
         return view('purchase.item');
     }
 
-    public function getMypage()
-    {
-        return view('mypage');
-    }
-
     public function sell()
     {
         return view('sell');

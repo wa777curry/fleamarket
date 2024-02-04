@@ -41,13 +41,20 @@ li {
     margin-left: 10px;
 }
 
+
 /* バリデーションエラー関連 */
 .form__error {
     color: #ff5555;
     font-size: 90%;
 }
 
-/* プロフィールアイコン関連 */
+/* プロフィールアイコンの部分 */
+.user-content {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .icon-content {
     align-items: center;
     display: flex;

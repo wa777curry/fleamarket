@@ -12,6 +12,7 @@ header div {
     height: 100%;
     margin: 0;
     padding: 0;
+    white-space: nowrap; /* 改行しない */
 }
 
 header a {

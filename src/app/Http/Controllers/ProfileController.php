@@ -11,10 +11,9 @@ class ProfileController extends Controller
     // プロフィール設定画面表示
     public function getProfile()
     {
-        $user = auth()->user();
         // プロフィール情報がある場合は情報を取得
-        $profile = $user->profile;
-        return view('mypage.profile', compact('user', 'profile'));
+        $profile = auth()->user()->profile;
+        return view('mypage.profile', compact('profile'));
     }
 
     //　プロフィール登録処理

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
@@ -37,7 +38,7 @@ Route::post('/upload', [ViewController::class, 'upload']);
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [UserController::class, 'logout']);
 
-    Route::get('/mypage', [ViewController::class, 'getMypage'])->name('getMypage');
+    Route::get('/mypage', [MypageController::class, 'getMypage'])->name('getMypage');
     Route::get('/mypage/profile', [ProfileController::class, 'getProfile'])->name('getProfile');
     Route::post('/mypage/profile', [ProfileController::class, 'postProfile'])->name('postProfile');
 });
