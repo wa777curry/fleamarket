@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [UserController::class, 'logout']);
 });
 
+
 // 管理者用
 Route::prefix('admin')->group(function () {
     Route::get('/login', [AdminController::class, 'getAdminLogin'])->name('getAdminLogin');
