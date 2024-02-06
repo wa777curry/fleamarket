@@ -10,7 +10,6 @@ class MypageController extends Controller
     {
         // ログインしているユーザーのプロフィール情報の取得
         $profile = auth()->user()->profile;
-
         return view('mypage', compact('profile'));
     }
 }

@@ -74,6 +74,34 @@ li {
 .icon img {
     background-color: #fff;
     border: none;
-    height: 100px;
-    width: 100px;
+    height: 120px;
+    width: 120px;
+}
+
+/* 切替コンテンツ関連 */
+.content {
+    border: 1px solid #000; /* あとでnoneに変える */
+    display: none;
+    padding: 35px;
+}
+
+.content.active {
+    display: block;
+}
+
+.content__img {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-auto-rows: 200px;
+    grid-gap: 40px;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.content img {
+    background-color: #fff;
+    border: none;
+    height: 200px;
+    width: 200px;
 }

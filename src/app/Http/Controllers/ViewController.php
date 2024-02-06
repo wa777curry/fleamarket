@@ -45,7 +45,7 @@ class ViewController extends Controller
     public function upload(Request $request)
     {
         // ディレクトリ名
-        $dir = 'icon';
+        $dir = 'image';
         // アップロードされたファイル名を取得
         $file_name = $request->file('image')->getClientOriginalName();
         // 取得したファイル名で保存
