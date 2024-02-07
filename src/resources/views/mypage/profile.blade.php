@@ -11,8 +11,8 @@
     <form action="{{ route('postProfile') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="icon-content">
-            <!-- アイコン設定が存在しない場合、デフォルトのアイコンを表示 -->
-            @if(!$profile->icon_url)
+            <!-- プロフィール設定がない場合、デフォルトのアイコンを表示 -->
+            @if(!$profile)
             <div class="icon"><img src="{{ Storage::url('icon/default.png') }}"></div>
             @else
             <!-- プロフィールアイコンの表示 -->

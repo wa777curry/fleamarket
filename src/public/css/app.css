@@ -85,6 +85,10 @@ li {
     padding: 35px;
 }
 
+.content__menu {
+    cursor: pointer;
+}
+
 .content.active {
     display: block;
 }

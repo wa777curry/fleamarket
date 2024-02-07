@@ -7,12 +7,29 @@
 
 @section('main')
 <div>
-    <span>おすすめ</span>
-    <span>マイリスト</span>
+    <span class="content__menu" onclick="toggleContent('recommends')">おすすめ</span>
+    @if(auth()->check())
+        <span class="content__menu" onclick="toggleContent('likes')">マイリスト</span>
+    @endif
 </div>
-<div>
-    画像
+<div class="content active" id="recommends">
+    <div class="content__img">
+        <!-- あとでｆｏｒｅａｃｈに置換 -->
+        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="おすすめ画像">
+        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="おすすめ画像">
+        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="おすすめ画像">
+        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="おすすめ画像">
+    </div>
 </div>
+<div class="content" id="likes">
+    <div class="content__img">
+        <!-- あとでｆｏｒｅａｃｈに置換 -->
+        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="マイリスト画像">
+        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="マイリスト画像">
+        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="マイリスト画像">
+    </div>
+</div>
+
 <div>
     ページリンク一覧
     <li><a href="/login">ログインページ</a></li>
