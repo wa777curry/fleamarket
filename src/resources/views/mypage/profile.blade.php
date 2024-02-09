@@ -12,11 +12,11 @@
         @csrf
         <div class="icon-content">
             <!-- プロフィール設定がない場合、デフォルトのアイコンを表示 -->
-            @if(!$profile)
+            @if(!$profile or !$profile->icon_url)
             <div class="icon"><img src="{{ Storage::url('icon/default.png') }}"></div>
             @else
             <!-- プロフィールアイコンの表示 -->
-            <div class="icon"><img src="{{ url($profile->icon_url) }}" alt="Profile Icon"></div>
+            <div class="icon"><img src="{{ $profile->icon_url }}" alt="Profile Icon"></div>
             @endif
             <button class="button" type="button" onclick="document.getElementById('fileInput').click()">画像を選択する</button>
             <input type="file" name="icon" id="fileInput" onchange="previewImage(event)" style="display: none;" accept="image/*">
