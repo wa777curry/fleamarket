@@ -9,24 +9,26 @@
 <div>
     <span class="content__menu" onclick="toggleContent('recommends')">おすすめ</span>
     @if(auth()->check())
-        <span class="content__menu" onclick="toggleContent('likes')">マイリスト</span>
+    <span class="content__menu" onclick="toggleContent('likes')">マイリスト</span>
     @endif
 </div>
 <div class="content active" id="recommends">
     <div class="content__img">
         <!-- あとでｆｏｒｅａｃｈに置換 -->
-        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="おすすめ画像">
-        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="おすすめ画像">
-        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="おすすめ画像">
-        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="おすすめ画像">
+        <img src="{{ Storage::url('item/sneakers-red.jpg') }}" alt="おすすめ画像">
+        <img src="{{ Storage::url('item/boots-brown.jpg') }}" alt="おすすめ画像">
+        <img src="{{ Storage::url('item/pumps-black2.jpg') }}" alt="おすすめ画像">
+        <img src="{{ Storage::url('item/noimage.jpg') }}" alt="おすすめ画像">
+        <img src="{{ Storage::url('item/noimage.jpg') }}" alt="おすすめ画像">
+        <img src="{{ Storage::url('item/noimage.jpg') }}" alt="おすすめ画像">
     </div>
 </div>
 <div class="content" id="likes">
     <div class="content__img">
         <!-- あとでｆｏｒｅａｃｈに置換 -->
-        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="マイリスト画像">
-        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="マイリスト画像">
-        <img src="{{ Storage::url('image/noimage.jpg') }}" alt="マイリスト画像">
+        <img src="{{ Storage::url('item/noimage.jpg') }}" alt="マイリスト画像">
+        <img src="{{ Storage::url('item/noimage.jpg') }}" alt="マイリスト画像">
+        <img src="{{ Storage::url('item/noimage.jpg') }}" alt="マイリスト画像">
     </div>
 </div>
 
