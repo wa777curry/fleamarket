@@ -46,12 +46,12 @@
     <li><a href="/admin/login">管理者ログインページ</a></li>
 </div>
 
-<div>
-    <form method="post" action="/upload" enctype="multipart/form-data">
-        @csrf
+<form method="post" action="/upload" enctype="multipart/form-data">
+    @csrf
+    <div style="display: flex; width: 500px;">
         <input type="file" name="image">
-        <button>アップロード</button>
-    </form>
-</div>
+        <button style="width: 200px;">アップロード</button>
+    </div>
+</form>
 
 @endsection

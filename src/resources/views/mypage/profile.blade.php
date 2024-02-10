@@ -52,4 +52,5 @@
         <div><button class="button" type="submit">更新する</button></div>
     </form>
 </div>
+<script src="{{ asset('js/icon.js') }}"></script>
 @endsection

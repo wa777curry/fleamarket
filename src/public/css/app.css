@@ -49,18 +49,21 @@ li {
 }
 
 /* プロフィールアイコンの部分 */
+/* 出品画像の部分 */
 .user-content {
     align-items: center;
     display: flex;
     justify-content: space-evenly;
 }
 
-.icon-content {
+.icon-content,
+.item-content {
     align-items: center;
     display: flex;
 }
 
-.icon-content button {
+.icon-content button,
+.item-content button {
     background-color: #fff;
     border: 1px solid #ff5555;
     border-radius: 5px;
@@ -74,11 +77,33 @@ li {
 .icon img {
     background-color: #fff;
     border: none;
-    height: auto;
+    height: 120px;
     max-height: 120px;
     max-width: 120px;
     object-fit: contain;
-    width: auto;
+    width: 120px;
+}
+
+.item img {
+    background-color: #fff;
+    border: none;
+    height: 200px;
+    max-height: 200px;
+    max-width: 300px;
+    object-fit: contain;
+    width: 300px;
+}
+
+select {
+    font-size: 102%;
+    width: 20%;
+}
+
+textarea {
+    font-size: 102%;
+    height: 80px;
+    resize: none;
+    width: 100%;
 }
 
 /* 切替コンテンツ関連 */

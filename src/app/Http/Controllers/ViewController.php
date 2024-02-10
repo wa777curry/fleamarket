@@ -37,11 +37,6 @@ class ViewController extends Controller
         return view('purchase.item');
     }
 
-    public function sell()
-    {
-        return view('sell');
-    }
-
     public function upload(Request $request)
     {
         // ディレクトリ名

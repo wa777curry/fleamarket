@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SellController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
 
@@ -24,7 +25,7 @@ Route::get('/item/item', [ViewController::class, 'item']);
 Route::get('/purchase/address/item', [ViewController::class, 'address']);
 Route::get('/purchase/item', [ViewController::class, 'purchase']);
 
-Route::get('/sell', [ViewController::class, 'sell']);
+Route::get('/sell', [SellController::class, 'getSell'])->name('getSell');
 
 Route::get('/login', [UserController::class, 'getLogin'])->name('getLogin');
 Route::post('/login', [UserController::class, 'postLogin'])->name('postLogin');
@@ -41,6 +42,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [MypageController::class, 'getMypage'])->name('getMypage');
     Route::get('/mypage/profile', [ProfileController::class, 'getProfile'])->name('getProfile');
     Route::post('/mypage/profile', [ProfileController::class, 'postProfile'])->name('postProfile');
+
+    Route::post('/sell', [SellController::class, 'postSell'])->name('postSell');
 });
 
 

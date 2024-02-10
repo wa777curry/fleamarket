@@ -32,22 +32,22 @@
     <div class="content active" id="sells">
         <div class="content__img">
             <!-- あとでｆｏｒｅａｃｈに置換 -->
-            <img src="{{ Storage::url('image/noimage.jpg') }}" alt="出品画像">
-            <img src="{{ Storage::url('image/noimage.jpg') }}" alt="出品画像">
-            <img src="{{ Storage::url('image/noimage.jpg') }}" alt="出品画像">
-            <img src="{{ Storage::url('image/noimage.jpg') }}" alt="出品画像">
-            <img src="{{ Storage::url('image/noimage.jpg') }}" alt="出品画像">
+            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="出品画像">
+            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="出品画像">
+            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="出品画像">
+            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="出品画像">
+            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="出品画像">
         </div>
     </div>
     <div class="content" id="purchases">
         <div class="content__img">
             <!-- あとでｆｏｒｅａｃｈに置換 -->
-            <img src="{{ Storage::url('image/noimage.jpg') }}" alt="購入画像">
-            <img src="{{ Storage::url('image/noimage.jpg') }}" alt="購入画像">
-            <img src="{{ Storage::url('image/noimage.jpg') }}" alt="購入画像">
-            <img src="{{ Storage::url('image/noimage.jpg') }}" alt="購入画像">
-            <img src="{{ Storage::url('image/noimage.jpg') }}" alt="購入画像">
-            <img src="{{ Storage::url('image/noimage.jpg') }}" alt="購入画像">
+            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
+            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
+            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
+            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
+            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
+            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
         </div>
     </div>
 </div>
