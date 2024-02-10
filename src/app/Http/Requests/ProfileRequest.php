@@ -28,7 +28,7 @@ class ProfileRequest extends FormRequest
             'postcode' => ['required', 'string', 'digits:7'],
             'address' => ['required', 'string', 'max:255'],
             'building' => ['nullable', 'string', 'max:255'],
-            'icon_url' => ['nullable', 'file', 'max:2048'],
+            'icon_url' => ['nullable', 'file', 'max:2048', 'mimes:jpg,png'],
         ];
     }
 
@@ -46,7 +46,8 @@ class ProfileRequest extends FormRequest
             'address.max' => '※住所を255文字以内で入力してください',
             'building.string' => '※建物名を文字列で入力してください',
             'building.max' => '※建物名を255文字以内で入力してください',
-            'icon_url.max' => '※アップロードできる画像の容量は2MB未満です'
+            'icon_url.max' => '※アップロードできる画像の容量は2MB未満です',
+            'icon_url.mimes' => '※アップロードできるファイル形式はjpgまたはpngのみです',
         ];
     }
 }

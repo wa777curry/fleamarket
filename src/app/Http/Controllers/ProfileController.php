@@ -22,7 +22,7 @@ class ProfileController extends Controller
         // ログインしているユーザーのプロフィール情報の取得
         $profile = auth()->user()->profile;
         // プロフィールが存在しない場合は新規に作成する
-        if (!$profile){
+        if (!$profile) {
             $profile = new Profile();
             $profile->user_id = auth()->user()->id;
         }
@@ -33,18 +33,18 @@ class ProfileController extends Controller
             // アップロードされたファイルを取得
             $file = $request->file('icon');
             // ファイル名を生成
-            $file_name = uniqid() . '.' . $file->getClientOriginalName();
+            $file_extension = $file->getClientOriginalExtension(); // ファイルの拡張子を取得する
+            $file_name = auth()->id() . '_999_' . 'icon' . '.' . $file_extension; // ファイル名に拡張子を連結する
             // ファイルを保存
             $file_path = $file->storeAs('public/' . $dir, $file_name);
             // プロフィールのアイコンURLを更新
             $profile->icon_url = Storage::url($file_path);
-            $profile->save();
         }
         // プロフィール情報を更新する
         $profile->fill($request->validated());
         $profile->save();
 
-        return redirect()->route('getProfile')->with([
+        return redirect()->route('getMypage')->with([
             'flash_ttl' => '成功', 'flash_msg' => 'プロフィールが更新されました',
         ]);
     }
