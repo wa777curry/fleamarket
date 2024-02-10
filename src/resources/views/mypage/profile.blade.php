@@ -19,7 +19,7 @@
             <div class="icon"><img src="{{ $profile->icon_url }}" alt="Profile Icon"></div>
             @endif
             <button class="button" type="button" onclick="document.getElementById('fileInput').click()">画像を選択する</button>
-            <input type="file" name="icon" id="fileInput" onchange="previewImage(event)" style="display: none;" accept="image/*">
+            <input type="file" name="icon_url" id="fileInput" onchange="previewImage(event)" style="display: none;" accept="image/*">
         </div>
         <div class="form__error">
             @error('icon_url')
