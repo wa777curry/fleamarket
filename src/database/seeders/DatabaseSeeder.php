@@ -18,6 +18,5 @@ class DatabaseSeeder extends Seeder
         $this->call(PaymentsSeeder::class);
         $this->call(CategoriesSeeder::class);
         $this->call(ConditionsSeeder::class);
-        $this->call(ImagesSeeder::class);
     }
 }
