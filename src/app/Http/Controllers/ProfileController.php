@@ -27,21 +27,26 @@ class ProfileController extends Controller
             $profile->user_id = auth()->user()->id;
         }
         // アップロードされたアイコンを保存する処理
-        if ($request->hasFile('icon')) {
+        if ($request->hasFile('icon_url')) {
             // ディレクトリ名
             $dir = 'icon';
             // アップロードされたファイルを取得
-            $file = $request->file('icon');
+            $file = $request->file('icon_url');
             // ファイル名を生成
             $file_extension = $file->getClientOriginalExtension(); // ファイルの拡張子を取得する
             $file_name = auth()->id() . '_999_' . 'icon' . '.' . $file_extension; // ファイル名に拡張子を連結する
             // ファイルを保存
             $file_path = $file->storeAs('public/' . $dir, $file_name);
-            // プロフィールのアイコンURLを更新
-            $profile->icon_url = Storage::url($file_path);
+            // 一時的にファイルパスを保存
+            $profile->temp_icon_url = $file_path;
         }
         // プロフィール情報を更新する
-        $profile->fill($request->validated());
+        $profile->fill($request->except('icon_url')); // icon_url以外のフォームデータを更新
+        // 最後に保存処理を行う前に、アイコンのURLを正しいフィールドに代入する
+        if (isset($profile->temp_icon_url)) {
+            $profile->icon_url = Storage::url($profile->temp_icon_url);
+            unset($profile->temp_icon_url); // 一時的なフィールドを削除
+        }
         $profile->save();
 
         return redirect()->route('getMypage')->with([
