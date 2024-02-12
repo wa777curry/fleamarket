@@ -28,7 +28,7 @@ class SellRequest extends FormRequest
             'condition_id' => ['required', 'integer'],
             'itemname' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
-            'price' => ['required', 'numeric'],
+            'price' => ['required', 'numeric', 'digits_between:1,8'],
             'item_url' => ['required', 'file', 'max:2048', 'mimes:jpg,png'],
         ];
     }
@@ -45,6 +45,7 @@ class SellRequest extends FormRequest
             'description.string' => '※商品の説明は文字列で入力してください',
             'price.required' => '※価格を入力してください',
             'price.numeric' => '※価格は数字で入力してください',
+            'price.digits_between' => '※価格は8桁までの設定にしてください',
             'item_url.required' => '※アップロードする画像を選択してください',
             'item_url.max' => '※アップロードできる画像の容量は2MB未満です',
             'item_url.mimes' => '※アップロードできるファイル形式はjpgまたはpngのみです',

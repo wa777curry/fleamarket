@@ -15,10 +15,6 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'category' => '服',
-        ]);
-
-        DB::table('categories')->insert([
             'category' => '靴',
         ]);
 

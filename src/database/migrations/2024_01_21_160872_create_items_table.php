@@ -21,7 +21,7 @@ class CreateItemsTable extends Migration
             $table->foreignId('condition_id')->constrained();
             $table->string('itemname');
             $table->text('description');
-            $table->decimal('price');
+            $table->decimal('price', 10, 2);
             $table->string('item_url');
             $table->timestamps();
         });
