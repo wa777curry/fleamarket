@@ -18,6 +18,7 @@ class CreateItemsTable extends Migration
             $table->unsignedBigInteger('seller_id');
             $table->unsignedBigInteger('purchaser_id')->nullable();
             $table->foreignId('category_id')->constrained();
+            $table->foreignId('subcategory_id')->constrained();
             $table->foreignId('condition_id')->constrained();
             $table->string('itemname');
             $table->text('description');

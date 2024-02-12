@@ -31,11 +31,25 @@
                 <option value="{{ $category->id }}" @if(old('category_id')==$category->id) selected @endif>{{ $category->category }}</option>
                 @endforeach
             </select>
+            <select name="subcategory_id">
+                <option value="">選択してください</option>
+                @foreach($subcategories as $subcategory)
+                <option value="{{ $subcategory->id }}" @if(old('subcategory_id')==$subcategory->id) selected @endif>{{ $subcategory->subcategory }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="form__error">
-            @error('category_id')
-            {{ $message }}
-            @enderror
+            @if($errors->has('category_id') && !$errors->has('subcategory_id'))
+            {{ $errors->first('category_id') }}
+            @endif
+
+            @if(!$errors->has('category_id') && $errors->has('subcategory_id'))
+            {{ $errors->first('subcategory_id') }}
+            @endif
+
+            @if($errors->has('category_id') && $errors->has('subcategory_id'))
+            {{ $errors->first('category_id') }}
+            @endif
         </div>
         <div>商品の状態</div>
         <div>

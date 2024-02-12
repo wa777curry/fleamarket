@@ -6,6 +6,7 @@ use App\Http\Requests\SellRequest;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Item;
+use App\Models\Subcategory;
 use Illuminate\Support\Facades\Storage;
 
 class SellController extends Controller
@@ -15,12 +16,14 @@ class SellController extends Controller
     {
         if (!auth()->check()) {
             return redirect()->route('getLogin')->with(
-                'flashWarning', 'このページを表示するにはログインが必要です',
+                'flashWarning',
+                'このページを表示するにはログインが必要です',
             );
         }
         $categories = Category::all();
+        $subcategories = Subcategory::all();
         $conditions = Condition::all();
-        return view('sell', compact('categories', 'conditions'));
+        return view('sell', compact('categories', 'subcategories', 'conditions'));
     }
 
     // 出品登録処理
@@ -32,14 +35,16 @@ class SellController extends Controller
         Item::create([
             'seller_id' => auth()->user()->id,
             'category_id' => $request->input('category_id'),
+            'subcategory_id' => $request->input('subcategory_id'),
             'condition_id' => $request->input('condition_id'),
             'itemname' => $request->input('itemname'),
             'description' => $request->input('description'),
             'price' => $request->input('price'),
             'item_url' => $itemUrl,
         ]);
-        return redirect()->route('getSell')->with(
-            'flashSuccess', '出品処理されました',
+        return redirect()->route('getMypage')->with(
+            'flashSuccess',
+            '出品処理されました',
         );
     }
 

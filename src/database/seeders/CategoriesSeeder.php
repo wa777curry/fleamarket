@@ -15,19 +15,11 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'category' => '靴',
+            'category' => 'メンズ',
         ]);
 
         DB::table('categories')->insert([
-            'category' => 'バッグ・財布',
-        ]);
-
-        DB::table('categories')->insert([
-            'category' => 'アクセサリー',
-        ]);
-
-        DB::table('categories')->insert([
-            'category' => '時計',
+            'category' => 'レディース',
         ]);
     }
 }
