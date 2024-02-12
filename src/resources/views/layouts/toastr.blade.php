@@ -8,7 +8,6 @@
     /* ここに@mediaの携帯表示の設定してもいいかも */
 </style>
 
-@if(session('flash_msg'))
 <script>
     /* 表示内容設定 */
     toastr.options = {
@@ -16,10 +15,19 @@
         "timeOut": "1500",
     }
 
-    /* 表示内容（OK・NG設定はtoast.jsに記述） */
-    var flashMsg = '{{ session("flash_msg") }}';
-    var flashTtl = '{{ session("flash_ttl") }}';
-</script>
+    @if (Session::has('flashSuccess'))
+    toastr.success("{{ session('flashSuccess') }}");
+    @endif
 
-<script src="{{ asset('js/toast.js') }}"></script>
-@endif
+    @if (Session::has('flashError'))
+    toastr.error("{{ session('flashError') }}");
+    @endif
+
+    @if (Session::has('flashInfo'))
+    toastr.info("{{ session('flashInfo') }}");
+    @endif
+
+    @if (Session::has('flashWarning'))
+    toastr.warning("{{ session('flashWarning') }}");
+    @endif
+</script>

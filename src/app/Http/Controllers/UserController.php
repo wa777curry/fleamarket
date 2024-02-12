@@ -21,13 +21,13 @@ class UserController extends Controller
         $accepts = $request->only('email', 'password');
 
         if (Auth::attempt($accepts)) {
-            return redirect()->route('index')->with([
-                'flash_ttl' => '成功', 'flash_msg' => 'ログインしました',
-            ]);
+            return redirect()->route('index')->with(
+                'flashSuccess', 'ログインしました',
+            );
         } else {
-            return redirect()->route('getLogin')->with([
-                'flash_ttl' => '失敗', 'flash_msg' => 'ログインに失敗しました',
-            ]);
+            return redirect()->route('getLogin')->with(
+                'flashError', 'ログインに失敗しました',
+            );
         }
     }
 
@@ -45,17 +45,17 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);
-        return redirect()->route('index')->with([
-            'flash_ttl' => '成功', 'flash_msg' => '登録しました',
-        ]);
+        return redirect()->route('index')->with(
+            'flashSuccess', '登録しました',
+        );
     }
 
     // ログアウト関連
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('index')->with([
-            'flash_ttl' => '成功', 'flash_msg' => 'ログアウトしました',
-        ]);
+        return redirect()->route('index')->with(
+            'flashSuccess', 'ログアウトしました',
+        );
     }
 }

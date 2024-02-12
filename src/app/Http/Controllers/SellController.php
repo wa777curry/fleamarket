@@ -13,6 +13,11 @@ class SellController extends Controller
     // 出品画面表示
     public function getSell()
     {
+        if (!auth()->check()) {
+            return redirect()->route('getLogin')->with(
+                'flashWarning', 'このページを表示するにはログインが必要です',
+            );
+        }
         $categories = Category::all();
         $conditions = Condition::all();
         return view('sell', compact('categories', 'conditions'));
@@ -33,9 +38,9 @@ class SellController extends Controller
             'price' => $request->input('price'),
             'item_url' => $itemUrl,
         ]);
-        return redirect()->route('getSell')->with([
-            'flash_ttl' => '成功', 'flash_msg' => '出品処理されました',
-        ]);
+        return redirect()->route('getSell')->with(
+            'flashSuccess', '出品処理されました',
+        );
     }
 
     private function storeItemImage($file)

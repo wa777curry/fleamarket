@@ -38,9 +38,9 @@ class ProfileController extends Controller
             'icon_url' => $iconUrl,
         ]);
         $profile->save();
-        return redirect()->route('getMypage')->with([
-            'flash_ttl' => '成功', 'flash_msg' => 'プロフィールが更新されました',
-        ]);
+        return redirect()->route('getMypage')->with(
+            'flashSuccess', 'プロフィールが更新されました',
+        );
     }
 
     private function storeIconImage($file)
