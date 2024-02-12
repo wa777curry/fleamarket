@@ -16,8 +16,7 @@ class SellController extends Controller
     {
         if (!auth()->check()) {
             return redirect()->route('getLogin')->with(
-                'flashWarning',
-                'このページを表示するにはログインが必要です',
+                'flashWarning', 'このページを表示するにはログインが必要です',
             );
         }
         $categories = Category::all();
@@ -43,8 +42,7 @@ class SellController extends Controller
             'item_url' => $itemUrl,
         ]);
         return redirect()->route('getMypage')->with(
-            'flashSuccess',
-            '出品処理されました',
+            'flashSuccess', '出品処理されました',
         );
     }
 

@@ -28,13 +28,13 @@
             <select name="category_id">
                 <option value="">選択してください</option>
                 @foreach($categories as $category)
-                <option value="{{ $category->id }}" @if(old('category_id')==$category->id) selected @endif>{{ $category->category }}</option>
+                    <option value="{{ $category->id }}" @if(old('category_id')==$category->id) selected @endif>{{ $category->category }}</option>
                 @endforeach
             </select>
             <select name="subcategory_id">
                 <option value="">選択してください</option>
                 @foreach($subcategories as $subcategory)
-                <option value="{{ $subcategory->id }}" @if(old('subcategory_id')==$subcategory->id) selected @endif>{{ $subcategory->subcategory }}</option>
+                    <option value="{{ $subcategory->id }}" @if(old('subcategory_id')==$subcategory->id) selected @endif>{{ $subcategory->subcategory }}</option>
                 @endforeach
             </select>
         </div>
@@ -56,7 +56,7 @@
             <select name="condition_id">
                 <option value="">選択してください</option>
                 @foreach($conditions as $condition)
-                <option value="{{ $condition->id }}" @if(old('condition_id')==$condition->id) selected @endif>{{ $condition->condition }}</option>
+                    <option value="{{ $condition->id }}" @if(old('condition_id')==$condition->id) selected @endif>{{ $condition->condition }}</option>
                 @endforeach
             </select>
         </div>

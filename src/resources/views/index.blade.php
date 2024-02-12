@@ -9,7 +9,7 @@
 <div>
     <span class="content__menu" onclick="toggleContent('recommends')">おすすめ</span>
     @if(auth()->check())
-    <span class="content__menu" onclick="toggleContent('likes')">マイリスト</span>
+        <span class="content__menu" onclick="toggleContent('likes')">マイリスト</span>
     @endif
 </div>
 <div class="content active" id="recommends">

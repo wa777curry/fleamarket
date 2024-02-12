@@ -12,10 +12,10 @@
         <div class="icon-content">
             <!-- プロフィール設定がない場合、デフォルトのアイコンを表示 -->
             @if(!$profile or !$profile->icon_url)
-            <div class="icon"><img src="{{ Storage::url('icon/default.png') }}"></div>
+                <div class="icon"><img src="{{ Storage::url('icon/default.png') }}"></div>
             @else
             <!-- プロフィールアイコンの表示 -->
-            <div class="icon"><img src="{{ $profile->icon_url }}" alt="Profile Icon"></div>
+                <div class="icon"><img src="{{ $profile->icon_url }}" alt="Profile Icon"></div>
             @endif
             <div>{{ $profile->username ?? 'ユーザー名未設定' }}</div>
         </div>
@@ -31,23 +31,24 @@
     </div>
     <div class="content active" id="sells">
         <div class="content__img">
-            <!-- あとでｆｏｒｅａｃｈに置換 -->
-            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="出品画像">
-            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="出品画像">
-            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="出品画像">
-            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="出品画像">
-            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="出品画像">
+            @if($sellerItems->isEmpty())
+                <p>出品した商品はありません。</p>
+            @else
+                @foreach($sellerItems as $item)
+                    <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
+                @endforeach
+            @endif
         </div>
     </div>
     <div class="content" id="purchases">
         <div class="content__img">
-            <!-- あとでｆｏｒｅａｃｈに置換 -->
-            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
-            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
-            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
-            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
-            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
-            <img src="{{ Storage::url('item/noimage.jpg') }}" alt="購入画像">
+            @if($purchaserItems->isEmpty())
+                <p>購入した商品はありません。</p>
+            @else
+                @foreach($purchaserItems as $item)
+                    <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
+                @endforeach
+            @endif
         </div>
     </div>
 </div>
