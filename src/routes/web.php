@@ -35,7 +35,7 @@ Route::post('/register', [UserController::class, 'postRegister'])->name('postReg
 
 Route::post('/upload', [ViewController::class, 'upload']);
 
-//　ログイン後の承認ページ
+// ログイン後の承認ページ
 Route::middleware('auth')->group(function () {
     Route::get('/logout', [UserController::class, 'logout']);
 

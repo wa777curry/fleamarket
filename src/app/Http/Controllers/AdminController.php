@@ -29,7 +29,7 @@ class AdminController extends Controller
         }
     }
 
-    //　管理者画面表示
+    // 管理者画面表示
     public function viewAdmin()
     {
         return view('admin.admin');

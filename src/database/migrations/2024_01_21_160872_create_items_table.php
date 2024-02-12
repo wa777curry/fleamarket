@@ -15,8 +15,8 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('seller_id')->constrained('users');
-            $table->foreignId('purchaser_id')->nullable()->constrained('users');
+            $table->unsignedBigInteger('seller_id');
+            $table->unsignedBigInteger('purchaser_id')->nullable();
             $table->foreignId('category_id')->constrained();
             $table->foreignId('condition_id')->constrained();
             $table->string('itemname');

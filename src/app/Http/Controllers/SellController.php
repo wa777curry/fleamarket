@@ -13,35 +13,36 @@ class SellController extends Controller
     // 出品画面表示
     public function getSell()
     {
-        $sell = Item::all();
         $categories = Category::all();
         $conditions = Condition::all();
-        return view('sell', compact('sell', 'categories', 'conditions'));
+        return view('sell', compact('categories', 'conditions'));
     }
 
-    //　出品登録処理
+    // 出品登録処理
     public function postSell(SellRequest $request)
     {
-        $sell = new Item();
-        // アップロードされたアイコンを保存する処理
-        if ($request->hasFile('item')) {
-            // ディレクトリ名
-            $dir = 'item';
-            // アップロードされたファイルを取得
-            $file = $request->file('item');
-            // ファイル名を生成
-            $file_name = uniqid() . '.' . $file->getClientOriginalName();
-            // ファイルを保存
-            $file_path = $file->storeAs('public/' . $dir, $file_name);
-            // プロフィールのアイコンURLを更新
-            $sell->icon_url = Storage::url($file_path);
-        }
-        //　その他出品情報を更新する
-        $sell->fill($request->validated());
-        $sell->save();
-
+        // アイテムの画像を保存し、そのURLを取得
+        $itemUrl = $this->storeItemImage($request->file('item_url'));
+        // 出品情報を新規作成、保存
+        Item::create([
+            'seller_id' => auth()->user()->id,
+            'category_id' => $request->input('category_id'),
+            'condition_id' => $request->input('condition_id'),
+            'itemname' => $request->input('itemname'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'item_url' => $itemUrl,
+        ]);
         return redirect()->route('getSell')->with([
             'flash_ttl' => '成功', 'flash_msg' => '出品処理されました',
         ]);
+    }
+
+    private function storeItemImage($file)
+    {
+        $dir = 'item'; // ディレクトリ名
+        $file_name = uniqid() . '.' . $file->getClientOriginalName(); // ファイル名を生成
+        $file_path = $file->storeAs('public/' . $dir, $file_name); // ファイルを保存
+        return Storage::url($file_path); // 保存したファイルのURLを返す
     }
 }

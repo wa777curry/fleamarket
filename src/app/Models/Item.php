@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     protected $fillable = [
-        'purchaser_id', 'seller_id', 'itemname', 'price', 'description', 'item_url', 'condition_id'
+        'seller_id', 'purchaser_id', 'category_id', 'condition_id', 'itemname', 'description', 'price', 'item_url',
     ];
 
     public function comments()
