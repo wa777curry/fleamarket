@@ -25,11 +25,6 @@ class User extends Authenticatable
         return $this->hasMany(Payment::class);
     }
 
-    public function likes()
-    {
-        return $this->belongsToMany(Like::class);
-    }
-
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -40,8 +35,18 @@ class User extends Authenticatable
         return $this->belongsTo(Admin::class);
     }
 
-    public function items()
+    public function likes()
     {
-        return $this->belongsToMany(Item::class, 'likes', 'user_id', 'item_id');
+        return $this->belongsToMany(Item::class, 'likes');
+    }
+
+    public function sell_items()
+    {
+        return $this->hasMany(Item::class, 'seller_id');
+    }
+
+    public function purchase_items()
+    {
+        return $this->belongsToMany(Item::class, 'purchase_items', 'user_id', 'item_id');
     }
 }

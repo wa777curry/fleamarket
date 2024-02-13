@@ -13,8 +13,13 @@
     <div>{{ $item->itemname }}</div>
     <div>{{ $formattedPrice }}</div>
     <div>
-        <span><img src="{{ Storage::url('image/star.jpg') }}"> {{ $item->comments->count() }}</span> <!-- あとでcomments→likesに直す -->
+        @if(Auth::check())
+        <span><a href=""><img src="{{ Storage::url('image/star.jpg') }}"></a> {{ $item->likes->count() }}</span>
+        <span><a href=""><img src="{{ Storage::url('image/comment.jpg') }}"></a> {{ $item->comments->count() }}</span>
+        @else
+        <span><img src="{{ Storage::url('image/star.jpg') }}"> {{ $item->likes->count() }}</span>
         <span><img src="{{ Storage::url('image/comment.jpg') }}"> {{ $item->comments->count() }}</span>
+        @endif
     </div>
     <div><button class="button" type="submit">購入する</button></div>
     <div>商品説明</div>
