@@ -22,11 +22,6 @@ class ViewController extends Controller
         return view('item.comment');
     }
 
-    public function item()
-    {
-        return view('item.item');
-    }
-
     public function address()
     {
         return view('purchase.address.item');

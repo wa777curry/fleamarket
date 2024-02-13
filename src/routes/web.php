@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SellController;
@@ -21,11 +22,13 @@ use App\Http\Controllers\ViewController;
 
 Route::get('/', [ViewController::class, 'index'])->name('index');
 Route::get('/item/comment', [ViewController::class, 'comment']);
-Route::get('/item/item', [ViewController::class, 'item']);
+
 Route::get('/purchase/address/item', [ViewController::class, 'address']);
 Route::get('/purchase/item', [ViewController::class, 'purchase']);
 
 Route::get('/sell', [SellController::class, 'getSell'])->name('getSell');
+
+Route::get('/item/{id}', [ItemController::class, 'getItem'])->name('getItem');
 
 Route::get('/login', [UserController::class, 'getLogin'])->name('getLogin');
 Route::post('/login', [UserController::class, 'postLogin'])->name('postLogin');

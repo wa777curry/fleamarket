@@ -7,28 +7,27 @@
 
 @section('main')
 <div>
-    商品画像
+    <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
 </div>
 <div>
-    <div>商品名</div>
-    <div>ブランド名</div>
-    <div>値段</div>
+    <div>{{ $item->itemname }}</div>
+    <div>{{ $formattedPrice }}</div>
     <div>
-        <span>お気に入りアイコン</span>
-        <span>コメントアイコン</span>
+        <span><img src="{{ Storage::url('image/star.jpg') }}"> {{ $item->comments->count() }}</span> <!-- あとでcomments→likesに直す -->
+        <span><img src="{{ Storage::url('image/comment.jpg') }}"> {{ $item->comments->count() }}</span>
     </div>
     <div><button class="button" type="submit">購入する</button></div>
     <div>商品説明</div>
-    <div>商品の概要</div>
+    <div>{{ $item->description }}</div>
     <div>商品の情報</div>
     <div>
         <span>カテゴリー</span>
-        <span>カテ１</span>
-        <span>カテ２</span>
+        <span>{{ $item->category->category }}</span>
+        <span>{{ $item->subcategory->subcategory }}</span>
     </div>
     <div>
         <span>商品の状態</span>
-        <span>良好</span>
+        <span>{{ $item->condition->condition }}</span>
     </div>
 </div>
 @endsection

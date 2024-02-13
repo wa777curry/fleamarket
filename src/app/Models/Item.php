@@ -31,4 +31,14 @@ class Item extends Model
     {
         return $this->belongsTo(Subcategory::class);
     }
+
+    public function condition()
+    {
+        return $this->belongsTo(Condition::class);
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Like::class);
+    }
 }

@@ -108,7 +108,7 @@ textarea {
 
 /* 切替コンテンツ関連 */
 .content {
-    border: 1px solid #000; /* あとでnoneに変える */
+    border: 1px solid #6a9482; /* あとでnoneに変える */
     display: none;
     padding: 35px;
 }
