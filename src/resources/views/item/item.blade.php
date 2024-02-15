@@ -13,12 +13,38 @@
     <div>{{ $item->itemname }}</div>
     <div>{{ $formattedPrice }}</div>
     <div>
+        <!-- ログイン時の表示 -->
         @if(Auth::check())
-        <span><a href=""><img src="{{ Storage::url('image/star.jpg') }}"></a> {{ $item->likes->count() }}</span>
-        <span><a href=""><img src="{{ Storage::url('image/comment.jpg') }}"></a> {{ $item->comments->count() }}</span>
+            @if(auth()->user()->likes->contains($item->id))
+                <!-- お気に入り登録済みの場合 -->
+                <form action="{{ route('nolike', $item) }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <img src="{{ Storage::url('image/on-like.jpg') }}">
+                    </button>
+                    {{ $item->likes->count() }}
+                </form>
+            @else
+                <!-- お気に入り未登録の場合 -->
+                <form action="{{ route('like', $item) }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <img src="{{ Storage::url('image/off-like.jpg') }}">
+                    </button>
+                    {{ $item->likes->count() }}
+                </form>
+            @endif
+            <a href=""><img src="{{ Storage::url('image/on-comment.jpg') }}"></a> {{ $item->comments->count() }}
+        <!-- 非ログイン時の表示 -->
         @else
-        <span><img src="{{ Storage::url('image/star.jpg') }}"> {{ $item->likes->count() }}</span>
-        <span><img src="{{ Storage::url('image/comment.jpg') }}"> {{ $item->comments->count() }}</span>
+            <form action="{{ route('like', $item) }}" method="post">
+                @csrf
+                <button type="submit">
+                    <img src="{{ Storage::url('image/off-like.jpg') }}">
+                </button>
+                {{ $item->likes->count() }}
+            </form>
+            <span><img src="{{ Storage::url('image/off-comment.jpg') }}"> {{ $item->comments->count() }}</span>
         @endif
     </div>
     <div><button class="button" type="submit">購入する</button></div>

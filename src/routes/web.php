@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SellController;
@@ -35,6 +36,9 @@ Route::post('/login', [UserController::class, 'postLogin'])->name('postLogin');
 
 Route::get('/register', [UserController::class, 'getRegister'])->name('getRegister');
 Route::post('/register', [UserController::class, 'postRegister'])->name('postRegister');
+
+Route::post('/like/{item}', [LikeController::class, 'like'])->name('like');
+Route::post('/nolike/{item}', [LikeController::class, 'nolike'])->name('nolike');
 
 Route::post('/upload', [ViewController::class, 'upload']);
 
