@@ -9,15 +9,15 @@ class ViewController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $likes = null;
+        if (auth()->check())
+        {
+            $likes = auth()->user()->likes;
+        }
+        return view('index', compact('likes'));
     }
 
-    public function register()
-    {
-        return view('auth.register');
-    }
-
-    public function comment()
+    public function getComment()
     {
         return view('item.comment');
     }
