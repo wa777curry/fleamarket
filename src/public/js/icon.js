@@ -1,4 +1,4 @@
-/* プロフィールアイコンのプレビュー表示 */
+// プロフィールアイコンのプレビュー表示
 function previewImage(event) {
     var input = event.target;
     var preview = document.getElementById('imagePreview');

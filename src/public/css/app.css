@@ -96,7 +96,7 @@ li {
 
 select {
     font-size: 102%;
-    width: 20%;
+    width: auto;
 }
 
 textarea {

@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasMany(Item::class, 'seller_id');
     }
 
+    public function views()
+    {
+        return $this->hasMany(View::class);
+    }
+
     public function purchase_items()
     {
         return $this->belongsToMany(Item::class, 'purchase_items', 'user_id', 'item_id');

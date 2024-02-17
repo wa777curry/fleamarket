@@ -12,25 +12,40 @@
     <span class="content__menu" onclick="toggleContent('likes')">マイリスト</span>
     @endif
 </div>
+<!-- おすすめ一覧の表示 -->
 <div class="content active" id="recommends">
+    <div>
+        <form action="{{ route('index') }}" method="get">
+            <select name="sort" id="sort" onchange="this.form.submit()">
+                <option value="">選択してください　</option>
+                <option value="views" {{ $sortOrder === 'views' ? 'selected' : '' }}>閲覧回数が多い順　</option>
+                <option value="likes" {{ $sortOrder === 'likes' ? 'selected' : '' }}>マイリストが多い順　</option>
+                <option value="asc" {{ $sortOrder === 'asc' ? 'selected' : '' }}>価格が安い順　</option>
+                <option value="desc" {{ $sortOrder === 'desc' ? 'selected' : '' }}>価格が高い順　</option>
+            </select>
+        </form>
+    </div>
     <div class="content__img">
-        <!-- あとでｆｏｒｅａｃｈに置換 -->
-        <img src="{{ Storage::url('item/sneakers-red.jpg') }}" alt="おすすめ画像">
-        <img src="{{ Storage::url('item/boots-brown.jpg') }}" alt="おすすめ画像">
-        <img src="{{ Storage::url('item/pumps-black2.jpg') }}" alt="おすすめ画像">
-        <img src="{{ Storage::url('item/noimage.jpg') }}" alt="おすすめ画像">
-        <img src="{{ Storage::url('item/noimage.jpg') }}" alt="おすすめ画像">
-        <img src="{{ Storage::url('item/noimage.jpg') }}" alt="おすすめ画像">
+        @foreach($recommendItems as $item)
+        <a href="{{ route('getItem', ['id' => $item->id]) }}">
+            <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
+        </a>
+        @endforeach
     </div>
 </div>
+<!-- マイリスト一覧の表示 -->
 <div class="content" id="likes">
     <div class="content__img">
         @if(Auth::check())
+        @if($likes->isEmpty())
+        <p>マイリスト登録した商品はありません。</p>
+        @else
         @foreach($likes as $like)
         <a href="{{ route('getItem', ['id' => $like->id]) }}">
             <img src="{{ $like->item_url }}" alt="{{ $like->itemname }}">
         </a>
         @endforeach
+        @endif
         @endif
     </div>
 </div>

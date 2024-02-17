@@ -22,6 +22,7 @@ use App\Http\Controllers\ViewController;
 */
 
 Route::get('/', [ViewController::class, 'index'])->name('index');
+
 Route::get('/item/comment', [ViewController::class, 'getComment'])->name('getComment');
 
 Route::get('/purchase/address/item', [ViewController::class, 'address']);

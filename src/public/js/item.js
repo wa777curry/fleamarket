@@ -1,4 +1,4 @@
-/* 出品画像のプレビュー表示 */
+// 出品画像のプレビュー表示
 function previewImage(event) {
     var input = event.target;
     var preview = document.getElementById('imagePreview');

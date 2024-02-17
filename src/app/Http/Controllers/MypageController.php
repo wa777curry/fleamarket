@@ -11,9 +11,9 @@ class MypageController extends Controller
     {
         // ログインしているユーザーのプロフィール情報の取得
         $profile = auth()->user()->profile;
-        // 現在のユーザーの出品アイテムを取得
+        // 現在のユーザーの出品商品を取得
         $sellerItems = Item::where('seller_id', auth()->id())->get();
-        // 現在のユーザーが購入したアイテムを取得
+        // 現在のユーザーが購入した商品を取得
         $purchaserItems = Item::where('purchaser_id', auth()->id())->get();
         return view('mypage', compact('profile', 'sellerItems', 'purchaserItems'));
     }

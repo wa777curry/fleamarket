@@ -28,7 +28,7 @@ class SellController extends Controller
     // 出品登録処理
     public function postSell(SellRequest $request)
     {
-        // アイテムの画像を保存し、そのURLを取得
+        // 商品の画像を保存し、そのURLを取得
         $itemUrl = $this->storeItemImage($request->file('item_url'));
         // 出品情報を新規作成、保存
         Item::create([
