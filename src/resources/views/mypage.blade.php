@@ -35,7 +35,9 @@
                 <p>出品した商品はありません。</p>
             @else
                 @foreach($sellerItems as $item)
-                    <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
+                    <a href="{{ route('getItem', ['id' => $item->id]) }}">
+                        <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
+                    </a>
                 @endforeach
             @endif
         </div>

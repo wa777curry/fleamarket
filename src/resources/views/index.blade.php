@@ -9,7 +9,7 @@
 <div>
     <span class="content__menu" onclick="toggleContent('recommends')">おすすめ</span>
     @if(auth()->check())
-    <span class="content__menu" onclick="toggleContent('likes')">マイリスト</span>
+        <span class="content__menu" onclick="toggleContent('likes')">マイリスト</span>
     @endif
 </div>
 <!-- おすすめ一覧の表示 -->
@@ -37,15 +37,15 @@
 <div class="content" id="likes">
     <div class="content__img">
         @if(Auth::check())
-        @if($likes->isEmpty())
-        <p>マイリスト登録した商品はありません。</p>
-        @else
-        @foreach($likes as $like)
-        <a href="{{ route('getItem', ['id' => $like->id]) }}">
-            <img src="{{ $like->item_url }}" alt="{{ $like->itemname }}">
-        </a>
-        @endforeach
-        @endif
+            @if($likes->isEmpty())
+                <p>マイリスト登録した商品はありません。</p>
+            @else
+                @foreach($likes as $like)
+                    <a href="{{ route('getItem', ['id' => $like->id]) }}">
+                        <img src="{{ $like->item_url }}" alt="{{ $like->itemname }}">
+                    </a>
+                @endforeach
+            @endif
         @endif
     </div>
 </div>
