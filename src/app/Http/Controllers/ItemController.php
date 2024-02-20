@@ -21,24 +21,27 @@ class ItemController extends Controller
     // 商品の閲覧回数をカウントする
     private function countView($itemId)
     {
-        // ログインユーザーのIDを取得
-        $userId = auth()->id();
-        // 該当するアイテムの閲覧ログを取得
-        $viewLog = View::where('user_id', $userId)
-        ->where('item_id', $itemId)
-        ->first();
-        // ログが既に存在する場合は、閲覧回数を更新して最終閲覧時刻を更新
-        if ($viewLog) {
-            $viewLog->increment('view_count');
-            $viewLog->update(['last_viewed_at' => now()]);
-        } else {
-            // ログが存在しない場合は新しいログを作成
-            View::create([
-                'user_id' => $userId,
-                'item_id' => $itemId,
-                'view_count' => 1,
-                'last_viewed_at' => now(),
-            ]);
+        // ログインしているかどうかを確認
+        if (auth()->check()) {
+            // ログインユーザーのIDを取得
+            $userId = auth()->id();
+            // 該当するアイテムの閲覧ログを取得
+            $viewLog = View::where('user_id', $userId)
+            ->where('item_id', $itemId)
+            ->first();
+            // ログが既に存在する場合は、閲覧回数を更新して最終閲覧時刻を更新
+            if ($viewLog) {
+                $viewLog->increment('view_count');
+                $viewLog->update(['last_viewed_at' => now()]);
+            } else {
+                // ログが存在しない場合は新しいログを作成
+                View::create([
+                    'user_id' => $userId,
+                    'item_id' => $itemId,
+                    'view_count' => 1,
+                    'last_viewed_at' => now(),
+                ]);
+            }
         }
     }
 }
