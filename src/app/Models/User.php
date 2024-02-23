@@ -20,11 +20,6 @@ class User extends Authenticatable
         return $this->hasOne(Delivery::class);
     }
 
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
-
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -38,6 +33,11 @@ class User extends Authenticatable
     public function likes()
     {
         return $this->belongsToMany(Item::class, 'likes');
+    }
+
+    public function payments()
+    {
+        return $this->belongsToMany(Payment::class, 'user_payment');
     }
 
     public function sell_items()

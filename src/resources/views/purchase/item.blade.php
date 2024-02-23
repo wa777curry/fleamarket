@@ -16,10 +16,15 @@
     </div>
     <div>
         <span>支払い方法</span>
-        <span>変更する</span>
+        <button id="changePaymentButton" type="button">変更する</button>
     </div>
     <div>
-        <span>支払い方法の内容</span>
+        <select id="paymentSelect" name="payment">
+            <option value="">選択してください</option>
+            @foreach($payments as $payment)
+                <option value="{{ $payment->id }}">{{ $payment->payment}}</option>
+            @endforeach
+        </select>
     </div>
     <div>
         <span>配送先</span>
@@ -29,11 +34,11 @@
     </div>
     <div>
         @if($delivery)
-        <span>{{ $delivery->postcode }}</span>
-        <span>{{ $delivery->address }}</span>
-        <span>{{ $delivery->building }}</span>
+            <span>{{ $delivery->postcode }}</span>
+            <span>{{ $delivery->address }}</span>
+            <span>{{ $delivery->building }}</span>
         @else
-        <span>配送先情報がありません</span>
+            <span>配送先情報がありません</span>
         @endif
     </div>
 </div>
@@ -49,12 +54,14 @@
                 <span>支払い金額</span>
                 <span>{{ $formattedPrice }}</span>
             </div>
-            <div>
+            <div id="paymentInfo">
                 <span>支払い方法</span>
-                <span>支払い方法の種類</span>
+                <span id="paymentType">支払い方法の種類</span>
             </div>
         </div>
         <div><button class="button" type="submit">購入する</button></div>
     </form>
 </div>
+
+<script src="{{ asset('js/payment.js') }}"></script>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DeliveryRequest;
 use App\Models\Delivery;
 use App\Models\Item;
+use App\Models\Payment;
 
 class PurchaseController extends Controller
 {
@@ -21,7 +22,9 @@ class PurchaseController extends Controller
         $delivery = auth()->user()->delivery()->first();
         // 金額をフォーマットしてビューに渡す
         $formattedPrice = number_format($item->price);
-        return view('purchase.item', compact('item', 'delivery', 'formattedPrice'));
+        // 支払方法情報の取得
+        $payments = Payment::all();
+        return view('purchase.item', compact('item', 'delivery', 'formattedPrice', 'payments'));
     }
 
     // 配送先画面表示
