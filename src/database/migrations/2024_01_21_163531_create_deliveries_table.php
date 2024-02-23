@@ -18,7 +18,7 @@ class CreateDeliveriesTable extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('postcode');
             $table->string('address');
-            $table->string('building');
+            $table->string('building')->nullable();
             $table->timestamps();
         });
     }

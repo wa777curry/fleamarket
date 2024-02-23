@@ -6,6 +6,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
@@ -22,11 +23,11 @@ use App\Http\Controllers\ViewController;
 */
 
 Route::get('/', [ViewController::class, 'index'])->name('index');
+Route::get('/search', [ViewController::class, 'search'])->name('search');
 
 Route::get('/item/comment', [ViewController::class, 'getComment'])->name('getComment');
 
 Route::get('/purchase/address/item', [ViewController::class, 'address']);
-Route::get('/purchase/item', [ViewController::class, 'purchase']);
 
 Route::get('/sell', [SellController::class, 'getSell'])->name('getSell');
 
@@ -52,6 +53,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/mypage/profile', [ProfileController::class, 'postProfile'])->name('postProfile');
 
     Route::post('/sell', [SellController::class, 'postSell'])->name('postSell');
+
+    Route::get('/purchase/{id}', [PurchaseController::class, 'getPurchase'])->name('getPurchase');
+    Route::post('/purchase/{id}', [PurchaseController::class, 'postPurchase'])->name('postPurchase');
 });
 
 

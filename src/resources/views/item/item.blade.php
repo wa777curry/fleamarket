@@ -47,7 +47,11 @@
         <span><img src="{{ Storage::url('image/off-comment.jpg') }}"> {{ $item->comments->count() }}</span>
         @endif
     </div>
-    <div><button class="button" type="submit">購入する</button></div>
+    <div>
+        <a href="{{ route('getPurchase', ['id' => $item->id]) }}">
+            <button class="button" type="submit">購入する</button>
+        </a>
+    </div>
     <div>商品説明</div>
     <div>{{ $item->description }}</div>
     <div>商品の情報</div>

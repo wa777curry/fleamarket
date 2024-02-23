@@ -8,11 +8,11 @@
 @section('main')
 <div>
     <div>
-        商品画像
+        <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
     </div>
     <div>
-        <div>商品名</div>
-        <div>金額</div>
+        <div>{{ $item->itemname }}</div>
+        <div>{{ $formattedPrice }}</div>
     </div>
     <div>
         <span>支払い方法</span>
@@ -30,20 +30,23 @@
     </div>
 </div>
 <div>
-    <div>
+    <form action="{{ route('postPurchase', ['id' => $item->id]) }}" method="post">
+        @csrf
         <div>
-            <span>商品代金</span>
-            <span>金額</span>
+            <div>
+                <span>商品代金</span>
+                <span>{{ $formattedPrice }}</span>
+            </div>
+            <div>
+                <span>支払い金額</span>
+                <span>{{ $formattedPrice }}</span>
+            </div>
+            <div>
+                <span>支払い方法</span>
+                <span>支払い方法の種類</span>
+            </div>
         </div>
-        <div>
-            <span>支払い金額</span>
-            <span>金額</span>
-        </div>
-        <div>
-            <span>支払い方法</span>
-            <span>支払い方法の種類</span>
-        </div>
-    </div>
-    <div><button class="button" type="submit">購入する</button></div>
+        <div><button class="button" type="submit">購入する</button></div>
+    </form>
 </div>
 @endsection

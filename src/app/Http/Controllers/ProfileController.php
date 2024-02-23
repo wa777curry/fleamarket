@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
+use App\Models\Delivery;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Storage;
 
@@ -38,6 +39,22 @@ class ProfileController extends Controller
             'icon_url' => $iconUrl,
         ]);
         $profile->save();
+
+        // 配送先情報の取得
+        $delivery = $user->deliveries()->first();
+        // 配送先情報が存在しない場合は新規に作成する
+        if (!$delivery) {
+            $delivery = new Delivery();
+            $delivery->user_id = $user->id;
+        }
+        // 配送先情報を更新する
+        $delivery->fill([
+            'postcode' => $request->input('postcode'),
+            'address' => $request->input('address'),
+            'building' => $request->input('building'),
+        ]);
+        $delivery->save();
+
         return redirect()->route('getMypage')->with(
             'flashSuccess', 'プロフィールが更新されました',
         );
