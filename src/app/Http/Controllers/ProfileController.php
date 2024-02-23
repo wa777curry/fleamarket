@@ -29,14 +29,17 @@ class ProfileController extends Controller
             $profile->user_id = $user->id;
         }
         // アイコンの画像を保存し、そのURLを取得
-        $iconUrl = $this->storeIconImage($request->file('icon_url'));
+        $iconUrl = null;
+        if ($request->hasFile('icon_url')) {
+            $iconUrl = $this->storeIconImage($request->file('icon_url'));
+        }
         // プロフィール情報を更新する
         $profile->fill([
             'username' => $request->input('username'),
             'postcode' => $request->input('postcode'),
             'address' => $request->input('address'),
             'building' => $request->input('building'),
-            'icon_url' => $iconUrl,
+            'icon_url' => $iconUrl ? $iconUrl : $profile->icon_url,
         ]);
         $profile->save();
 

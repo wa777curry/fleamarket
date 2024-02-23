@@ -56,4 +56,5 @@
         </div>
     </div>
 </div>
+<script src="{{ asset('js/panel.js') }}"></script>
 @endsection
