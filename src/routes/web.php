@@ -27,8 +27,6 @@ Route::get('/search', [ViewController::class, 'search'])->name('search');
 
 Route::get('/item/comment', [ViewController::class, 'getComment'])->name('getComment');
 
-Route::get('/purchase/address/item', [ViewController::class, 'address']);
-
 Route::get('/sell', [SellController::class, 'getSell'])->name('getSell');
 
 Route::get('/item/{id}', [ItemController::class, 'getItem'])->name('getItem');
@@ -56,6 +54,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/purchase/{id}', [PurchaseController::class, 'getPurchase'])->name('getPurchase');
     Route::post('/purchase/{id}', [PurchaseController::class, 'postPurchase'])->name('postPurchase');
+
+    Route::get('/purchase/address/{id}', [PurchaseController::class, 'getAddress'])->name('getAddress');
+    Route::post('/purchase/address/{id}', [PurchaseController::class, 'postAddress'])->name('postAddress');
 });
 
 

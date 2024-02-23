@@ -15,9 +15,9 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    public function deliveries()
+    public function delivery()
     {
-        return $this->hasMany(Delivery::class);
+        return $this->hasOne(Delivery::class);
     }
 
     public function payments()

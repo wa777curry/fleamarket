@@ -23,10 +23,18 @@
     </div>
     <div>
         <span>配送先</span>
-        <span>変更する</span>
+        <span>
+            <a href="{{ route('getAddress', ['id' => $item->id]) }}">変更する</a>
+        </span>
     </div>
     <div>
-        <span>配送先の内容</span>
+        @if($delivery)
+        <span>{{ $delivery->postcode }}</span>
+        <span>{{ $delivery->address }}</span>
+        <span>{{ $delivery->building }}</span>
+        @else
+        <span>配送先情報がありません</span>
+        @endif
     </div>
 </div>
 <div>

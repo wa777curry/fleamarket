@@ -33,7 +33,7 @@ class ProfileController extends Controller
         if ($request->hasFile('icon_url')) {
             $iconUrl = $this->storeIconImage($request->file('icon_url'));
         }
-        // プロフィール情報を更新する
+        // プロフィール情報の更新
         $profile->fill([
             'username' => $request->input('username'),
             'postcode' => $request->input('postcode'),
@@ -44,13 +44,13 @@ class ProfileController extends Controller
         $profile->save();
 
         // 配送先情報の取得
-        $delivery = $user->deliveries()->first();
+        $delivery = $user->delivery()->first();
         // 配送先情報が存在しない場合は新規に作成する
         if (!$delivery) {
             $delivery = new Delivery();
             $delivery->user_id = $user->id;
         }
-        // 配送先情報を更新する
+        // 配送先情報の更新
         $delivery->fill([
             'postcode' => $request->input('postcode'),
             'address' => $request->input('address'),
@@ -63,9 +63,9 @@ class ProfileController extends Controller
         );
     }
 
+    // アップロードされたアイコンを保存する処理
     private function storeIconImage($file)
     {
-        // アップロードされたアイコンを保存する処理
         if ($file) {
             $dir = 'icon'; // ディレクトリ名
             $file_extension = $file->getClientOriginalExtension(); // ファイルの拡張子を取得する
