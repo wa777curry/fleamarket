@@ -10,6 +10,11 @@ class Delivery extends Model
         'user_id', 'postcode', 'address', 'building'
     ];
 
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

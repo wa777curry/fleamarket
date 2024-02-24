@@ -26,6 +26,6 @@
         </div>
         <div><button class="button" type="submit">登録する</button></div>
     </form>
-    <div><a href=/login>ログインはこちら</a></div>
+    <div><a href="/login">ログインはこちら</a></div>
 </div>
 @endsection

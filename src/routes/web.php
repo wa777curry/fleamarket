@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/purchase/{id}', [PurchaseController::class, 'getPurchase'])->name('getPurchase');
     Route::post('/purchase/{id}', [PurchaseController::class, 'postPurchase'])->name('postPurchase');
+    Route::get('/thanks', [PurchaseController::class, 'thanks'])->name('thanks');
 
     Route::get('/purchase/address/{id}', [PurchaseController::class, 'getAddress'])->name('getAddress');
     Route::post('/purchase/address/{id}', [PurchaseController::class, 'postAddress'])->name('postAddress');

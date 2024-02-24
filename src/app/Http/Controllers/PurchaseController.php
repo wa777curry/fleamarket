@@ -6,6 +6,8 @@ use App\Http\Requests\DeliveryRequest;
 use App\Models\Delivery;
 use App\Models\Item;
 use App\Models\Payment;
+use App\Models\Purchase;
+use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
 {
@@ -25,6 +27,40 @@ class PurchaseController extends Controller
         // 支払方法情報の取得
         $payments = Payment::all();
         return view('purchase.item', compact('item', 'delivery', 'formattedPrice', 'payments'));
+    }
+
+    // 購入登録処理
+    public function postPurchase(Request $request, $id)
+    {
+        // フォームデータから情報を取得
+        $userId = auth()->user()->id;
+        $itemId = $id;
+        $delivery = auth()->user()->delivery;
+        // 配送先が存在しない場合と支払方法が選択されていない場合のエラーメッセージをセット
+        $errors = [];
+        if (!$delivery) {
+            $errors['delivery'] = '※配送先を指定してください';
+        }
+        $paymentId = $request->input('payment_id');
+        if (!$paymentId) {
+            $errors['payment'] = '※支払い方法を選択してください';
+        }
+        // エラーメッセージがある場合はリダイレクト
+        if (!empty($errors)) {
+            return redirect()->back()->withInput()->withErrors($errors);
+        }
+        $deliveryId = $delivery->id;
+        // 購入情報の保存
+        $purchase = new Purchase();
+        $purchase->user_id = $userId;
+        $purchase->item_id = $itemId;
+        $purchase->delivery_id = $deliveryId;
+        $purchase->payment_id = $paymentId;
+        $purchase->save();
+
+        return redirect()->route('thanks')->with(
+            'flashSuccess', '購入が完了しました'
+        );
     }
 
     // 配送先画面表示
@@ -60,5 +96,11 @@ class PurchaseController extends Controller
         return redirect()->route('getPurchase', ['id' => $id])->with(
             'flashSuccess', '配送先情報が更新されました',
         );
+    }
+
+    // 購入完了画面示
+    public function thanks()
+    {
+        return view('thanks');
     }
 }

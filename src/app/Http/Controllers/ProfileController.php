@@ -44,7 +44,7 @@ class ProfileController extends Controller
         $profile->save();
 
         // 配送先情報の取得
-        $delivery = $user->delivery()->first();
+        $delivery = $user->delivery->first();
         // 配送先情報が存在しない場合は新規に作成する
         if (!$delivery) {
             $delivery = new Delivery();

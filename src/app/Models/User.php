@@ -25,6 +25,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
     public function admin()
     {
         return $this->belongsTo(Admin::class);

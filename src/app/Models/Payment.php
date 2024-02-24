@@ -10,6 +10,11 @@ class Payment extends Model
         'payment'
     ];
 
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
     public function user()
     {
         return $this->belongsToMany(User::class, 'user_payment');

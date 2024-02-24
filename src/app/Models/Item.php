@@ -27,6 +27,11 @@ class Item extends Model
         return $this->hasMany(View::class);
     }
 
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class, 'likes', 'item_id', 'user_id');
