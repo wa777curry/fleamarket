@@ -16,7 +16,6 @@ class ItemsSeeder extends Seeder
     {
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 2,
@@ -28,7 +27,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 3,
@@ -40,7 +38,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 1,
             'subcategory_id' => 1,
             'condition_id' => 1,
@@ -52,7 +49,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 1,
             'subcategory_id' => 1,
             'condition_id' => 4,
@@ -64,7 +60,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 1,
             'subcategory_id' => 1,
             'condition_id' => 1,
@@ -76,7 +71,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 1,
             'subcategory_id' => 1,
             'condition_id' => 1,
@@ -88,7 +82,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 1,
             'subcategory_id' => 1,
             'condition_id' => 3,
@@ -100,7 +93,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 3,
@@ -112,7 +104,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 1,
@@ -124,7 +115,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 4,
@@ -136,7 +126,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 3,
@@ -148,7 +137,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 3,
@@ -160,7 +148,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 3,
@@ -172,7 +159,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 4,
@@ -184,7 +170,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 2,
@@ -196,7 +181,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 1,
             'subcategory_id' => 1,
             'condition_id' => 4,
@@ -208,7 +192,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 2,
@@ -220,7 +203,6 @@ class ItemsSeeder extends Seeder
 
         DB::table('items')->insert([
             'seller_id' => 2,
-            'purchaser_id' => null,
             'category_id' => 2,
             'subcategory_id' => 1,
             'condition_id' => 3,

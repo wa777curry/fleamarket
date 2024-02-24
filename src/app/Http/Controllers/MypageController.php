@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Purchase;
+
 
 class MypageController extends Controller
 {
@@ -14,7 +16,7 @@ class MypageController extends Controller
         // 現在のユーザーの出品商品を取得
         $sellerItems = Item::where('seller_id', auth()->id())->get();
         // 現在のユーザーが購入した商品を取得
-        $purchaserItems = Item::where('purchaser_id', auth()->id())->get();
+        $purchaserItems = Purchase::where('user_id', auth()->id())->get();
         return view('mypage', compact('profile', 'sellerItems', 'purchaserItems'));
     }
 }

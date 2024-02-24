@@ -48,8 +48,8 @@
                 <p>購入した商品はありません。</p>
             @else
                 @foreach($purchaserItems as $item)
-                    <a href="{{ route('getItem', ['id' => $item->id]) }}">
-                        <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
+                    <a href="{{ route('getItem', ['id' => $item->item_id]) }}">
+                        <img src="{{ $item->item->item_url }}" alt="{{ $item->item->itemname }}">
                     </a>
                 @endforeach
             @endif
