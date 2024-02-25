@@ -35,4 +35,21 @@ class CommentController extends Controller
             'flashSuccess', 'コメントが投稿されました'
         );
     }
+
+    public function deleteComment($id)
+    {
+        // コメントを取得
+        $comment = Comment::find($id);
+        // コメントが存在するか、またログインしているユーザーがコメントの所有者であるかを確認
+        if (!$comment || $comment->user_id !== auth()->id()) {
+            return redirect()->back()->with(
+                'flashError', 'コメントを削除する権限がありません'
+            );
+        }
+        // コメントを削除
+        $comment->delete();
+        return redirect()->back()->with(
+            'flashSuccess', 'コメントが削除されました'
+        );
+    }
 }

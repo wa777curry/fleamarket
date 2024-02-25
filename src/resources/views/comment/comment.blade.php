@@ -76,6 +76,16 @@
                 @endif
             </div>
             <div>{{ $comment->comment }}</div>
+            <!-- 自分のコメントであれば削除ボタンを表示 -->
+            <div>
+                @if(auth()->check() && $comment->user_id === auth()->id())
+                    <form action="{{ route('deleteComment', $comment->id) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit">削除</button>
+                    </form>
+                @endif
+            </div>
         @endforeach
     @endif
 </div>
