@@ -9,8 +9,9 @@
 <div>
     <span class="content__menu" onclick="toggleContent('recommends')">おすすめ</span>
     @if(auth()->check())
-        <span class="content__menu" onclick="toggleContent('likes')">マイリスト</span>
+    <span class="content__menu" onclick="toggleContent('likes')">マイリスト</span>
     @endif
+    <span class="content__menu" onclick="toggleContent('search')">検索結果</span>
 </div>
 <!-- おすすめ一覧の表示 -->
 <div class="content active" id="recommends">
@@ -37,25 +38,23 @@
 <div class="content" id="likes">
     <div class="content__img">
         @if(Auth::check())
-            @if($likes->isEmpty())
-                <p>マイリスト登録した商品はありません。</p>
-            @else
-                @foreach($likes as $like)
-                    <a href="{{ route('getItem', ['id' => $like->id]) }}">
-                        <img src="{{ $like->item_url }}" alt="{{ $like->itemname }}">
-                    </a>
-                @endforeach
-            @endif
+        @if($likes->isEmpty())
+        <p>マイリスト登録した商品はありません。</p>
+        @else
+        @foreach($likes as $like)
+        <a href="{{ route('getItem', ['id' => $like->id]) }}">
+            <img src="{{ $like->item_url }}" alt="{{ $like->itemname }}">
+        </a>
+        @endforeach
+        @endif
         @endif
     </div>
 </div>
 
+
 <div>
     ページリンク一覧
-    <li><a href="/item/comment">コメントページ</a>　※ログインしないと表示不可</li>
-    <li><a href="/mypage/profile">プロフィール編集画面</a>　※ログインしないと表示不可</li>
-    <li><a href="/purchase/address/item">住所変更ページ</a>　※ログインしないと表示不可</li>
-    <li><a href="/purchase/item">購入ページ</a>　※ログインしないと表示不可</li>
+    <li><a href="/comment">コメントページ</a>　※ログインしないと表示不可</li>
     <li><a href="/admin/login">管理者ログインページ</a></li>
 </div>
 
@@ -67,4 +66,5 @@
     </div>
 </form>
 
+<script src="{{ asset('js/panel.js') }}"></script>
 @endsection

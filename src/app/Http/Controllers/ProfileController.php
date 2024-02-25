@@ -14,7 +14,8 @@ class ProfileController extends Controller
     {
         // プロフィール情報がある場合は情報を取得
         $profile = auth()->user()->profile;
-        return view('mypage.profile', compact('profile'));
+        $defaultIconUrl = Storage::url('icon/default.png'); // デフォルトのアイコンURL
+        return view('mypage.profile', compact('profile', 'defaultIconUrl'));
     }
 
     // プロフィール登録処理
@@ -59,7 +60,8 @@ class ProfileController extends Controller
         $delivery->save();
 
         return redirect()->route('getMypage')->with(
-            'flashSuccess', 'プロフィールが更新されました',
+            'flashSuccess',
+            'プロフィールが更新されました',
         );
     }
 

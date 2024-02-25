@@ -13,7 +13,7 @@
         <div class="icon-content">
             <!-- プロフィール設定がない場合、デフォルトのアイコンを表示 -->
             @if(!$profile or !$profile->icon_url)
-                <div class="icon"><img src="{{ Storage::url('icon/default.png') }}"></div>
+                <div class="icon"><img src="{{ $defaultIconUrl }}"></div>
             @else
             <!-- プロフィールアイコンの表示 -->
                 <div class="icon"><img src="{{ $profile->icon_url }}" alt="Profile Icon"></div>

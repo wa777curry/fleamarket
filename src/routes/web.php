@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\MypageController;
@@ -24,8 +25,6 @@ use App\Http\Controllers\ViewController;
 
 Route::get('/', [ViewController::class, 'index'])->name('index');
 Route::get('/search', [ViewController::class, 'search'])->name('search');
-
-Route::get('/item/comment', [ViewController::class, 'getComment'])->name('getComment');
 
 Route::get('/sell', [SellController::class, 'getSell'])->name('getSell');
 
@@ -58,6 +57,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/purchase/address/{id}', [PurchaseController::class, 'getAddress'])->name('getAddress');
     Route::post('/purchase/address/{id}', [PurchaseController::class, 'postAddress'])->name('postAddress');
+
+    Route::get('/comment/{id}', [CommentController::class, 'getComment'])->name('getComment');
+    Route::post('/comment/{id}', [CommentController::class, 'postComment'])->name('postComment');
 });
 
 

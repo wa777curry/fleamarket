@@ -34,7 +34,7 @@
             {{ $item->likes->count() }}
         </form>
         @endif
-        <a href="{{ route('getComment') }}"><img src="{{ Storage::url('image/on-comment.jpg') }}"></a> {{ $item->comments->count() }}
+        <a href="{{ route('getComment', ['id' => $item->id]) }}"><img src="{{ Storage::url('image/on-comment.jpg') }}"></a> {{ $item->comments->count() }}
         <!-- 非ログイン時の表示 -->
         @else
         <form action="{{ route('like', $item) }}" method="post">

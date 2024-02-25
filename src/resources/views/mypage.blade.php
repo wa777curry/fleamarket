@@ -12,7 +12,7 @@
         <div class="icon-content">
             <!-- プロフィール設定がない場合、デフォルトのアイコンを表示 -->
             @if(!$profile or !$profile->icon_url)
-                <div class="icon"><img src="{{ Storage::url('icon/default.png') }}"></div>
+                <div class="icon"><img src="{{ $defaultIconUrl }}"></div>
             @else
             <!-- プロフィールアイコンの表示 -->
                 <div class="icon"><img src="{{ $profile->icon_url }}" alt="Profile Icon"></div>
@@ -48,7 +48,7 @@
                 <p>購入した商品はありません。</p>
             @else
                 @foreach($purchaserItems as $item)
-                    <a href="{{ route('getItem', ['id' => $item->item_id]) }}">
+                    <a href="{{ route('getComment', ['id' => $item->item_id]) }}">
                         <img src="{{ $item->item->item_url }}" alt="{{ $item->item->itemname }}">
                     </a>
                 @endforeach

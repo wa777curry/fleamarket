@@ -113,6 +113,12 @@ textarea {
     padding: 35px;
 }
 
+.s_content {
+    border: 1px solid #6a9482; /* あとでnoneに変える */
+    display: block;
+    padding: 35px;
+}
+
 .content__menu {
     cursor: pointer;
 }
@@ -140,4 +146,20 @@ textarea {
     max-width: 300px;
     object-fit: cover;
     width: 100%;
+}
+
+/* コメント表示関連 */
+.icon-content2 {
+    align-items: center;
+    display: flex;
+}
+
+.icon2 img {
+    background-color: #fff;
+    border: none;
+    height: 30px;
+    max-height: 30px;
+    max-width: 30px;
+    object-fit: contain;
+    width: 30px;
 }
