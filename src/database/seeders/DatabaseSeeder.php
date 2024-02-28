@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ConditionsSeeder::class);
         $this->call(ProfilesSeeder::class);
         $this->call(ItemsSeeder::class);
+        $this->call(ViewsSeeder::class);
+        $this->call(LikesSeeder::class);
     }
 }
