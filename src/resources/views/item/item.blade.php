@@ -20,7 +20,7 @@
         <form action="{{ route('nolike', $item) }}" method="post">
             @csrf
             <button type="submit">
-                <img src="{{ Storage::url('image/on-like.jpg') }}">
+                <img src="{{ Storage::url('image/like.svg') }}">
             </button>
             {{ $item->likes->count() }}
         </form>
@@ -29,22 +29,22 @@
         <form action="{{ route('like', $item) }}" method="post">
             @csrf
             <button type="submit">
-                <img src="{{ Storage::url('image/off-like.jpg') }}">
+                <img src="{{ Storage::url('image/like.svg') }}">
             </button>
             {{ $item->likes->count() }}
         </form>
         @endif
-        <a href="{{ route('getComment', ['id' => $item->id]) }}"><img src="{{ Storage::url('image/on-comment.jpg') }}"></a> {{ $item->comments->count() }}
+        <a href="{{ route('getComment', ['id' => $item->id]) }}"><img src="{{ Storage::url('image/comment.svg') }}"></a> {{ $item->comments->count() }}
         <!-- 非ログイン時の表示 -->
         @else
         <form action="{{ route('like', $item) }}" method="post">
             @csrf
             <button type="submit">
-                <img src="{{ Storage::url('image/off-like.jpg') }}">
+                <img src="{{ Storage::url('image/like.svg') }}">
             </button>
             {{ $item->likes->count() }}
         </form>
-        <span><img src="{{ Storage::url('image/off-comment.jpg') }}"> {{ $item->comments->count() }}</span>
+        <img src="{{ Storage::url('image/comment.svg') }}"> {{ $item->comments->count() }}
         @endif
     </div>
     <div>
