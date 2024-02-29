@@ -1,3 +1,4 @@
+/* 全体設定 */
 body {
     margin: 0 auto;
     max-width: 1500px;
@@ -10,7 +11,7 @@ a {
 
 input {
     border: 1px solid #6a9482;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 102%;
     padding: 5px;
     width: 100%;
@@ -18,7 +19,7 @@ input {
 
 button {
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     cursor: pointer;
     font-size: 102%;
     padding: 5px 20px;
@@ -27,7 +28,7 @@ button {
 
 main div {
     border: 1px solid #6a9482;
-    margin: 10px;
+    margin: 5px;
     padding: 5px;
 }
 
@@ -41,32 +42,99 @@ li {
     margin-left: 10px;
 }
 
+/* フォーム関連 */
+.form__content {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.form__main {
+    width: 500px;
+}
+
+.form__main h2 {
+    text-align: center;
+}
+
+.form__main h3 {
+    border-bottom: 1px solid #666;
+    color: #666;
+    margin: 10px 0;
+}
+
+.form__main h4,
+.form__main h5 {
+    margin: 2px 0;
+}
+
+.form__main input {
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px;
+    width: 100%;
+}
+
+.form__main button {
+    background: #ff5555;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 102%;
+    margin-top: 30px;
+    padding: 5px 20px;
+    width: 100%;
+}
+
+.form__main button:hover {
+    background: #cc4343;
+}
+
+.form__main h5 {
+    font-size: 90%;
+    font-weight: normal;
+    text-align: center;
+}
+
+.form__main select {
+    font-size: 102%;
+    padding: 5px;
+    width: 49%;
+}
+
+.form__main textarea {
+    font-size: 120%;
+    height: 120px;
+    padding: 5px;
+    resize: none;
+    width: 100%;
+}
 
 /* バリデーションエラー関連 */
 .form__error {
     color: #ff5555;
     font-size: 90%;
+    padding-left: 10px;
 }
 
+
 /* プロフィールアイコンの部分 */
-/* 出品画像の部分 */
 .user-content {
     align-items: center;
     display: flex;
     justify-content: space-evenly;
 }
 
-.icon-content,
-.item-content {
+.icon-content {
     align-items: center;
     display: flex;
 }
 
-.icon-content button,
-.item-content button {
+.icon-content button {
     background-color: #fff;
     border: 1px solid #ff5555;
-    border-radius: 5px;
+    border-radius: 3px;
     color: #ff5555;
     cursor: pointer;
     font-size: 102%;
@@ -84,15 +152,38 @@ li {
     width: 120px;
 }
 
+/* 出品画像の部分 */
+.item {
+    text-align: center;
+}
+
+.item button {
+    background-color: #fff;
+    border: 1px solid #ff5555;
+    border-radius: 3px;
+    color: #ff5555;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 5px 20px;
+    width: 200px;
+}
+
 .item img {
     background-color: #fff;
     border: none;
+    display: block;
     height: 200px;
+    margin: 0 auto;
     max-height: 200px;
     max-width: 300px;
     object-fit: contain;
     width: 300px;
 }
+
+
+
+
+
 
 select {
     font-size: 102%;
