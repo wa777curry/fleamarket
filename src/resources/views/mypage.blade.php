@@ -26,21 +26,21 @@
         </div>
         <!-- 商品表示部分 -->
         <div class="panel__menu">
-            <span class="content__menu active" onclick="toggleContent('sells')">出品した商品</span>
-            <span class="content__menu" onclick="toggleContent('purchases')">購入した商品</span>
+            <span class="content__menu active" data-id="sells" onclick="toggleContent(this)">出品した商品</span>
+            <span class="content__menu" data-id="purchases" onclick="toggleContent(this)">購入した商品</span>
         </div>
         <hr>
         <!-- 出品商品一覧の表示 -->
         <div class="content active" id="sells">
             <div class="content__img">
                 @if($sellerItems->isEmpty())
-                    <p>出品した商品はありません。</p>
+                <p>出品した商品はありません。</p>
                 @else
-                    @foreach($sellerItems as $item)
-                        <a href="{{ route('getItem', ['id' => $item->id]) }}">
-                            <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
-                        </a>
-                    @endforeach
+                @foreach($sellerItems as $item)
+                <a href="{{ route('getItem', ['id' => $item->id]) }}">
+                    <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
+                </a>
+                @endforeach
                 @endif
             </div>
         </div>
@@ -48,13 +48,13 @@
         <div class="content" id="purchases">
             <div class="content__img">
                 @if($purchaserItems->isEmpty())
-                    <p>購入した商品はありません。</p>
+                <p>購入した商品はありません。</p>
                 @else
-                    @foreach($purchaserItems as $item)
-                        <a href="{{ route('getComment', ['id' => $item->item_id]) }}">
-                            <img src="{{ $item->item->item_url }}" alt="{{ $item->item->itemname }}">
-                        </a>
-                    @endforeach
+                @foreach($purchaserItems as $item)
+                <a href="{{ route('getComment', ['id' => $item->item_id]) }}">
+                    <img src="{{ $item->item->item_url }}" alt="{{ $item->item->itemname }}">
+                </a>
+                @endforeach
                 @endif
             </div>
         </div>

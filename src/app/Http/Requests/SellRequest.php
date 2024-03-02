@@ -37,9 +37,9 @@ class SellRequest extends FormRequest
     public function messages()
     {
         return [
-            'category_id.required' => '商品のカテゴリーを選択してください',
-            'subcategory_id.required' => '商品のカテゴリーを選択してください',
-            'condition_id.required' => '商品の状態を選択してください',
+            'category_id.required' => '※商品のカテゴリーを選択してください',
+            'subcategory_id.required' => '※商品のカテゴリーを選択してください',
+            'condition_id.required' => '※商品の状態を選択してください',
             'itemname.required' => '※商品名を入力してください',
             'itemname.string' => '※商品名は文字列で入力してください',
             'itemname.max' => '※商品名は30文字以内で入力してください',

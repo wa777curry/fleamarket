@@ -6,99 +6,127 @@
 @include('layouts.header')
 
 @section('main')
-<div>
-    <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
-</div>
-<div>
-    <div>{{ $item->itemname }}</div>
-    <div>{{ $formattedPrice }}</div>
-    <div>
-        <!-- ログイン時の表示 -->
-        @if(Auth::check())
-        @if(auth()->user()->likes->contains($item->id))
-        <!-- お気に入り登録済みの場合 -->
-        <form action="{{ route('nolike', $item) }}" method="post">
-            @csrf
-            <button type="submit">
-                <img src="{{ Storage::url('image/like.svg') }}">
-            </button>
-            {{ $item->likes->count() }}
-        </form>
-        @else
-        <!-- お気に入り未登録の場合 -->
-        <form action="{{ route('like', $item) }}" method="post">
-            @csrf
-            <button type="submit">
-                <img src="{{ Storage::url('image/like.svg') }}">
-            </button>
-            {{ $item->likes->count() }}
-        </form>
-        @endif
-        <a href="{{ route('getComment', ['id' => $item->id]) }}"><img src="{{ Storage::url('image/comment.svg') }}"></a> {{ $item->comments->count() }}
-        <!-- 非ログイン時の表示 -->
-        @else
-        <form action="{{ route('like', $item) }}" method="post">
-            @csrf
-            <button type="submit">
-                <img src="{{ Storage::url('image/like.svg') }}">
-            </button>
-            {{ $item->likes->count() }}
-        </form>
-        <span><img src="{{ Storage::url('image/comment.svg') }}"> {{ $item->comments->count() }}</span>
-        @endif
-    </div>
-</div>
-<div>
-    @if($item->comments->isEmpty())
-        <p>コメントはまだありません。</p>
-    @else
-        @foreach($item->comments as $comment)
-            <div class="icon-content2">
-                <!-- 自分のコメントかどうかを判断 -->
-                @if($comment->user_id == auth()->id())
-                    <div>{{ auth()->user()->profile->username ?? 'ユーザー名未設定' }}</div>
-                    <!-- プロフィール設定がない場合、デフォルトのアイコンを表示 -->
-                    @if(!$comment->userProfile or !$comment->userProfile->icon_url)
-                        <div class="icon2"><img src="{{ $defaultIconUrl }}"></div>
-                    @else
-                        <!-- プロフィールアイコンの表示 -->
-                        <div class="icon2"><img src="{{ $comment->userProfile->icon_url }}" alt="Profile Icon"></div>
-                    @endif
-                @else
-                    <!-- プロフィール設定がない場合、デフォルトのアイコンを表示 -->
-                    @if(!$comment->userProfile or !$comment->userProfile->icon_url)
-                        <div class="icon2"><img src="{{ $defaultIconUrl }}"></div>
-                    @else
-                        <!-- プロフィールアイコンの表示 -->
-                        <div class="icon2"><img src="{{ $comment->userProfile->icon_url }}" alt="Profile Icon"></div>
-                    @endif
-                    <div>{{ $comment->userProfile->username ?? 'ユーザー名未設定' }}</div>
-                @endif
-            </div>
-            <div>{{ $comment->comment }}</div>
-            <!-- 自分のコメントであれば削除ボタンを表示 -->
-            <div>
-                @if(auth()->check() && $comment->user_id === auth()->id())
-                    <form action="{{ route('deleteComment', $comment->id) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit">削除</button>
-                    </form>
-                @endif
-            </div>
-        @endforeach
-    @endif
-</div>
-<div>商品へのコメント</div>
-    <form action="{{ route('postComment', ['id' => $item->id]) }}" method="post">
-        @csrf
-        <div><textarea name="comment">{{ old('comment') }}</textarea></div>
-        <div class="form__error">
-            @error('comment')
-            {{ $message }}
-            @enderror
+<div class="item__content">
+    <div class="item__content--main">
+        <div class="item__content--left">
+            <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
         </div>
-        <div><button class="button" type="submit">コメントを送信する</button></div>
-    </form>
+        <div class="item__content--right">
+            <h2>{{ $item->itemname }}</h2>
+            <div>
+                <h3 style="font-weight: normal;">¥{{ $formattedPrice }}(値段)</h3>
+            </div>
+            <div class="item__content--icon">
+                <!-- ログイン時の表示 -->
+                @if(Auth::check())
+                @if(auth()->user()->likes->contains($item->id))
+                <!-- お気に入り登録済みの場合 -->
+                <form action="{{ route('nolike', $item) }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <div><i class="fa fa-star fa-fw"></i></div>
+                        <div>
+                            <h5>{{ $item->likes->count() }}</h5>
+                        </div>
+                    </button>
+                </form>
+                @else
+                <!-- お気に入り未登録の場合 -->
+                <form action="{{ route('like', $item) }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <div><i class="fa fa-star-o fa-fw"></i></div>
+                        <div>
+                            <h5>{{ $item->likes->count() }}</h5>
+                        </div>
+                    </button>
+                    {{ $item->likes->count() }}
+                </form>
+                @endif
+                <a href="{{ route('getComment', ['id' => $item->id]) }}">
+                    <button class="comment" type="submit">
+                        <div><i class="fa fa-comments-o fa-fw"></i></div>
+                        <div>
+                            <h5>{{ $item->comments->count() }}</h5>
+                        </div>
+                    </button>
+                </a>
+                <!-- 非ログイン時の表示 -->
+                @else
+                <form action="{{ route('like', $item) }}" method="post">
+                    @csrf
+                    <button class="comment" type="submit">
+                        <div><i class="fa fa-star-o fa-fw"></i></div>
+                    </button>
+                    {{ $item->likes->count() }}
+                </form>
+                <div><i class="fa fa-comments-o fa-fw"></i></div>
+                {{ $item->comments->count() }}
+                @endif
+            </div>
+            <!-- コメント関連 -->
+            <div class="comment__content">
+                @if($item->comments->isEmpty())
+                <p>コメントはまだありません。</p>
+                @else
+                    @foreach($item->comments as $comment)
+                    <div class="comment__content--main {{ $comment->user_id == auth()->id() ? 'right' : 'left' }}">
+                        <!-- 自分のコメントの場合・右寄せ表示 -->
+                        @if($comment->user_id == auth()->id())
+                        <h5>{{ auth()->user()->profile->username ?? 'ユーザー名未設定' }}</h5>
+                        <!-- プロフィール設定がない場合、デフォルトのアイコンを表示 -->
+                        @if(!$comment->userProfile or !$comment->userProfile->icon_url)
+                        <img src="{{ $defaultIconUrl }}">
+                        @else
+                        <!-- プロフィールアイコンの表示 -->
+                        <img src="{{ $comment->userProfile->icon_url }}" alt="Profile Icon">
+                        @endif
+                        <!-- 自分以外のコメントの場合・左寄せ表示 -->
+                        @else
+                        <!-- プロフィール設定がない場合、デフォルトのアイコンを表示 -->
+                        @if(!$comment->userProfile or !$comment->userProfile->icon_url)
+                        <img src="{{ $defaultIconUrl }}">
+                        @else
+                        <!-- プロフィールアイコンの表示 -->
+                        <img src="{{ $comment->userProfile->icon_url }}" alt="Profile Icon">
+                        @endif
+                        <h5>{{ $comment->userProfile->username ?? 'ユーザー名未設定' }}</h5>
+                        @endif
+                    </div>
+                    <div class="comment__content--text">
+                        <h5>{!! nl2br(e($comment->comment)) !!}</h5>
+                        <!-- コメントの投稿日時 -->
+                        <h6><time datetime="{{ $comment->created_at }}">{{ $comment->created_at->format('Y-m-d H:i') }}</time></h6>
+                        <!-- 自分のコメントの場合は削除ボタンを表示 -->
+                        @if(auth()->check() && $comment->user_id === auth()->id())
+                        <div>
+                            <form action="{{ route('deleteComment', $comment->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button type="submit">
+                                    <i class="fa fa-trash-o fa-fg"></i>
+                                </button>
+                            </form>
+                        </div>
+                        @endif
+                    </div>
+                    @endforeach
+                @endif
+            </div>
+            <div>
+                <form action="{{ route('postComment', ['id' => $item->id]) }}" method="post">
+                    @csrf
+                    <h4>商品へのコメント</h4>
+                    <textarea name="comment">{{ old('comment') }}</textarea>
+                    <div class="form__error">
+                        @error('comment')
+                        {{ $message }}
+                        @enderror
+                    </div>
+                    <button class="button" type="submit">コメントを送信する</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

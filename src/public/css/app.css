@@ -114,7 +114,6 @@ li {
     grid-gap: 30px;
     justify-content: center;
     margin: 0;
-    padding: 0;
     overflow: hidden;
 }
 
@@ -125,6 +124,124 @@ li {
     height: 100%;
     max-height: 200px;
     max-width: 300px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* 商品表示関連 */
+.item__content {
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.item__content--main {
+    display: flex;
+    padding: 0 5%;
+}
+
+.item__content--left {
+    flex: 5;
+    margin-left: 5%;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.item__content--right {
+    flex: 4;
+    margin-right: 7%;
+}
+
+.item__content--right button {
+    background: #ff5555;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 102%;
+    margin: 10px 0;
+    padding: 5px 20px;
+    width: 100%;
+}
+
+.item__content--right button:hover {
+    background: #cc4343;
+}
+
+.item__content--right textarea {
+    font-size: 120%;
+    height: 150px;
+    padding: 5px;
+    resize: none;
+    width: 100%;
+}
+
+.item__content--right h3,
+.item__content--right h4 {
+    margin: 2px 0;
+}
+
+.item__content--right h5 {
+    font-size: 90%;
+    font-weight: normal;
+    line-height: 1.6;
+    margin: 10px 0 20px 0;
+}
+
+.item__content--icon {
+    display: flex;
+}
+
+.item__content--icon button {
+    color: #000;
+    cursor: pointer;
+    margin: 0 20px 0 0;
+    padding: 0;
+}
+
+.item__content--icon div,
+.item__content--icon h5 {
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.item__content--icon i {
+    align-items: center;
+    color: #ff5555;
+    font-size: 36px;
+}
+
+.item__content--category {
+    display: flex;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.item__content--category-text {
+    align-items: center;
+    border: none;
+    font-weight: bold;
+    margin: 0;
+    width: 100px;
+}
+
+.item__content--category-tag {
+    background: #ccc;
+    border: none;
+    border-radius: 10px;
+    margin-right: 2px;
+    padding: 0;
+    text-align: center;
+    width: 120px;
+}
+
+.item__content img {
+    background-color: #fff;
+    border: none;
+    border-radius: 3px;
+    height: 100%;
+    max-height: 300px;
+    max-width: 500px;
     object-fit: cover;
     width: 100%;
 }
@@ -150,13 +267,16 @@ li {
     margin: 10px 0;
 }
 
-.form__main h4,
-.form__main h5 {
+.form__main h4 {
     margin: 2px 0;
+    text-align: left;
 }
 
-.form__main h4 {
-    text-align: left;
+.form__main h5 {
+    font-size: 90%;
+    font-weight: normal;
+    margin: 2px 0;
+    text-align: center;
 }
 
 .form__main input {
@@ -180,12 +300,6 @@ li {
 
 .form__main button:hover {
     background: #cc4343;
-}
-
-.form__main h5 {
-    font-size: 90%;
-    font-weight: normal;
-    text-align: center;
 }
 
 .form__main select {
@@ -265,7 +379,7 @@ li {
     width: 200px;
 }
 
-.item button:hover{
+.item button:hover {
     background: #ff5555;
     color: #fff;
 }
@@ -302,12 +416,30 @@ textarea {
 
 
 /* コメント表示関連 */
-.icon-content2 {
-    align-items: center;
-    display: flex;
+.comment__content {
+    margin: 50px 5px;
 }
 
-.icon2 img {
+.comment__content--main {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0;
+    padding: 0;
+}
+
+.left {
+    justify-content: flex-start;
+}
+
+.comment__content--main h5 {
+    font-size: 90%;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 10px;
+}
+
+.comment__content--main img {
     background-color: #fff;
     border: none;
     height: 30px;
@@ -315,4 +447,53 @@ textarea {
     max-width: 30px;
     object-fit: contain;
     width: 30px;
+}
+
+.comment__content--text {
+    background: #ccc;
+    border: none;
+    border-radius: 3px;
+    margin: 0 0 5px 0;
+}
+
+.comment__content--text h5 {
+    font-size: 90%;
+    font-weight: normal;
+    line-height: 1.6;
+    margin: 2px 0;
+}
+
+.comment__content--text h6 {
+    color: #666;
+    font-size: 80%;
+    font-weight: normal;
+    margin: 5px 0;
+    text-align: right;
+
+}
+
+.comment__content--text div {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.comment__content--text button {
+    background-color: #ccc;
+    border: none;
+    border-radius: 3px;
+    color: #666;
+    cursor: pointer;
+    font-size: 24px;
+    margin: 0;
+    padding: 0 5px;
+    text-align: center;
+    width: auto;
+}
+
+.comment__content--text button:hover {
+    background: #ccc;
+    color: #ff5555;
 }

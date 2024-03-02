@@ -9,11 +9,11 @@
 <div class="panel__content">
     <div class="panel__main">
         <div class="panel__menu">
-            <span class="content__menu active" onclick="toggleContent('recommends')">おすすめ</span>
+            <span class="content__menu active" data-id="recommends" onclick="toggleContent(this)">おすすめ</span>
             @if(auth()->check())
-            <span class="content__menu" onclick="toggleContent('likes')">マイリスト</span>
+            <span class="content__menu" data-id="likes" onclick="toggleContent(this)">マイリスト</span>
             @endif
-            <span class="content__menu" onclick="toggleContent('search')">検索結果</span>
+            <span class="content__menu" data-id="search" onclick="toggleContent(this)">検索結果</span>
         </div>
         <hr>
         <!-- おすすめ一覧の表示 -->
