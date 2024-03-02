@@ -13,11 +13,9 @@
         </div>
         <form action="{{ route('postSell') }}" method="post" enctype="multipart/form-data">
             @csrf
-            <div>
-                <h4>商品画像</h4>
-            </div>
-            <!-- 出品画像の表示 -->
             <div class="item">
+                <h4>商品画像</h4>
+            <!-- 出品画像の表示 -->
                 <img src="{{ Storage::url('item/noimage.jpg') }}" alt="Item Image">
                 <button class="button" type="button" onclick="document.getElementById('fileInput').click()">画像を選択する</button>
                 <input type="file" name="item_url" id="fileInput" onchange="previewImage(event)" style="display: none;" accept="image/*">

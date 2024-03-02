@@ -1,5 +1,10 @@
 /* 全体設定 */
 body {
+    margin: 0;
+}
+
+header,
+main {
     margin: 0 auto;
     max-width: 1500px;
     min-width: 768px;
@@ -10,7 +15,8 @@ a {
 }
 
 input {
-    border: 1px solid #6a9482;
+    background: #fff;
+    border: 1px solid #999;
     border-radius: 3px;
     font-size: 102%;
     padding: 5px;
@@ -27,19 +33,100 @@ button {
 
 
 main div {
-    border: 1px solid #6a9482;
+    background: #bde2d1; /* 後で消す */
+    border: 1px solid #999; /* あとでtransparentに変える */
     margin: 5px;
     padding: 5px;
 }
 
 main span {
-    border: 1px solid #a914ff;
+    background: #ebe3f0;/* 後で消す */
     margin: 10px;
 }
 
 
 li {
     margin-left: 10px;
+}
+
+
+/* メイン関連 */
+.panel__content {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.panel__main {
+    padding: 0 5%;
+    width: 100%;
+}
+
+.panel__main hr {
+    border-top: 1px solid #666;
+    margin: 0 -7%;
+    text-align: center;
+}
+
+.panel__menu {
+    display: flex;
+    padding: 0 0 0 5px;
+}
+
+/* 切替コンテンツ関連 */
+.content {
+    border: 1px solid #6a9482;
+    /* あとでtransparentに変える */
+    display: none;
+}
+
+.s_content {
+    border: 1px solid #6a9482;
+    /* あとでtransparentに変える */
+    display: block;
+    padding: 35px;
+}
+
+.content__menu {
+    cursor: pointer;
+    font-weight: bold;
+    width: 150px;
+}
+
+.content__menu.active {
+    color: #ff5555;
+}
+
+.content.active {
+    display: block;
+}
+
+.content select {
+    font-size: 102%;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.content__img {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-auto-rows: 200px;
+    grid-gap: 30px;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.content img {
+    background-color: #fff;
+    border: none;
+    border-radius: 3px;
+    height: 100%;
+    max-height: 200px;
+    max-width: 300px;
+    object-fit: cover;
+    width: 100%;
 }
 
 /* フォーム関連 */
@@ -66,6 +153,10 @@ li {
 .form__main h4,
 .form__main h5 {
     margin: 2px 0;
+}
+
+.form__main h4 {
+    text-align: left;
 }
 
 .form__main input {
@@ -118,34 +209,40 @@ li {
     padding-left: 10px;
 }
 
-
 /* プロフィールアイコンの部分 */
-.user-content {
+.user__content {
     align-items: center;
     display: flex;
     justify-content: space-evenly;
+    text-align: center;
 }
 
-.icon-content {
+.icon {
     align-items: center;
     display: flex;
 }
 
-.icon-content button {
+.icon button {
     background-color: #fff;
     border: 1px solid #ff5555;
     border-radius: 3px;
     color: #ff5555;
     cursor: pointer;
-    font-size: 102%;
-    margin-left: 10px;
+    margin: 0;
     padding: 5px 20px;
+    width: 200px;
+}
+
+.icon button:hover {
+    background: #ff5555;
+    color: #fff;
 }
 
 .icon img {
     background-color: #fff;
     border: none;
     height: 120px;
+    margin-right: 20px;
     max-height: 120px;
     max-width: 120px;
     object-fit: contain;
@@ -166,6 +263,11 @@ li {
     margin-top: 10px;
     padding: 5px 20px;
     width: 200px;
+}
+
+.item button:hover{
+    background: #ff5555;
+    color: #fff;
 }
 
 .item img {
@@ -197,47 +299,7 @@ textarea {
     width: 100%;
 }
 
-/* 切替コンテンツ関連 */
-.content {
-    border: 1px solid #6a9482; /* あとでnoneに変える */
-    display: none;
-    padding: 35px;
-}
 
-.s_content {
-    border: 1px solid #6a9482; /* あとでnoneに変える */
-    display: block;
-    padding: 35px;
-}
-
-.content__menu {
-    cursor: pointer;
-}
-
-.content.active {
-    display: block;
-}
-
-.content__img {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
-    grid-auto-rows: 200px;
-    grid-gap: 30px;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.content img {
-    background-color: #fff;
-    border: none;
-    height: 100%;
-    max-height: 200px;
-    max-width: 300px;
-    object-fit: cover;
-    width: 100%;
-}
 
 /* コメント表示関連 */
 .icon-content2 {
