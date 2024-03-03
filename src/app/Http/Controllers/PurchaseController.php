@@ -14,12 +14,12 @@ class PurchaseController extends Controller
     // 購入画面表示
     public function getPurchase($id)
     {
-        if (!auth()->check()) {
-            return redirect()->route('getLogin')->with(
-                'flashWarning', 'このページを表示するにはログインが必要です',
+        $item = Item::find($id);
+        if ($item->seller_id == auth()->id()) {
+            return redirect()->route('getItem', ['id' => $id])->with(
+                'flashWarning', '出品者のため、購入することはできません'
             );
         }
-        $item = Item::find($id);
         // ログインユーザーのデリバリー情報を取得
         $delivery = auth()->user()->delivery()->first();
         // 金額をフォーマットしてビューに渡す

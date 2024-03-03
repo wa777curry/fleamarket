@@ -14,11 +14,6 @@ class SellController extends Controller
     // 出品画面表示
     public function getSell()
     {
-        if (!auth()->check()) {
-            return redirect()->route('getLogin')->with(
-                'flashWarning', 'このページを表示するにはログインが必要です',
-            );
-        }
         $categories = Category::all();
         $subcategories = Subcategory::all();
         $conditions = Condition::all();

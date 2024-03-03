@@ -25,6 +25,11 @@ class CommentController extends Controller
     // 商品コメント投稿処理
     public function postComment(CommentRequest $request, $id)
     {
+        if (!auth()->check()) {
+            return redirect()->route('getLogin')->with(
+                'flashWarning', 'この機能を有効にするにはログインが必要です',
+            );
+        }
         // コメントを保存
         Comment::create([
             'item_id' => $id,

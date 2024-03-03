@@ -23,12 +23,13 @@ use App\Http\Controllers\ViewController;
 |
 */
 
+Auth::routes();
+
 Route::get('/', [ViewController::class, 'index'])->name('index');
 Route::get('/search', [ViewController::class, 'search'])->name('search');
 
-Route::get('/sell', [SellController::class, 'getSell'])->name('getSell');
-
 Route::get('/item/{id}', [ItemController::class, 'getItem'])->name('getItem');
+Route::get('/comment/{id}', [CommentController::class, 'getComment'])->name('getComment');
 
 Route::get('/login', [UserController::class, 'getLogin'])->name('getLogin');
 Route::post('/login', [UserController::class, 'postLogin'])->name('postLogin');
@@ -36,19 +37,17 @@ Route::post('/login', [UserController::class, 'postLogin'])->name('postLogin');
 Route::get('/register', [UserController::class, 'getRegister'])->name('getRegister');
 Route::post('/register', [UserController::class, 'postRegister'])->name('postRegister');
 
-Route::post('/like/{item}', [LikeController::class, 'like'])->name('like');
-Route::post('/nolike/{item}', [LikeController::class, 'nolike'])->name('nolike');
-
 Route::post('/upload', [ViewController::class, 'upload']);
 
 // ログイン後の承認ページ
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'web'])->group(function () {
     Route::get('/logout', [UserController::class, 'logout']);
 
     Route::get('/mypage', [MypageController::class, 'getMypage'])->name('getMypage');
     Route::get('/mypage/profile', [ProfileController::class, 'getProfile'])->name('getProfile');
     Route::post('/mypage/profile', [ProfileController::class, 'postProfile'])->name('postProfile');
 
+    Route::get('/sell', [SellController::class, 'getSell'])->name('getSell');
     Route::post('/sell', [SellController::class, 'postSell'])->name('postSell');
 
     Route::get('/purchase/{id}', [PurchaseController::class, 'getPurchase'])->name('getPurchase');
@@ -58,11 +57,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase/address/{id}', [PurchaseController::class, 'getAddress'])->name('getAddress');
     Route::post('/purchase/address/{id}', [PurchaseController::class, 'postAddress'])->name('postAddress');
 
-    Route::get('/comment/{id}', [CommentController::class, 'getComment'])->name('getComment');
     Route::post('/comment/{id}', [CommentController::class, 'postComment'])->name('postComment');
     Route::delete('/comment/{id}', [CommentController::class, 'deleteComment'])->name('deleteComment');
-});
 
+    Route::post('/like/{item}', [LikeController::class, 'like'])->name('like');
+    Route::post('/nolike/{item}', [LikeController::class, 'nolike'])->name('nolike');
+});
 
 // 管理者用
 Route::prefix('admin')->group(function () {
