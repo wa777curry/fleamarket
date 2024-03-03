@@ -6,6 +6,7 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class UserController extends Controller
 {
@@ -19,9 +20,11 @@ class UserController extends Controller
     public function postLogin(LoginRequest $request)
     {
         $accepts = $request->only('email', 'password');
+        // ログイン前のURLをセッションに保存
+        $request->session()->put('previous_url', URL::previous());
 
         if (Auth::attempt($accepts)) {
-            return redirect()->route('index')->with(
+            return redirect()->intended(route('index'))->with(
                 'flashSuccess', 'ログインしました',
             );
         } else {
