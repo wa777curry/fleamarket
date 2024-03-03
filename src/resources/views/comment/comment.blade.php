@@ -12,8 +12,8 @@
             <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
         </div>
         <div class="item__content--right">
-            <h2>{{ $item->itemname }}</h2>
             <div>
+                <h2>{{ $item->itemname }}</h2>
                 <h3 style="font-weight: normal;">¥{{ $formattedPrice }}(値段)</h3>
             </div>
             <div class="item__content--icon">
@@ -118,15 +118,15 @@
                     @csrf
                     <h4>商品へのコメント</h4>
                     @if(auth()->check())
-                        <textarea name="comment">{{ old('comment') }}</textarea>
-                        <div class="form__error">
-                            @error('comment')
-                            {{ $message }}
-                            @enderror
-                        </div>
-                        <button type="submit">コメントを送信する</button>
+                    <textarea name="comment">{{ old('comment') }}</textarea>
+                    <div class="form__error">
+                        @error('comment')
+                        {{ $message }}
+                        @enderror
+                    </div>
+                    <button type="submit">コメントを送信する</button>
                     @else
-                        <button type="submit">コメントにはログインが必要です</button>
+                    <button type="submit">コメントの送信にはログインが必要です</button>
                     @endif
                 </form>
             </div>

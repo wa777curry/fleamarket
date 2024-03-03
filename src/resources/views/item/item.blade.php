@@ -12,8 +12,8 @@
             <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
         </div>
         <div class="item__content--right">
-            <h2>{{ $item->itemname }}</h2>
             <div>
+                <h2>{{ $item->itemname }}</h2>
                 <h3 style="font-weight: normal;">¥{{ $formattedPrice }}(値段)</h3>
             </div>
             <div class="item__content--icon">

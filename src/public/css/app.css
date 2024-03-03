@@ -128,13 +128,15 @@ li {
     width: 100%;
 }
 
-/* 商品表示関連 */
-.item__content {
+/* 商品詳細表示関連 */
+.item__content,
+.purchase__content {
     align-items: flex-start;
     justify-content: center;
 }
 
-.item__content--main {
+.item__content--main,
+.purchase__content--main {
     display: flex;
     padding: 0 5%;
 }
@@ -149,9 +151,11 @@ li {
 .item__content--right {
     flex: 4;
     margin-right: 7%;
+    padding: 0;
 }
 
-.item__content--right button {
+.item__content--right button,
+.purchase__content--right button {
     background: #ff5555;
     border: none;
     border-radius: 3px;
@@ -163,7 +167,8 @@ li {
     width: 100%;
 }
 
-.item__content--right button:hover {
+.item__content--right button:hover,
+.purchase__content--right button:hover {
     background: #cc4343;
 }
 
@@ -175,9 +180,11 @@ li {
     width: 100%;
 }
 
+.item__content--right h2,
 .item__content--right h3,
-.item__content--right h4 {
-    margin: 2px 0;
+.item__content--right h4,
+.purchase__content--menu-text h3 {
+    margin: auto 0;
 }
 
 .item__content--right h5 {
@@ -258,6 +265,56 @@ li {
     width: 100%;
 }
 
+/* 購入画面表示関連 */
+.purchase__content--left {
+    flex: 2;
+    padding: 0;
+}
+
+.purchase__content--left span {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+.purchase__content--right {
+    flex: 1;
+    margin-bottom: auto;
+    padding: 0;
+}
+
+.purchase__content--right-summary {
+    border: 1px solid #666;
+    padding-top: 40px;
+}
+
+.purchase__content--right-text {
+    display: flex;
+}
+
+.purchase__content--right span {
+    flex: 1;
+    margin: 5px;
+}
+
+.purchase__content--item {
+    align-items: flex-start;
+    display: flex;
+    padding: 0;
+}
+
+.purchase__content--item h2 {
+    margin: 0;
+}
+
+.purchase__content--menu-text {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
 /* フォーム関連 */
 .form__content {
     align-items: center;
@@ -314,7 +371,8 @@ li {
     background: #cc4343;
 }
 
-.form__main select {
+.form__main select,
+.purchase__content--left select {
     font-size: 102%;
     padding: 5px;
     width: 49%;
@@ -348,7 +406,8 @@ li {
     display: flex;
 }
 
-.icon button {
+.icon button,
+.purchase__content--left button {
     background-color: #fff;
     border: 1px solid #ff5555;
     border-radius: 3px;
@@ -356,10 +415,11 @@ li {
     cursor: pointer;
     margin: 0;
     padding: 5px 20px;
-    width: 200px;
+    width: auto;
 }
 
-.icon button:hover {
+.icon button:hover,
+.purchase__content--left button:hover {
     background: #ff5555;
     color: #fff;
 }
@@ -396,7 +456,8 @@ li {
     color: #fff;
 }
 
-.item img {
+.item img,
+.purchase__content--item img {
     background-color: #fff;
     border: none;
     display: block;
