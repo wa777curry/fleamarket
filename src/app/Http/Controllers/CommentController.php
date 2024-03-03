@@ -17,9 +17,10 @@ class CommentController extends Controller
         // 金額をフォーマットしてビューに渡す
         $formattedPrice = number_format($item->price);
         // コメントを作成日時で降順に取得
-        $item->comments = Comment::orderBy('created_at', 'desc')->get();
+        $comments = Comment::where('item_id', $item->id)
+            ->orderBy('created_at', 'desc')->get();
         $defaultIconUrl = Storage::url('icon/default.png'); // デフォルトのアイコンURL
-        return view('comment.comment', compact('item', 'formattedPrice', 'defaultIconUrl'));
+        return view('comment.comment', compact('item', 'comments', 'formattedPrice', 'defaultIconUrl'));
     }
 
     // 商品コメント投稿処理
@@ -36,7 +37,9 @@ class CommentController extends Controller
             'user_id' => auth()->id(),
             'comment' => $request->input('comment'),
         ]);
-        return redirect()->back()->with(
+        // リクエスト元のURLが存在する場合はそこにリダイレクトし、存在しない場合はデフォルトのURLにリダイレクトする
+        $previousUrl = $request->session()->pull('previous_url', route('defaultRoute'));
+        return redirect($previousUrl)->with(
             'flashSuccess', 'コメントが投稿されました'
         );
     }

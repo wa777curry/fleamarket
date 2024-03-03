@@ -66,10 +66,10 @@
             </div>
             <!-- コメント関連 -->
             <div class="comment__content">
-                @if($item->comments->isEmpty())
+                @if($comments->isEmpty())
                 <p>コメントはまだありません。</p>
                 @else
-                @foreach($item->comments as $comment)
+                @foreach($comments as $comment)
                 <div class="comment__content--main {{ $comment->user_id == auth()->id() ? 'right' : 'left' }}">
                     <!-- 自分のコメントの場合・右寄せ表示 -->
                     @if($comment->user_id == auth()->id())
