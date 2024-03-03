@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Purchase;
 use App\Models\View;
 
 class ItemController extends Controller
@@ -11,11 +12,12 @@ class ItemController extends Controller
     public function getItem($id)
     {
         $item = Item::find($id);
+        $itemPurchased = Purchase::where('item_id', $id)->exists();
         // 金額をフォーマットしてビューに渡す
         $formattedPrice = number_format($item->price);
         // 閲覧回数をカウント
         $this->countView($id);
-        return view('item.item', compact('item', 'formattedPrice'));
+        return view('item.item', compact('item', 'itemPurchased', 'formattedPrice'));
     }
 
     // 商品の閲覧回数をカウントする

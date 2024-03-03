@@ -19,40 +19,40 @@
             <div class="item__content--icon">
                 <!-- ログイン時のお気に入りアイコン表示 -->
                 @if(Auth::check())
-                    @if(auth()->user()->likes->contains($item->id))
-                    <!-- お気に入り登録済みの場合 -->
-                    <form action="{{ route('nolike', $item) }}" method="post">
-                        @csrf
-                        <button type="submit">
-                            <div><i class="fa fa-star fa-fw"></i></div>
-                            <div>
-                                <h5>{{ $item->likes->count() }}</h5>
-                            </div>
-                        </button>
-                    </form>
-                    @else
-                    <!-- お気に入り未登録の場合 -->
-                    <form action="{{ route('like', $item) }}" method="post">
-                        @csrf
-                        <button type="submit">
-                            <div><i class="fa fa-star-o fa-fw"></i></div>
-                            <div>
-                                <h5>{{ $item->likes->count() }}</h5>
-                            </div>
-                        </button>
-                    </form>
-                    @endif
+                @if(auth()->user()->likes->contains($item->id))
+                <!-- お気に入り登録済みの場合 -->
+                <form action="{{ route('nolike', $item) }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <div><i class="fa fa-star fa-fw"></i></div>
+                        <div>
+                            <h5>{{ $item->likes->count() }}</h5>
+                        </div>
+                    </button>
+                </form>
+                @else
+                <!-- お気に入り未登録の場合 -->
+                <form action="{{ route('like', $item) }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <div><i class="fa fa-star-o fa-fw"></i></div>
+                        <div>
+                            <h5>{{ $item->likes->count() }}</h5>
+                        </div>
+                    </button>
+                </form>
+                @endif
                 <!-- 非ログイン時のお気に入りアイコン表示 -->
                 @else
-                    <form action="{{ route('like', $item) }}" method="post">
-                        @csrf
-                        <button type="submit">
-                            <div><i class="fa fa-star-o fa-fw"></i></div>
-                            <div>
-                                <h5>{{ $item->likes->count() }}</h5>
-                            </div>
-                        </button>
-                    </form>
+                <form action="{{ route('like', $item) }}" method="post">
+                    @csrf
+                    <button type="submit">
+                        <div><i class="fa fa-star-o fa-fw"></i></div>
+                        <div>
+                            <h5>{{ $item->likes->count() }}</h5>
+                        </div>
+                    </button>
+                </form>
                 @endif
                 <!-- コメントアイコン表示 -->
                 <a href="{{ route('getComment', ['id' => $item->id]) }}">
@@ -65,14 +65,14 @@
                 </a>
             </div>
             <div>
-                @if(auth()->check())
-                    @if(auth()->check() && $item->seller_id == auth()->id())
-                        <p class="alert alert-danger">出品者のため、購入することはできません</p>
-                    @else
-                        <a href="{{ route('getPurchase', ['id' => $item->id]) }}">
-                            <button type="submit">購入する</button>
-                        </a>
-                    @endif
+                @if(auth()->check() && $item->seller_id == auth()->id())
+                    <p class="alert alert-danger">出品者のため、購入することはできません</p>
+                @elseif($itemPurchased)
+                    <p class="alert alert-danger">売り切れです</p>
+                @elseif(auth()->check())
+                    <a href="{{ route('getPurchase', ['id' => $item->id]) }}">
+                        <button type="submit">購入する</button>
+                    </a>
                 @else
                     <a href="{{ route('getPurchase', ['id' => $item->id]) }}">
                         <button type="submit">ログインして購入する</button>

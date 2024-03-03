@@ -15,6 +15,7 @@ class PurchaseController extends Controller
     public function getPurchase($id)
     {
         $item = Item::find($id);
+        // ログインユーザーと出品者が同一ユーザーの場合、購入画面表示不可
         if ($item->seller_id == auth()->id()) {
             return redirect()->route('getItem', ['id' => $id])->with(
                 'flashWarning', '出品者のため、購入することはできません'
