@@ -23,8 +23,6 @@ use App\Http\Controllers\ViewController;
 |
 */
 
-Auth::routes();
-
 Route::get('/', [ViewController::class, 'index'])->name('index');
 Route::get('/search', [ViewController::class, 'search'])->name('search');
 

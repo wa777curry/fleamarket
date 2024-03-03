@@ -31,6 +31,23 @@ button {
     padding: 5px 20px;
 }
 
+select {
+    font-size: 102%;
+    padding: 5px;
+}
+
+textarea {
+    font-size: 120%;
+    padding: 5px;
+    resize: none;
+    width: 100%;
+}
+
+img {
+    background-color: #fff;
+    border: none;
+    border-radius: 3px;
+}
 
 main div {
     background: #bde2d1; /* 後で消す */
@@ -43,12 +60,6 @@ main span {
     background: #ebe3f0;/* 後で消す */
     margin: 10px;
 }
-
-
-li {
-    margin-left: 10px;
-}
-
 
 /* メイン関連 */
 .panel__content {
@@ -75,14 +86,12 @@ li {
 
 /* 切替コンテンツ関連 */
 .content {
-    border: 1px solid #6a9482;
-    /* あとでtransparentに変える */
+    border: 1px solid #6a9482; /* あとでtransparentに変える */
     display: none;
 }
 
 .s_content {
-    border: 1px solid #6a9482;
-    /* あとでtransparentに変える */
+    border: 1px solid #6a9482; /* あとでtransparentに変える */
     display: block;
     padding: 35px;
 }
@@ -102,9 +111,8 @@ li {
 }
 
 .content select {
-    font-size: 102%;
-    margin-bottom: 10px;
-    padding: 5px;
+    margin-bottom: 5px;
+    width: auto;
 }
 
 .content__img {
@@ -118,14 +126,11 @@ li {
 }
 
 .content img {
-    background-color: #fff;
-    border: none;
-    border-radius: 3px;
-    height: 100%;
+    height: 200px;
     max-height: 200px;
     max-width: 300px;
     object-fit: cover;
-    width: 100%;
+    width: 300px;
 }
 
 /* 商品詳細表示関連 */
@@ -157,27 +162,18 @@ li {
 .item__content--right button,
 .purchase__content--right button {
     background: #ff5555;
-    border: none;
-    border-radius: 3px;
     color: #fff;
-    cursor: pointer;
-    font-size: 102%;
     margin: 10px 0;
-    padding: 5px 20px;
     width: 100%;
 }
 
 .item__content--right button:hover,
 .purchase__content--right button:hover {
-    background: #cc4343;
+    background: #962424;
 }
 
 .item__content--right textarea {
-    font-size: 120%;
     height: 150px;
-    padding: 5px;
-    resize: none;
-    width: 100%;
 }
 
 .item__content--right h2,
@@ -212,7 +208,6 @@ li {
 
 .item__content--icon button {
     color: #000;
-    cursor: pointer;
     margin: 0 20px 0 0;
     padding: 0;
 }
@@ -228,6 +223,10 @@ li {
     align-items: center;
     color: #ff5555;
     font-size: 36px;
+}
+
+.item__content--icon i:hover {
+    color: #962424;
 }
 
 .item__content--category h5 {
@@ -255,14 +254,11 @@ li {
 }
 
 .item__content img {
-    background-color: #fff;
-    border: none;
-    border-radius: 3px;
-    height: 100%;
+    height: 300px;
     max-height: 300px;
     max-width: 500px;
     object-fit: cover;
-    width: 100%;
+    width: 500px;
 }
 
 /* 購入画面表示関連 */
@@ -311,10 +307,6 @@ li {
     justify-content: space-between;
 }
 
-
-
-
-
 /* フォーム関連 */
 .form__content {
     align-items: center;
@@ -348,42 +340,24 @@ li {
     text-align: center;
 }
 
-.form__main input {
-    border: 1px solid #999;
-    border-radius: 3px;
-    padding: 5px;
-    width: 100%;
-}
-
 .form__main button {
     background: #ff5555;
-    border: none;
-    border-radius: 3px;
     color: #fff;
-    cursor: pointer;
-    font-size: 102%;
     margin-top: 30px;
-    padding: 5px 20px;
     width: 100%;
 }
 
 .form__main button:hover {
-    background: #cc4343;
+    background: #962424;
 }
 
 .form__main select,
 .purchase__content--left select {
-    font-size: 102%;
-    padding: 5px;
     width: 49%;
 }
 
 .form__main textarea {
-    font-size: 120%;
     height: 120px;
-    padding: 5px;
-    resize: none;
-    width: 100%;
 }
 
 /* バリデーションエラー関連 */
@@ -410,11 +384,8 @@ li {
 .purchase__content--left button {
     background-color: #fff;
     border: 1px solid #ff5555;
-    border-radius: 3px;
     color: #ff5555;
-    cursor: pointer;
     margin: 0;
-    padding: 5px 20px;
     width: auto;
 }
 
@@ -425,8 +396,7 @@ li {
 }
 
 .icon img {
-    background-color: #fff;
-    border: none;
+    border-radius:50%;
     height: 120px;
     margin-right: 20px;
     max-height: 120px;
@@ -443,11 +413,8 @@ li {
 .item button {
     background-color: #fff;
     border: 1px solid #ff5555;
-    border-radius: 3px;
     color: #ff5555;
-    cursor: pointer;
     margin-top: 10px;
-    padding: 5px 20px;
     width: 200px;
 }
 
@@ -458,8 +425,6 @@ li {
 
 .item img,
 .purchase__content--item img {
-    background-color: #fff;
-    border: none;
     display: block;
     height: 200px;
     margin: 0 auto;
@@ -468,25 +433,6 @@ li {
     object-fit: contain;
     width: 300px;
 }
-
-
-
-
-
-
-select {
-    font-size: 102%;
-    width: auto;
-}
-
-textarea {
-    font-size: 110%;
-    height: 80px;
-    resize: none;
-    width: 100%;
-}
-
-
 
 /* コメント表示関連 */
 .comment__content {
@@ -513,8 +459,7 @@ textarea {
 }
 
 .comment__content--main img {
-    background-color: #fff;
-    border: none;
+    border-radius: 50%;
     height: 30px;
     max-height: 30px;
     max-width: 30px;
@@ -526,7 +471,7 @@ textarea {
     background: #ccc;
     border: none;
     border-radius: 3px;
-    margin: 0 0 5px 0;
+    margin: 5px 0 10px 0;
 }
 
 .comment__content--text h5 {
@@ -555,10 +500,7 @@ textarea {
 
 .comment__content--text button {
     background-color: #ccc;
-    border: none;
-    border-radius: 3px;
     color: #666;
-    cursor: pointer;
     font-size: 24px;
     margin: 0;
     padding: 0 5px;
@@ -568,5 +510,5 @@ textarea {
 
 .comment__content--text button:hover {
     background: #ccc;
-    color: #ff5555;
+    color: #000;
 }
