@@ -1,0 +1,32 @@
+.pagination {
+    display: flex;
+    font-size: 120%;
+    justify-content: center;
+    list-style: none; /* 箇条書きのマーカーを削除 */
+    margin: 5px;
+}
+
+.pagination li {
+    margin: 0 5px; /* 各要素の間隔を調整 */
+}
+
+.pagination li a,
+.pagination li span {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    display: block;
+    margin: 0;
+    padding: 3px 12px;
+}
+
+.pagination li a:hover {
+    border: 1px solid #ff5555;
+    color: #ff5555;
+}
+
+/* 無効なページへのリンクの色を変更 */
+.pagination li.active span {
+    background: #ff5555;
+    color: #fff;
+}

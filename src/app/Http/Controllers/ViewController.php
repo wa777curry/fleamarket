@@ -14,12 +14,6 @@ class ViewController extends Controller
     // トップ画面表示
     public function index(Request $request)
     {
-        // マイリスト一覧の表示
-        $likes = null;
-        if (Auth::check()) {
-            $likes = auth()->user()->likes;
-        }
-
         // おすすめ一覧の表示
         $recommendItems = Item::query();
         // プルダウンメニューからの選択を取得
@@ -50,30 +44,44 @@ class ViewController extends Controller
         } elseif ($sortOrder === 'desc') {
             $recommendItems = $recommendItems->orderBy('price', 'desc');
         }
-        $recommendItems = $recommendItems->take(12)->get();
+        $recommendItems = $recommendItems->paginate(12);
 
-        return view('index', compact('likes', 'recommendItems', 'sortOrder'));
+        return view('index', compact('recommendItems', 'sortOrder'));
     }
 
+    // マイリスト一覧の表示
+    public function mylist(Request $request)
+    {
+        $likes = null;
+        if (Auth::check()) {
+            $likes = auth()->user()->likes()->paginate(6);
+        }
 
-    
+        return view('mylist', compact('likes'));
+    }
+
+    // 検索結果の取得
     public function search(Request $request)
     {
-        // 検索結果の取得
         $query = $request->input('search');
 
         // 商品名やカテゴリー名に検索クエリが含まれる商品を取得
-        $results = Item::where('itemname', 'like', '%' . $query . '%')
-            ->orWhereHas('category', function ($queryBuilder) use ($query) {
-                $queryBuilder->where('category', 'like', '%' . $query . '%');
-            })
-            ->orWhereHas('subcategory', function ($queryBuilder) use ($query) {
-                $queryBuilder->where('subcategory', 'like', '%' . $query . '%');
-            })
-            ->get();
-
+        if (!$query) {
+            $results = collect(); // 空のコレクションを返す
+        } else {
+            $results = Item::where('itemname', 'like', '%' . $query . '%')
+                ->orWhereHas('category', function ($queryBuilder) use ($query) {
+                    $queryBuilder->where('category', 'like', '%' . $query . '%');
+                })
+                ->orWhereHas('subcategory', function ($queryBuilder) use ($query) {
+                    $queryBuilder->where('subcategory', 'like', '%' . $query . '%');
+                })
+            ->paginate(12);
+        }
         return view('search', compact('results', 'query'));
     }
+
+
 
 
 

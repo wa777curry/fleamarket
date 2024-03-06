@@ -67,7 +67,7 @@
             <!-- コメント関連 -->
             <div class="comment__content">
                 @if($comments->isEmpty())
-                <p>コメントはまだありません。</p>
+                <p>コメントはまだありません</p>
                 @else
                 @foreach($comments as $comment)
                 <div class="comment__content--main {{ $comment->user_id == auth()->id() ? 'right' : 'left' }}">

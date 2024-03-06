@@ -24,6 +24,7 @@ use App\Http\Controllers\ViewController;
 */
 
 Route::get('/', [ViewController::class, 'index'])->name('index');
+Route::get('/mylist', [ViewController::class, 'mylist'])->name('mylist');
 Route::get('/search', [ViewController::class, 'search'])->name('search');
 
 Route::get('/item/{id}', [ItemController::class, 'getItem'])->name('getItem');
@@ -41,7 +42,8 @@ Route::post('/upload', [ViewController::class, 'upload']);
 Route::middleware(['auth', 'web'])->group(function () {
     Route::get('/logout', [UserController::class, 'logout']);
 
-    Route::get('/mypage', [MypageController::class, 'getMypage'])->name('getMypage');
+    Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
+    Route::get('/purchase', [MypageController::class, 'purchase'])->name('purchase');
     Route::get('/mypage/profile', [ProfileController::class, 'getProfile'])->name('getProfile');
     Route::post('/mypage/profile', [ProfileController::class, 'postProfile'])->name('postProfile');
 

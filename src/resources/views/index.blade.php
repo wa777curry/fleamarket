@@ -9,15 +9,15 @@
 <div class="panel__content">
     <div class="panel__main">
         <div class="panel__menu">
-            <span class="content__menu active" data-id="recommends" onclick="toggleContent(this)">おすすめ</span>
+            <span class="content__menu active">おすすめ</span>
             @if(auth()->check())
-            <span class="content__menu" data-id="likes" onclick="toggleContent(this)">マイリスト</span>
+            <span class="content__menu"><a href="{{ route('mylist') }}">マイリスト</a></span>
             @endif
-            <span class="content__menu" data-id="search" onclick="toggleContent(this)">検索結果</span>
+            <span class="content__menu"><a href="{{ route('search') }}">検索結果</a></span>
         </div>
         <hr>
         <!-- おすすめ一覧の表示 -->
-        <div class="content active" id="recommends">
+        <div class="content" id="recommends">
             <form action="{{ route('index') }}" method="get">
                 <select name="sort" id="sort" onchange="this.form.submit()">
                     <option value="">おすすめ　</option>
@@ -35,21 +35,8 @@
                 @endforeach
             </div>
         </div>
-        <!-- マイリスト一覧の表示 -->
-        <div class="content" id="likes">
-            <div class="content__img">
-                @if(Auth::check())
-                @if($likes->isEmpty())
-                <p>マイリスト登録した商品はありません。</p>
-                @else
-                @foreach($likes as $like)
-                <a href="{{ route('getItem', ['id' => $like->id]) }}">
-                    <img src="{{ $like->item_url }}" alt="{{ $like->itemname }}">
-                </a>
-                @endforeach
-                @endif
-                @endif
-            </div>
+        <div class="paginate">
+            {{ $recommendItems->appends(request()->query())->links() }}
         </div>
     </div>
 </div>
@@ -69,5 +56,4 @@
     </div>
 </form>
 
-<script src="{{ asset('js/panel.js') }}"></script>
 @endsection

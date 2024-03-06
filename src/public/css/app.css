@@ -11,6 +11,7 @@ main {
 }
 
 a {
+    color: inherit;
     text-decoration: none;
 }
 
@@ -81,13 +82,14 @@ main span {
 
 .panel__menu {
     display: flex;
+    margin-bottom: 0;
     padding: 0 0 0 5px;
 }
 
 /* 切替コンテンツ関連 */
 .content {
     border: 1px solid #6a9482; /* あとでtransparentに変える */
-    display: none;
+    display: block;
 }
 
 .s_content {
@@ -104,10 +106,6 @@ main span {
 
 .content__menu.active {
     color: #ff5555;
-}
-
-.content.active {
-    display: block;
 }
 
 .content select {
