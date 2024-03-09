@@ -36,7 +36,7 @@ class SellController extends Controller
             'price' => $request->input('price'),
             'item_url' => $itemUrl,
         ]);
-        return redirect()->route('getMypage')->with(
+        return redirect()->route('mypage')->with(
             'flashSuccess', '出品処理されました',
         );
     }

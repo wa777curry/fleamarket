@@ -34,15 +34,18 @@
         <div class="content" id="sells">
             <div class="content__img">
                 @if($sellerItems->isEmpty())
-                    <p>出品した商品はありません</p>
+                <p>出品した商品はありません</p>
                 @else
-                    @foreach($sellerItems as $item)
-                    <a href="{{ route('getItem', ['id' => $item->id]) }}">
-                        <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
-                    </a>
-                    @endforeach
+                @foreach($sellerItems as $item)
+                <a href="{{ route('getItem', ['id' => $item->id]) }}">
+                    <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
+                </a>
+                @endforeach
                 @endif
             </div>
+        </div>
+        <div class="paginate">
+            {{ $sellerItems->links() }}
         </div>
     </div>
 </div>
