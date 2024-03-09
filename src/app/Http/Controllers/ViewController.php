@@ -14,6 +14,8 @@ class ViewController extends Controller
     // トップ画面表示
     public function index(Request $request)
     {
+        $query = $request->input('search');
+
         // おすすめ一覧の表示
         $recommendItems = Item::query();
         // プルダウンメニューからの選択を取得
@@ -46,18 +48,20 @@ class ViewController extends Controller
         }
         $recommendItems = $recommendItems->paginate(12);
 
-        return view('index', compact('recommendItems', 'sortOrder'));
+        return view('index', compact('query', 'recommendItems', 'sortOrder'));
     }
 
     // マイリスト一覧の表示
     public function mylist(Request $request)
     {
+        $query = $request->input('search');
+
         $likes = null;
         if (Auth::check()) {
-            $likes = auth()->user()->likes()->paginate(6);
+            $likes = auth()->user()->likes()->paginate(12);
         }
 
-        return view('mylist', compact('likes'));
+        return view('mylist', compact('query', 'likes'));
     }
 
     // 検索結果の取得

@@ -11,9 +11,9 @@
         <div class="panel__menu">
             <span class="content__menu active">おすすめ</span>
             @if(auth()->check())
-            <span class="content__menu"><a href="{{ route('mylist') }}">マイリスト</a></span>
+            <span class="content__menu"><a href="{{ route('mylist') }}?search={{ $query }}">マイリスト</a></span>
             @endif
-            <span class="content__menu"><a href="{{ route('search') }}">検索結果</a></span>
+            <span class="content__menu"><a href="{{ route('search') }}?search={{ $query }}">検索結果</a></span>
         </div>
         <hr>
         <!-- おすすめ一覧の表示 -->
@@ -26,6 +26,10 @@
                     <option value="asc" {{ $sortOrder === 'asc' ? 'selected' : '' }}>価格が安い順　</option>
                     <option value="desc" {{ $sortOrder === 'desc' ? 'selected' : '' }}>価格が高い順　</option>
                 </select>
+                <!-- 検索クエリ情報を隠しフィールドとして追加 -->
+                @if($query)
+                <input type="hidden" name="search" value="{{ $query }}">
+                @endif
             </form>
             <div class="content__img">
                 @foreach($recommendItems as $item)

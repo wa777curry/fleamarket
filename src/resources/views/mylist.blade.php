@@ -9,11 +9,11 @@
 <div class="panel__content">
     <div class="panel__main">
         <div class="panel__menu">
-            <span class="content__menu"><a href="{{route('index') }}">おすすめ</a></span>
+            <span class="content__menu"><a href="{{route('index') }}?search={{ $query }}">おすすめ</a></span>
             @if(auth()->check())
             <span class="content__menu active">マイリスト</span>
             @endif
-            <span class="content__menu"><a href="{{ route('search') }}">検索結果</a></span>
+            <span class="content__menu"><a href="{{ route('search') }}?search={{ $query }}">検索結果</a></span>
         </div>
         <hr>
         <!-- マイリスト一覧の表示 -->
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="paginate">
-            {{ $likes->links() }}
+            {{ $likes->appends(request()->query())->links() }}
         </div>
     </div>
 </div>
