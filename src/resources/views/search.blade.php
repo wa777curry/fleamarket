@@ -21,7 +21,7 @@
             <div class="content__img">
                 @if(!$results->isEmpty())
                 @foreach($results as $result)
-                <a href="{{ route('getItem', ['id' => $result->id]) }}">
+                <a href="{{ route('item', ['id' => $result->id]) }}">
                     <img src="{{ $result->item_url }}" alt="{{ $result->itemname }}">
                 </a>
                 @endforeach

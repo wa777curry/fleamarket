@@ -21,7 +21,7 @@
                 <h3>{{ $profile->username ?? 'ユーザー名未設定' }}</h3>
             </div>
             <div class="icon">
-                <a href="{{ route('getProfile') }}"><button class="button" type="submit">プロフィールを編集</button></a>
+                <a href="{{ route('profile') }}"><button class="button" type="submit">プロフィールを編集</button></a>
             </div>
         </div>
         <!-- 商品表示部分 -->
@@ -37,7 +37,7 @@
                 <p>出品した商品はありません</p>
                 @else
                 @foreach($sellerItems as $item)
-                <a href="{{ route('getItem', ['id' => $item->id]) }}">
+                <a href="{{ route('item', ['id' => $item->id]) }}">
                     <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
                 </a>
                 @endforeach

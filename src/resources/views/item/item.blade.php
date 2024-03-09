@@ -14,7 +14,7 @@
         <div class="item__content--right">
             <div>
                 <h2>{{ $item->itemname }}</h2>
-                <h3 style="font-weight: normal;">¥{{ $formattedPrice }}(値段)</h3>
+                <h3 style="font-weight: normal;">¥{{ $formattedPrice }}</h3>
             </div>
             <div class="item__content--icon">
                 <!-- ログイン時のお気に入りアイコン表示 -->
@@ -55,7 +55,7 @@
                 </form>
                 @endif
                 <!-- コメントアイコン表示 -->
-                <a href="{{ route('getComment', ['id' => $item->id]) }}">
+                <a href="{{ route('comment', ['id' => $item->id]) }}">
                     <button type="submit">
                         <div><i class="fa fa-comments-o fa-fw"></i></div>
                         <div>
@@ -65,18 +65,20 @@
                 </a>
             </div>
             <div>
-                @if(auth()->check() && $item->seller_id == auth()->id())
-                    <p class="alert alert-danger">出品者のため、購入することはできません</p>
+                @if($isSeller)
+                <p class="alert alert-danger">出品者のため、購入することはできません</p>
+                @elseif($isPurchased)
+                <p class="alert alert-danger">この商品は購入済みです</p>
                 @elseif($itemPurchased)
-                    <p class="alert alert-danger">売り切れです</p>
-                @elseif(auth()->check())
-                    <a href="{{ route('getPurchase', ['id' => $item->id]) }}">
-                        <button type="submit">購入する</button>
-                    </a>
+                <p class="alert alert-danger">この商品は売り切れです</p>
+                @elseif($isLoggedIn)
+                <a href="{{ route('getPurchase', ['id' => $item->id]) }}">
+                    <button type="submit">購入する</button>
+                </a>
                 @else
-                    <a href="{{ route('getPurchase', ['id' => $item->id]) }}">
-                        <button type="submit">ログインして購入する</button>
-                    </a>
+                <a href="{{ route('getPurchase', ['id' => $item->id]) }}">
+                    <button type="submit">ログインして購入する</button>
+                </a>
                 @endif
             </div>
             <div>

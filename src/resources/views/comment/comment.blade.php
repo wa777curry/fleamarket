@@ -55,7 +55,7 @@
                 </form>
                 @endif
                 <!-- コメントアイコン表示 -->
-                <a href="{{ route('getComment', ['id' => $item->id]) }}">
+                <a href="{{ route('comment', ['id' => $item->id]) }}">
                     <button type="submit">
                         <div><i class="fa fa-comments-o fa-fw"></i></div>
                         <div>

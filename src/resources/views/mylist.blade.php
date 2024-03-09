@@ -24,7 +24,7 @@
                 <p>マイリスト登録した商品はありません</p>
                 @else
                 @foreach($likes as $like)
-                <a href="{{ route('getItem', ['id' => $like->id]) }}">
+                <a href="{{ route('item', ['id' => $like->id]) }}">
                     <img src="{{ $like->item_url }}" alt="{{ $like->itemname }}">
                 </a>
                 @endforeach

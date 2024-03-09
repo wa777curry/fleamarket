@@ -33,7 +33,7 @@
             </form>
             <div class="content__img">
                 @foreach($recommendItems as $item)
-                <a href="{{ route('getItem', ['id' => $item->id]) }}">
+                <a href="{{ route('item', ['id' => $item->id]) }}">
                     <img src="{{ $item->item_url }}" alt="{{ $item->itemname }}">
                 </a>
                 @endforeach

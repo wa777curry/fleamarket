@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     // 商品コメント画面表示
-    public function getComment($id)
+    public function comment($id)
     {
         $item = Item::find($id);
         // 金額をフォーマットしてビューに渡す
@@ -27,8 +27,9 @@ class CommentController extends Controller
     public function postComment(CommentRequest $request, $id)
     {
         if (!auth()->check()) {
-            return redirect()->route('getLogin')->with(
-                'flashWarning', 'この機能を有効にするにはログインが必要です',
+            return redirect()->route('login')->with(
+                'flashWarning',
+                'この機能を有効にするにはログインが必要です',
             );
         }
         // コメントを保存
@@ -38,9 +39,10 @@ class CommentController extends Controller
             'comment' => $request->input('comment'),
         ]);
         // リクエスト元のURLが存在する場合はそこにリダイレクトし、存在しない場合はデフォルトのURLにリダイレクトする
-        $previousUrl = $request->session()->pull('previous_url', route('defaultRoute'));
+        $previousUrl = $request->session()->pull('previous_url', route('comment', ['id' => $id]));
         return redirect($previousUrl)->with(
-            'flashSuccess', 'コメントが投稿されました'
+            'flashSuccess',
+            'コメントが投稿されました'
         );
     }
 
@@ -51,13 +53,15 @@ class CommentController extends Controller
         // コメントが存在するか、またログインしているユーザーがコメントの所有者であるかを確認
         if (!$comment || $comment->user_id !== auth()->id()) {
             return redirect()->back()->with(
-                'flashError', 'コメントを削除する権限がありません'
+                'flashError',
+                'コメントを削除する権限がありません'
             );
         }
         // コメントを削除
         $comment->delete();
         return redirect()->back()->with(
-            'flashSuccess', 'コメントが削除されました'
+            'flashSuccess',
+            'コメントが削除されました'
         );
     }
 }

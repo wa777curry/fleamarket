@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class ProfileController extends Controller
 {
     // プロフィール設定画面表示
-    public function getProfile()
+    public function profile()
     {
         // プロフィール情報がある場合は情報を取得
         $profile = auth()->user()->profile;
@@ -59,7 +59,7 @@ class ProfileController extends Controller
         ]);
         $delivery->save();
 
-        return redirect()->route('getMypage')->with(
+        return redirect()->route('mypage')->with(
             'flashSuccess',
             'プロフィールが更新されました',
         );

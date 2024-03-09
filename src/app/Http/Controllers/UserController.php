@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\URL;
 class UserController extends Controller
 {
     // ログイン画面表示
-    public function getLogin()
+    public function login()
     {
         return view('auth.login');
     }
@@ -25,17 +25,19 @@ class UserController extends Controller
 
         if (Auth::attempt($accepts)) {
             return redirect()->intended(route('index'))->with(
-                'flashSuccess', 'ログインしました',
+                'flashSuccess',
+                'ログインしました',
             );
         } else {
-            return redirect()->route('getLogin')->with(
-                'flashError', 'ログインに失敗しました',
+            return redirect()->route('login')->with(
+                'flashError',
+                'ログインに失敗しました',
             );
         }
     }
 
     // 会員登録画面表示
-    public function getRegister()
+    public function register()
     {
         return view('auth.register');
     }
@@ -49,7 +51,8 @@ class UserController extends Controller
             'password' => bcrypt($request->input('password')),
         ]);
         return redirect()->route('index')->with(
-            'flashSuccess', '登録しました',
+            'flashSuccess',
+            '登録しました',
         );
     }
 
@@ -58,7 +61,8 @@ class UserController extends Controller
     {
         Auth::logout();
         return redirect()->route('index')->with(
-            'flashSuccess', 'ログアウトしました',
+            'flashSuccess',
+            'ログアウトしました',
         );
     }
 }

@@ -39,7 +39,7 @@
                 @endif
                 <div class="purchase__content--menu-text">
                     <h3>配送先</h3>
-                    <a href="{{ route('getAddress', ['id' => $item->id]) }}">
+                    <a href="{{ route('address', ['id' => $item->id]) }}">
                         <button type="button">変更する</button>
                     </a>
                 </div>
@@ -81,7 +81,15 @@
                         </span>
                     </div>
                 </div>
-                <div><button class="button" type="submit">購入する</button></div>
+                <div>
+                    @if($isPurchased)
+                    <p class="alert alert-danger">この商品は購入済みです</p>
+                    @elseif($itemPurchased)
+                    <p class="alert alert-danger">この商品は売り切れです</p>
+                    @elseif($isLoggedIn)
+                    <button class="button" type="submit">購入する</button>
+                    @endif
+                </div>
             </div>
         </div>
     </form>

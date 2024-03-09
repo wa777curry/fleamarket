@@ -188,7 +188,8 @@ main span {
     margin: 10px 0 20px 0;
 }
 
-.item__content--right p {
+.item__content--right p,
+.purchase__content--right p {
     background: #666;
     border: none;
     border-radius: 3px;
@@ -394,12 +395,13 @@ main span {
 }
 
 .icon img {
-    border-radius:50%;
+    border-radius: 5%;
     height: 120px;
     margin-right: 20px;
     max-height: 120px;
     max-width: 120px;
     object-fit: contain;
+    padding: 2px;
     width: 120px;
 }
 
@@ -457,11 +459,12 @@ main span {
 }
 
 .comment__content--main img {
-    border-radius: 50%;
+    border-radius: 5%;
     height: 30px;
     max-height: 30px;
     max-width: 30px;
     object-fit: contain;
+    padding: 1px;
     width: 30px;
 }
 

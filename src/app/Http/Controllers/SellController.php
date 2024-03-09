@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Storage;
 class SellController extends Controller
 {
     // 出品画面表示
-    public function getSell()
+    public function sell()
     {
         $categories = Category::all();
         $subcategories = Subcategory::all();
@@ -37,7 +37,8 @@ class SellController extends Controller
             'item_url' => $itemUrl,
         ]);
         return redirect()->route('mypage')->with(
-            'flashSuccess', '出品処理されました',
+            'flashSuccess',
+            '出品処理されました',
         );
     }
 

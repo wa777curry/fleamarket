@@ -27,13 +27,13 @@ Route::get('/', [ViewController::class, 'index'])->name('index');
 Route::get('/mylist', [ViewController::class, 'mylist'])->name('mylist');
 Route::get('/search', [ViewController::class, 'search'])->name('search');
 
-Route::get('/item/{id}', [ItemController::class, 'getItem'])->name('getItem');
-Route::get('/comment/{id}', [CommentController::class, 'getComment'])->name('getComment');
+Route::get('/item/{id}', [ItemController::class, 'item'])->name('item');
+Route::get('/comment/{id}', [CommentController::class, 'comment'])->name('comment');
 
-Route::get('/login', [UserController::class, 'getLogin'])->name('getLogin');
+Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('/login', [UserController::class, 'postLogin'])->name('postLogin');
 
-Route::get('/register', [UserController::class, 'getRegister'])->name('getRegister');
+Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'postRegister'])->name('postRegister');
 
 Route::post('/upload', [ViewController::class, 'upload']);
@@ -44,17 +44,17 @@ Route::middleware(['auth', 'web'])->group(function () {
 
     Route::get('/mypage', [MypageController::class, 'mypage'])->name('mypage');
     Route::get('/purchase', [MypageController::class, 'purchase'])->name('purchase');
-    Route::get('/mypage/profile', [ProfileController::class, 'getProfile'])->name('getProfile');
+    Route::get('/mypage/profile', [ProfileController::class, 'profile'])->name('profile');
     Route::post('/mypage/profile', [ProfileController::class, 'postProfile'])->name('postProfile');
 
-    Route::get('/sell', [SellController::class, 'getSell'])->name('getSell');
+    Route::get('/sell', [SellController::class, 'sell'])->name('sell');
     Route::post('/sell', [SellController::class, 'postSell'])->name('postSell');
 
     Route::get('/purchase/{id}', [PurchaseController::class, 'getPurchase'])->name('getPurchase');
     Route::post('/purchase/{id}', [PurchaseController::class, 'postPurchase'])->name('postPurchase');
     Route::get('/thanks', [PurchaseController::class, 'thanks'])->name('thanks');
 
-    Route::get('/purchase/address/{id}', [PurchaseController::class, 'getAddress'])->name('getAddress');
+    Route::get('/purchase/address/{id}', [PurchaseController::class, 'address'])->name('address');
     Route::post('/purchase/address/{id}', [PurchaseController::class, 'postAddress'])->name('postAddress');
 
     Route::post('/comment/{id}', [CommentController::class, 'postComment'])->name('postComment');

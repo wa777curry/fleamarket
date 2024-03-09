@@ -17,17 +17,25 @@ class PurchaseController extends Controller
         $item = Item::find($id);
         // ログインユーザーと出品者が同一ユーザーの場合、購入画面表示不可
         if ($item->seller_id == auth()->id()) {
-            return redirect()->route('getItem', ['id' => $id])->with(
-                'flashWarning', '出品者のため、購入することはできません'
+            return redirect()->route('item', ['id' => $id])->with(
+                'flashWarning',
+                '出品者のため、購入することはできません'
             );
         }
+
+        $isLoggedIn = auth()->check();
+        // 自分が購入済みの場合
+        $isPurchased = $isLoggedIn && $item->purchases()->where('user_id', auth()->id())->exists();
+        // 自分以外が購入済みの場合
+        $itemPurchased = Purchase::where('item_id', $id)->exists();
+
         // ログインユーザーのデリバリー情報を取得
         $delivery = auth()->user()->delivery()->first();
         // 金額をフォーマットしてビューに渡す
         $formattedPrice = number_format($item->price);
         // 支払方法情報の取得
         $payments = Payment::all();
-        return view('purchase.item', compact('item', 'delivery', 'formattedPrice', 'payments'));
+        return view('purchase.item', compact('item', 'isPurchased', 'itemPurchased', 'delivery', 'formattedPrice', 'payments'));
     }
 
     // 購入登録処理
@@ -60,12 +68,13 @@ class PurchaseController extends Controller
         $purchase->save();
 
         return redirect()->route('thanks')->with(
-            'flashSuccess', '購入が完了しました'
+            'flashSuccess',
+            '購入が完了しました'
         );
     }
 
     // 配送先画面表示
-    public function getAddress($id)
+    public function address($id)
     {
         $item = Item::find($id);
         // ユーザーのデリバリー情報を取得
@@ -95,7 +104,8 @@ class PurchaseController extends Controller
         $delivery->save();
 
         return redirect()->route('getPurchase', ['id' => $id])->with(
-            'flashSuccess', '配送先情報が更新されました',
+            'flashSuccess',
+            '配送先情報が更新されました',
         );
     }
 
