@@ -19,7 +19,6 @@
     <header>
         @yield('header')
         @yield('header2')
-        @yield('header3')
     </header>
     <main>
         @yield('main')

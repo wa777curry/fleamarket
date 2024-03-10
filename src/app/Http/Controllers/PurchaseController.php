@@ -35,7 +35,7 @@ class PurchaseController extends Controller
         $formattedPrice = number_format($item->price);
         // 支払方法情報の取得
         $payments = Payment::all();
-        return view('purchase.item', compact('item', 'isPurchased', 'itemPurchased', 'delivery', 'formattedPrice', 'payments'));
+        return view('purchase.item', compact('item', 'isLoggedIn', 'isPurchased', 'itemPurchased', 'delivery', 'formattedPrice', 'payments'));
     }
 
     // 購入登録処理

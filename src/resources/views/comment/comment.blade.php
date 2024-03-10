@@ -14,7 +14,7 @@
         <div class="item__content--right">
             <div>
                 <h2>{{ $item->itemname }}</h2>
-                <h3 style="font-weight: normal;">¥{{ $formattedPrice }}(値段)</h3>
+                <h3 style="font-weight: normal;">¥{{ $formattedPrice }}</h3>
             </div>
             <div class="item__content--icon">
                 <!-- ログイン時のお気に入りアイコン表示 -->

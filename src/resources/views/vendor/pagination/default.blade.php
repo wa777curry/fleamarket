@@ -1,46 +1,35 @@
 @if ($paginator->hasPages())
-    <nav>
-        <ul class="pagination">
-            {{-- Previous Page Link --}}
-            @if ($paginator->onFirstPage())
-                <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                    <span aria-hidden="true">&lsaquo;</span>
-                </li>
-            @else
-                <li>
-                    <a href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
-                </li>
-            @endif
-
-            {{-- Pagination Elements --}}
-            @foreach ($elements as $element)
-                {{-- "Three Dots" Separator --}}
-                @if (is_string($element))
-                    <li class="disabled" aria-disabled="true"><span>{{ $element }}</span></li>
-                @endif
-
-                {{-- Array Of Links --}}
-                @if (is_array($element))
-                    @foreach ($element as $page => $url)
-                        @if ($page == $paginator->currentPage())
-                            <li class="active" aria-current="page"><span>{{ $page }}</span></li>
-                        @else
-                            <li><a href="{{ $url }}">{{ $page }}</a></li>
-                        @endif
-                    @endforeach
-                @endif
-            @endforeach
-
-            {{-- Next Page Link --}}
-            @if ($paginator->hasMorePages())
-                <li>
-                    <a href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
-                </li>
-            @else
-                <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
-                    <span aria-hidden="true">&rsaquo;</span>
-                </li>
-            @endif
-        </ul>
-    </nav>
+<nav>
+    <ul class="Pagination">
+        <li class="Pagination-Item">
+            <a class="Pagination-Item-Link" href="/pages/1/">
+                <svg xmlns="http://www.w3.org/2000/svg" class="Pagination-Item-Link-Icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
+                </svg>
+            </a>
+        </li>
+        <li class="Pagination-Item">
+            <a class="Pagination-Item-Link" href="/pages/1/"><span>1</span></a>
+        </li>
+        <li class="Pagination-Item">
+            <a class="Pagination-Item-Link isActive" href="/pages/2/"><span>2</span></a>
+        </li>
+        <li class="Pagination-Item">
+            <a class="Pagination-Item-Link" href="/pages/3/"><span>3</span></a>
+        </li>
+        <li class="Pagination-Item">
+            <a class="Pagination-Item-Link" href="/pages/4/"><span>4</span></a>
+        </li>
+        <li class="Pagination-Item">
+            <a class="Pagination-Item-Link" href="/pages/5/"><span>5</span></a>
+        </li>
+        <li class="Pagination-Item">
+            <a class="Pagination-Item-Link" href="/pages/5/">
+                <svg xmlns="http://www.w3.org/2000/svg" class="Pagination-Item-Link-Icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
+                </svg>
+            </a>
+        </li>
+    </ul>
+</nav>
 @endif

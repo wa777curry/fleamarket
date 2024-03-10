@@ -3,7 +3,7 @@
 @section('css')
 @endsection
 
-@include('layouts.header3')
+@include('layouts.header')
 
 @section('main')
 <div class="form__content">

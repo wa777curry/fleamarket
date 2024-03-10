@@ -24,6 +24,7 @@ header a:hover {
 }
 
 header img {
+    background-color: #000;
     max-height: 100%;
 }
 
@@ -49,4 +50,25 @@ header button {
 header button:hover {
     background: #ff5555;
     color: #fff;
+}
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    header {
+        flex-wrap: wrap;
+        height: auto;
+        width: 100%;
+    }
+
+    header div {
+        flex: 1 1 auto;
+        margin: auto 0;
+    }
+
+    header img {
+        height: auto;
+        margin: 5px 0;
+        width: 320px;
+    }
+
 }

@@ -92,12 +92,6 @@ main span {
     display: block;
 }
 
-.s_content {
-    border: 1px solid #6a9482; /* あとでtransparentに変える */
-    display: block;
-    padding: 35px;
-}
-
 .content__menu {
     cursor: pointer;
     font-weight: bold;
@@ -512,4 +506,47 @@ main span {
 .comment__content--text button:hover {
     background: #ccc;
     color: #000;
+}
+
+/* レスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 90%;
+    }
+
+    main {
+        max-width: 100%;
+        min-width: auto;
+    }
+
+    .panel__main {
+        padding: 0;
+    }
+
+    .panel__main hr {
+        margin: 0 -2%;
+    }
+
+    /* 商品詳細表示関連 */
+    .item__content--main,
+    .purchase__content--main {
+        flex-direction: column; /* コンテンツを縦方向に並べる */
+    }
+
+    .item__content--left,
+    .item__content--right,
+    .purchase__content--left,
+    .purchase__content--right {
+        margin: 5px auto;
+        width: 100%;
+        /* 左右中央揃え */
+    }
+
+    .item__content img {
+        height: auto;
+        max-width: 100%;
+    }
+
+
+
 }
