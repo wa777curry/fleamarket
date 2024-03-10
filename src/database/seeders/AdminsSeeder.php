@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Admin;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -19,5 +20,7 @@ class AdminsSeeder extends Seeder
             'email' => 'admin@testmail',
             'password' => Hash::make('admin123456'),
         ]);
+
+        Admin::factory()->count(1)->create();
     }
 }
