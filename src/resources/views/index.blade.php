@@ -48,16 +48,6 @@
 
 <div>
     ページリンク一覧
-    <li><a href="/comment">コメントページ</a>　※ログインしないと表示不可</li>
     <li><a href="/admin/login">管理者ログインページ</a></li>
 </div>
-
-<form method="post" action="/upload" enctype="multipart/form-data">
-    @csrf
-    <div style="display: flex; width: 500px;">
-        <input type="file" name="image">
-        <button style="width: 200px;">アップロード</button>
-    </div>
-</form>
-
 @endsection

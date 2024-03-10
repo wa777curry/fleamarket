@@ -152,7 +152,8 @@ main span {
 }
 
 .item__content--right button,
-.purchase__content--right button {
+.purchase__content--right button,
+.stripe-button {
     background: #ff5555;
     color: #fff;
     margin: 10px 0;

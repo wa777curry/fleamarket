@@ -1,5 +1,7 @@
 @section('header')
-<img src="/storage/image/logo.svg">
+<div>
+    <img src="/storage/image/logo.svg">
+</div>
 <div>
     @if (Auth::check())
         <!-- ログイン時の表示 -->

@@ -84,27 +84,4 @@ class ViewController extends Controller
         }
         return view('search', compact('results', 'query'));
     }
-
-
-
-
-
-
-    public function upload(Request $request)
-    {
-        // ディレクトリ名
-        $dir = 'item';
-        // アップロードされたファイル名を取得
-        $file_name = $request->file('image')->getClientOriginalName();
-        // 取得したファイル名で保存
-        // storage/app/public/任意のディレクトリ名/
-        $request->file('image')->storeAs('public/' . $dir, $file_name);
-        // ファイル情報をDBに保存
-        $image = new Image();
-        $image->imagename = $file_name;
-        $image->path = 'storage/' . $dir . '/' . $file_name;
-        $image->save();
-
-        return redirect('/');
-    }
 }

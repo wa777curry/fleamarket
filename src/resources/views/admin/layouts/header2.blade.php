@@ -1,6 +1,5 @@
 @section('header')
-<img src="/storage/image/logo.svg">
 <div>
-    <a href=""><button class="button" type="submit">　</button></a>
+    <a href="/"><img src="/storage/image/logo.svg"></a>
 </div>
 @endsection
