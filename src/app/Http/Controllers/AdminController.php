@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -32,7 +34,18 @@ class AdminController extends Controller
     // 管理者画面表示
     public function viewAdmin()
     {
-        return view('admin.admin');
+        $users = User::all();
+        return view('admin.admin', compact('users'));
+    }
+
+    // 一般ユーザーの削除処理
+    public function deleteAdmin($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('viewAdmin')->with(
+            'flashSuccess', 'ユーザーを削除しました'
+        );
     }
 
     // ログアウト関連

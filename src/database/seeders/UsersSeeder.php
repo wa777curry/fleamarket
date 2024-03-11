@@ -19,13 +19,13 @@ class UsersSeeder extends Seeder
         DB::table('users')->insert([
             'admin_id' => 1,
             'email' => 'user@testmail',
-            'password' => Hash::make('user123456'),
+            'password' => Hash::make('password'),
         ]);
 
         DB::table('users')->insert([
             'admin_id' => 1,
             'email' => 'seller@testmail',
-            'password' => Hash::make('seller123456'),
+            'password' => Hash::make('password'),
         ]);
 
         User::factory()->count(5)->create();

@@ -70,7 +70,8 @@ Route::prefix('admin')->group(function () {
     Route::post('/login', [AdminController::class, 'postAdminLogin'])->name('postAdminLogin');
 });
 
-Route::middleware(['auth:admin'])->group(function () {
+Route::middleware(['admin.auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'viewAdmin'])->name('viewAdmin');
+    Route::delete('/admin/{id}', [AdminController::class, 'deleteAdmin'])->name('deleteAdmin');
     Route::get('/admin/logout', [AdminController::class, 'logout']);
 });

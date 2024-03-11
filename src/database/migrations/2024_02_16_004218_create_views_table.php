@@ -15,7 +15,7 @@ class CreateViewsTable extends Migration
     {
         Schema::create('views', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('item_id')->constrained();
             $table->unsignedInteger('view_count')->default(1);
             $table->timestamp('last_viewed_at')->nullable();

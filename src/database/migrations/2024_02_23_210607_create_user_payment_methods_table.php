@@ -15,7 +15,7 @@ class CreateUserPaymentMethodsTable extends Migration
     {
         Schema::create('user_payment_methods', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('payment_id')->constrained();
             $table->timestamps();
         });

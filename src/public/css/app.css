@@ -509,6 +509,73 @@ main span {
     color: #000;
 }
 
+/* 管理画面関連 */
+.list__content {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: auto 5%;
+}
+
+thead {
+    background: #962424;
+    color: #fff;
+}
+
+th {
+    border: 3px solid #fff;
+    padding: 5px;
+}
+
+th i {
+    font-size: 16px;
+}
+
+td {
+    border: 3px solid #999; /* あとでtransparentに変える */
+    font-size: 90%;
+}
+
+th:nth-child(1),
+td:nth-child(1) {
+    text-align: center;
+    width: 5%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+    width: 30%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+    width: auto;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+    text-align: center;
+    width: 15%;
+}
+
+th:nth-child(5),
+td:nth-child(5),
+th:nth-child(6),
+td:nth-child(6) {
+    text-align: center;
+    width: 5%;
+}
+
+.list__content button {
+    background: transparent;
+    font-size: 22px;
+}
+
+
 /* レスポンシブデザイン */
 @media screen and (max-width: 768px) {
     body {
@@ -547,7 +614,4 @@ main span {
         height: auto;
         max-width: 100%;
     }
-
-
-
 }

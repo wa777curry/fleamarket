@@ -46,6 +46,7 @@ class CommentController extends Controller
         );
     }
 
+    // 投稿コメント削除処理
     public function deleteComment($id)
     {
         // コメントを取得
