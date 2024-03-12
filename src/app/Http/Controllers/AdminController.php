@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\Comment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,7 @@ class AdminController extends Controller
     // 管理者画面表示
     public function viewAdmin()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         return view('admin.admin', compact('users'));
     }
 
@@ -45,6 +46,23 @@ class AdminController extends Controller
         $user->delete();
         return redirect()->route('viewAdmin')->with(
             'flashSuccess', 'ユーザーを削除しました'
+        );
+    }
+
+    // 管理者画面表示
+    public function commentList()
+    {
+        $comments = Comment::paginate(10);
+        return view('admin.comment-list', compact('comments'));
+    }
+
+    // 一般ユーザーのコメント削除処理
+    public function deleteUserComment($id)
+    {
+        $comments = Comment::find($id);
+        $comments->delete();
+        return redirect()->route('commentList')->with(
+            'flashSuccess', 'コメントを削除しました'
         );
     }
 

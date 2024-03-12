@@ -24,6 +24,6 @@ class ProfilesSeeder extends Seeder
             'icon_url' => '/storage/icon/seller.jpg',
         ]);
 
-        Profile::factory()->count(5)->create();
+        Profile::factory()->count(20)->create();
     }
 }

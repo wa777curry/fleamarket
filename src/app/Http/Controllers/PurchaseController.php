@@ -8,8 +8,6 @@ use App\Models\Item;
 use App\Models\Payment;
 use App\Models\Purchase;
 use Illuminate\Http\Request;
-use Stripe\Stripe;
-use Stripe\Charge;
 
 class PurchaseController extends Controller
 {

@@ -531,13 +531,13 @@ th {
     padding: 5px;
 }
 
-th i {
+th i.fa {
     font-size: 16px;
 }
 
 td {
     border: 3px solid #999; /* あとでtransparentに変える */
-    font-size: 90%;
+    font-size: 95%;
 }
 
 th:nth-child(1),
@@ -548,11 +548,13 @@ td:nth-child(1) {
 
 th:nth-child(2),
 td:nth-child(2) {
+    padding-left: 15px;
     width: 30%;
 }
 
 th:nth-child(3),
 td:nth-child(3) {
+    padding: 0 15px;
     width: auto;
 }
 

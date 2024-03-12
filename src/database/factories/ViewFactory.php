@@ -22,7 +22,7 @@ class ViewFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween(1, 7),
+            'user_id' => $this->faker->numberBetween(1, 22),
             'item_id' => $this->faker->numberBetween(1, 18),
             'view_count' => $this->faker->numberBetween(1, 50),
             'last_viewed_at' => $this->faker->dateTimeBetween('-1 month', 'now'),

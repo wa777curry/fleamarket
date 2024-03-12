@@ -10,7 +10,7 @@
     <div class="panel__main">
         <div class="panel__menu">
             <span class="content__menu active">登録ユーザー一覧</span>
-            <span class="content__menu">コメント一覧</span>
+            <span class="content__menu"><a href="{{ route('commentList') }}">コメント一覧</a></span>
         </div>
         <hr>
         <div class="list__content">
@@ -18,7 +18,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>ユーザー名</th>
+                        <th>登録ユーザー名</th>
                         <th>登録メールアドレス</th>
                         <th>登録日</th>
                         <th><i class="fa fa-envelope fa-fg"></i></th>
@@ -29,8 +29,8 @@
                     @foreach($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>　{{ optional($user->profile)->username ?? 'ユーザー名未設定' }}</td>
-                        <td>　{{ $user->email }}</td>
+                        <td>{{ optional($user->profile)->username ?? 'ユーザー名未設定' }}</td>
+                        <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at->format('Y-m-d') }}</td>
                         <td>
                             <button type="submit"><i class="fa fa-envelope fa-fg"></i></button>
@@ -46,6 +46,9 @@
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="paginate">
+            {{ $users->links() }}
         </div>
     </div>
 </div>
