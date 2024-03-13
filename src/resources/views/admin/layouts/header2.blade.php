@@ -1,5 +1,5 @@
 @section('header')
 <div>
-    <a href="/"><img src="/storage/image/logo.svg"></a>
+    <img src="/storage/image/logo.svg">
 </div>
 @endsection
