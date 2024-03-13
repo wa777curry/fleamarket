@@ -22,7 +22,7 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween(3, 22),
+            'user_id' => $this->faker->numberBetween(1, 22),
             'item_id' => $this->faker->numberBetween(1, 18),
             'comment' => $this->faker->realText(100),
         ];

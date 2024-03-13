@@ -17,7 +17,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>No</th>
                         <th>投稿ユーザー名</th>
                         <th>コメント内容</th>
                         <th>登録日</th>
