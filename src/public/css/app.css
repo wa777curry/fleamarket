@@ -51,7 +51,7 @@ img {
 }
 
 main div {
-    background: #bde2d1; /* 後で消す */
+    background: #d6f2e5; /* 後で消す */
     border: 1px solid #999; /* あとでtransparentに変える */
     margin: 5px;
     padding: 5px;
@@ -526,8 +526,12 @@ thead {
     color: #fff;
 }
 
+tr:nth-child(odd) td {
+    background: #ccc;
+}
+
 th {
-    border: 3px solid #fff;
+    border: 1px solid #962424;
     padding: 5px;
 }
 
@@ -536,7 +540,7 @@ th i.fa {
 }
 
 td {
-    border: 3px solid #999; /* あとでtransparentに変える */
+    border: 1px solid #962424; /* あとでtransparentに変える */
     font-size: 95%;
 }
 
