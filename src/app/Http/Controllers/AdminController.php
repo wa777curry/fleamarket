@@ -35,7 +35,7 @@ class AdminController extends Controller
     // 管理者画面表示
     public function viewAdmin()
     {
-        $users = User::paginate(10);
+        $users = User::paginate(15);
         return view('admin.admin', compact('users'));
     }
 

@@ -20,7 +20,7 @@
                         <th>No</th>
                         <th>投稿ユーザー名</th>
                         <th>コメント内容</th>
-                        <th>登録日</th>
+                        <th>投稿日</th>
                         <th><i class="fa fa-trash-o fa-fg"></i></th>
                     </tr>
                 </thead>
@@ -30,7 +30,7 @@
                         <td>{{ $comment->id }}</td>
                         <td>{{ optional($comment->user->profile)->username ?? 'ユーザー名未設定' }}</td>
                         <td>{!! nl2br(e($comment->comment)) !!}</td>
-                        <td></td>
+                        <td>{{ $comment->created_at }}</td>
                         <td>
                             <form action="{{ route('deleteUserComment', ['id' => $comment->id]) }}" method="post">
                                 @csrf
