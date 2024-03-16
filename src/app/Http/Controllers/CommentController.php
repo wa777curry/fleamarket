@@ -39,8 +39,7 @@ class CommentController extends Controller
             'comment' => $request->input('comment'),
         ]);
         // リクエスト元のURLが存在する場合はそこにリダイレクトし、存在しない場合はデフォルトのURLにリダイレクトする
-        $previousUrl = $request->session()->pull('previous_url', route('comment', ['id' => $id]));
-        return redirect($previousUrl)->with(
+        return redirect()->back()->with(
             'flashSuccess',
             'コメントが投稿されました'
         );

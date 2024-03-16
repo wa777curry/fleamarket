@@ -346,6 +346,10 @@ main span {
     background: #962424;
 }
 
+.form__main h5 a:hover {
+    text-decoration: underline;
+}
+
 .form__main select,
 .purchase__content--left select {
     width: 49%;
