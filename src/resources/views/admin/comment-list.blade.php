@@ -9,7 +9,7 @@
 <div class="panel__content">
     <div class="panel__main">
         <div class="panel__menu">
-            <span class="content__menu"><a href="{{ route('viewAdmin') }}">登録ユーザー一覧</a></span>
+            <span class="content__menu"><a href="{{ route('admin') }}">登録ユーザー一覧</a></span>
             <span class="content__menu active">コメント一覧</span>
         </div>
         <hr>

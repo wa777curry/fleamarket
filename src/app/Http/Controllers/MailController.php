@@ -2,25 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\MailRequest;
 use App\Mail\Email;
-use Illuminate\Http\Request;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
-    public function mail()
+    // メール送信画面表示
+    public function mail($id)
     {
-        return view('admin.mail');
+        $user = User::find($id);
+        return view('admin.mail', compact('user'));
     }
 
-    public function postMail(Request $request)
+    // メール送信処理
+    public function postMail(MailRequest $request)
     {
-        // メールを送信する
-        Mail::to($request->email)->send(new Email($request->subject, $request->message));
+        $data = $request->all();
+        // メールを作成して送信
+        Mail::to($data['email'])->send(new Email($data));
 
-        // 送信後に適切なリダイレクトなどを行う
-
-        return redirect()->back()->with('success', 'メールを送信しました');
+        return redirect()->route('admin')->with(
+            'flashSuccess', 'メールを送信しました'
+        );
     }
 }

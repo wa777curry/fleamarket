@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Models\Comment;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -22,34 +21,37 @@ class AdminController extends Controller
         $credentials = $request->only(['email', 'password']);
 
         if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('viewAdmin')->with(
-                'flashSuccess', 'ログインしました',
+            return redirect()->route('admin')->with(
+                'flashSuccess',
+                'ログインしました',
             );
         } else {
             return redirect()->route('getAdminLogin')->with(
-                'flashError', 'ログインに失敗しました',
+                'flashError',
+                'ログインに失敗しました',
             );
         }
     }
 
     // 管理者画面表示
-    public function viewAdmin()
+    public function admin()
     {
         $users = User::paginate(15);
         return view('admin.admin', compact('users'));
     }
 
     // 一般ユーザーの削除処理
-    public function deleteAdmin($id)
+    public function deleteUser($id)
     {
         $user = User::findOrFail($id);
         $user->delete();
-        return redirect()->route('viewAdmin')->with(
-            'flashSuccess', 'ユーザーを削除しました'
+        return redirect()->route('admin')->with(
+            'flashSuccess',
+            'ユーザーを削除しました'
         );
     }
 
-    // 管理者画面表示
+    // コメント一覧表示
     public function commentList()
     {
         $comments = Comment::paginate(10);
@@ -62,7 +64,8 @@ class AdminController extends Controller
         $comments = Comment::find($id);
         $comments->delete();
         return redirect()->route('commentList')->with(
-            'flashSuccess', 'コメントを削除しました'
+            'flashSuccess',
+            'コメントを削除しました'
         );
     }
 
@@ -71,7 +74,8 @@ class AdminController extends Controller
     {
         Auth::logout();
         return redirect()->route('getAdminLogin')->with(
-            'flashSuccess', 'ログアウトしました',
+            'flashSuccess',
+            'ログアウトしました',
         );
     }
 }

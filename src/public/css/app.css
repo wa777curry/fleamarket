@@ -198,7 +198,9 @@ main span {
     display: flex;
 }
 
-.item__content--icon button {
+.item__content--icon button,
+.item__content--icon button:hover {
+    background: #fff;
     color: #000;
     margin: 0 20px 0 0;
     padding: 0;
@@ -213,6 +215,7 @@ main span {
 
 .item__content--icon i {
     align-items: center;
+    background: #fff;
     color: #ff5555;
     font-size: 36px;
 }
@@ -534,7 +537,7 @@ th {
 }
 
 th i.fa {
-    font-size: 16px;
+    font-size: 20px;
 }
 
 td {

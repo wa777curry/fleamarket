@@ -21,7 +21,7 @@
                         <th>登録ユーザー名</th>
                         <th>登録メールアドレス</th>
                         <th>登録日</th>
-                        <th><a href="{{ route('mail') }}"><i class="fa fa-envelope fa-fg"></i></a></th>
+                        <th><i class="fa fa-envelope fa-fg"></i></th>
                         <th><i class="fa fa-trash-o fa-fg"></i></th>
                     </tr>
                 </thead>
@@ -33,10 +33,10 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->created_at->format('Y-m-d') }}</td>
                         <td>
-                            <button type="submit"><i class="fa fa-envelope fa-fg"></i></button>
+                            <button type="submit"><a href="{{ route('mail', ['id' => $user->id]) }}"><i class="fa fa-envelope fa-fg"></i></a></button>
                         </td>
                         <td>
-                            <form action="{{ route('deleteAdmin', ['id' => $user->id]) }}" method="post">
+                            <form action="{{ route('deleteUser', ['id' => $user->id]) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit"><i class="fa fa-trash-o fa-fg"></i></button>

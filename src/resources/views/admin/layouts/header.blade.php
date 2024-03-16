@@ -3,6 +3,7 @@
     <a href="/admin"><img src="/storage/image/logo.svg"></a>
 </div>
 <div>
-    <span><a href="{{ url('admin/logout') }}">ログアウト</a></span>
+    <span><a href="http://localhost:8025/" target="_blank">MailHog</a></span>
+    <span><a href=" {{ url('admin/logout') }}">ログアウト</a></span>
 </div>
 @endsection

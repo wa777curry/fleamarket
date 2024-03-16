@@ -72,13 +72,13 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::middleware(['admin.auth'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'viewAdmin'])->name('viewAdmin');
-    Route::delete('/admin/{id}', [AdminController::class, 'deleteAdmin'])->name('deleteAdmin');
+    Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
+    Route::delete('/admin/{id}', [AdminController::class, 'deleteUser'])->name('deleteUser');
 
     Route::get('/comment-list', [AdminController::class, 'commentList'])->name('commentList');
     Route::delete('/comment-list/{id}', [AdminController::class, 'deleteUserComment'])->name('deleteUserComment');
 
-    Route::get('/mail', [MailController::class, 'mail'])->name('mail');
+    Route::get('/mail/{id}', [MailController::class, 'mail'])->name('mail');
     Route::post('/mail', [MailController::class, 'postMail'])->name('postMail');
 
     Route::get('/admin/logout', [AdminController::class, 'logout']);
