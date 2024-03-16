@@ -21,7 +21,7 @@
                         <th>登録ユーザー名</th>
                         <th>登録メールアドレス</th>
                         <th>登録日</th>
-                        <th><i class="fa fa-envelope fa-fg"></i></th>
+                        <th><a href="{{ route('mail') }}"><i class="fa fa-envelope fa-fg"></i></a></th>
                         <th><i class="fa fa-trash-o fa-fg"></i></th>
                     </tr>
                 </thead>

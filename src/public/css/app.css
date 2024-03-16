@@ -51,14 +51,12 @@ img {
 }
 
 main div {
-    background: #d6f2e5; /* 後で消す */
-    border: 1px solid #999; /* あとでtransparentに変える */
+    border: 1px solid transparent;
     margin: 5px;
     padding: 5px;
 }
 
 main span {
-    background: #ebe3f0;/* 後で消す */
     margin: 10px;
 }
 
@@ -88,7 +86,7 @@ main span {
 
 /* 切替コンテンツ関連 */
 .content {
-    border: 1px solid #6a9482; /* あとでtransparentに変える */
+    border: 1px solid transparent;
     display: block;
 }
 
@@ -540,7 +538,7 @@ th i.fa {
 }
 
 td {
-    border: 1px solid #962424; /* あとでtransparentに変える */
+    border: 1px solid transparent;
     font-size: 95%;
 }
 

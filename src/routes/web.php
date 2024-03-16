@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
@@ -76,6 +77,9 @@ Route::middleware(['admin.auth'])->group(function () {
 
     Route::get('/comment-list', [AdminController::class, 'commentList'])->name('commentList');
     Route::delete('/comment-list/{id}', [AdminController::class, 'deleteUserComment'])->name('deleteUserComment');
+
+    Route::get('/mail', [MailController::class, 'mail'])->name('mail');
+    Route::post('/mail', [MailController::class, 'postMail'])->name('postMail');
 
     Route::get('/admin/logout', [AdminController::class, 'logout']);
 });
