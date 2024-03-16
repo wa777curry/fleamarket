@@ -13,7 +13,7 @@
             @if(auth()->check())
             <span class="content__menu"><a href="{{ route('mylist') }}?search={{ $query }}">マイリスト</a></span>
             @endif
-            <span class="content__menu active">検索結果</span>
+            <span class="content__menu active"><a>検索結果</a></span>
         </div>
         <hr>
         <!-- 　検索結果一覧の表示 -->

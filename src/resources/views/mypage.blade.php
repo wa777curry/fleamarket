@@ -26,7 +26,7 @@
         </div>
         <!-- 商品表示部分 -->
         <div class="panel__menu">
-            <span class="content__menu active">出品した商品</span>
+            <span class="content__menu active"><a>出品した商品</a></span>
             <span class="content__menu"><a href="{{ route('purchase') }}">購入した商品</a></span>
         </div>
         <hr>

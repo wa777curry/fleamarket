@@ -11,7 +11,7 @@
         <div class="panel__menu">
             <span class="content__menu"><a href="{{route('index') }}?search={{ $query }}">おすすめ</a></span>
             @if(auth()->check())
-            <span class="content__menu active">マイリスト</span>
+            <span class="content__menu active"><a>マイリスト</a></span>
             @endif
             <span class="content__menu"><a href="{{ route('search') }}?search={{ $query }}">検索結果</a></span>
         </div>

@@ -100,6 +100,12 @@ main span {
     color: #ff5555;
 }
 
+.content__menu a:hover {
+    border-bottom: 2px dashed #ff5555;
+    color: #ff5555;
+    padding-bottom: 2px;
+}
+
 .content select {
     margin-bottom: 5px;
     width: auto;
@@ -116,6 +122,7 @@ main span {
 }
 
 .content img {
+    box-shadow: 3px 3px 7px #999;
     height: 200px;
     max-height: 200px;
     max-width: 300px;
@@ -249,6 +256,7 @@ main span {
 }
 
 .item__content img {
+    box-shadow: 3px 3px 7px #999;
     height: 300px;
     max-height: 300px;
     max-width: 500px;
@@ -396,6 +404,7 @@ main span {
 
 .icon img {
     border-radius: 5%;
+    box-shadow: 3px 3px 7px #999;
     height: 120px;
     margin-right: 20px;
     max-height: 120px;
@@ -425,6 +434,7 @@ main span {
 
 .item img,
 .purchase__content--item img {
+    box-shadow: 3px 3px 7px #999;
     display: block;
     height: 200px;
     margin: 0 auto;
@@ -460,6 +470,7 @@ main span {
 
 .comment__content--main img {
     border-radius: 5%;
+    box-shadow: 3px 3px 7px #999;
     height: 30px;
     max-height: 30px;
     max-width: 30px;

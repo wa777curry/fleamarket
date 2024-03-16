@@ -9,7 +9,7 @@
 <div class="panel__content">
     <div class="panel__main">
         <div class="panel__menu">
-            <span class="content__menu active">おすすめ</span>
+            <span class="content__menu active"><a>おすすめ</a></span>
             @if(auth()->check())
             <span class="content__menu"><a href="{{ route('mylist') }}?search={{ $query }}">マイリスト</a></span>
             @endif
@@ -45,9 +45,4 @@
     </div>
 </div>
 
-<!-- 後で消すこと -->
-<div>
-    ページリンク一覧
-    <li><a href="/admin/login">管理者ログインページ</a></li>
-</div>
 @endsection
