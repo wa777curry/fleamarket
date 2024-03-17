@@ -80,7 +80,12 @@ class ViewController extends Controller
                 ->orWhereHas('subcategory', function ($queryBuilder) use ($query) {
                     $queryBuilder->where('subcategory', 'like', '%' . $query . '%');
                 })
-            ->paginate(12);
+                ->orWhereHas('condition', function ($queryBuilder) use ($query) {
+                    $queryBuilder->where('condition', 'like', '%' . $query . '%');
+                })
+                ->orWhere('description', 'like', '%' . $query . '%')
+                ->orWhere('price', 'like', '%' . $query . '%')
+                ->paginate(12);
         }
         return view('search', compact('results', 'query'));
     }
