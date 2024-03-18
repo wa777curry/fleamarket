@@ -274,8 +274,6 @@
    ```
    brew install mailhog
    ```
-   * Mailhogへのアクセスは http://localhost:8025 です
-   * 別途管理者画面からもアクセス可能です
 
 3. トップページを開くには http://localhost へアクセスしてください
 </details>
