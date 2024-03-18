@@ -171,7 +171,7 @@
 ## ER図
 <details>
 	
-![er drawio](https://github.com/wa777curry/fleamarket/assets/136479019/340db61e-9e6e-44bf-93e9-be86cda7faba)
+![er drawio](https://github.com/wa777curry/fleamarket/assets/136479019/7eaefb03-03fe-48d8-bb83-52125c84a6cf)
 </details>
 
 ## 環境構築
