@@ -27,9 +27,9 @@ class ProfileFactory extends Factory
             'postcode' => $this->faker->postcode,
             'address' => $this->faker->prefecture() . $this->faker->city() . $this->faker->streetAddress(),
             'building' => $this->faker->secondaryAddress,
-            'icon_url' => '/storage/icon/' . $this->faker->randomElement([
+            'icon_url' => url('img/icon/' . $this->faker->randomElement([
                 'alpaca.jpg', 'bird.jpg', 'boar.jpg', 'dog.jpg', 'elephant.jpg',
-                'fish.jpg', 'flamingo.jpg', 'horse.jpg', 'pig.jpg', 'shrimp.jpg']),
+                'fish.jpg', 'flamingo.jpg', 'horse.jpg', 'pig.jpg', 'shrimp.jpg'])),
         ];
     }
 }

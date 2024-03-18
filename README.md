@@ -193,15 +193,16 @@
    ```
    git clone git@github.com:wa777curry/fleamarket.git
    ```
+   * Githubにリモートリポジトリを作成する
+   ```
+   cd クローンされたフォルダ
+   git remote set-url origin 作成したリポジトリのurl
+   git remote -v
+   ```
    * ローカルで変更したものをコミットする
    ```
    git add .
    git commit -m "任意のコミットメッセージ"
-   ```
-   * Githubにリモートリポジトリを作成する
-   ```
-   git remote set-url origin 作成したリポジトリのurl
-   git remote -v
    ```
    * リモートに変更を反映させる
    ```
@@ -264,12 +265,17 @@
      * プロフィール情報
      * 閲覧回数情報
 
-7. Mailhogのインストール
+1. アップロードする画像を表示するため、シンボリックリンクを設定
+   ```
+   php artisan storage:link
+   ```
+
+2. Mailhogのインストール
    ```
    brew install mailhog
    ```
    * Mailhogへのアクセスは http://localhost:8025 です
    * 別途管理者画面からもアクセス可能です
 
-8. トップページを開くには http://localhost へアクセスしてください
+3. トップページを開くには http://localhost へアクセスしてください
 </details>

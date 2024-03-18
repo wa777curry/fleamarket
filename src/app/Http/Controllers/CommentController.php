@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Item;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
@@ -19,7 +17,7 @@ class CommentController extends Controller
         // コメントを作成日時で降順に取得
         $comments = Comment::where('item_id', $item->id)
             ->orderBy('created_at', 'desc')->get();
-        $defaultIconUrl = Storage::url('icon/default.png'); // デフォルトのアイコンURL
+        $defaultIconUrl = url('img/icon/default.png'); // デフォルトのアイコンURL
         return view('comment.comment', compact('item', 'comments', 'formattedPrice', 'defaultIconUrl'));
     }
 

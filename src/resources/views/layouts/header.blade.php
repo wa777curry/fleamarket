@@ -1,6 +1,6 @@
 @section('header')
 <div>
-    <a href="/"><img src="/storage/image/logo.svg"></a>
+    <a href="/"><img src="/img/image/logo.svg"></a>
 </div>
 <div>
     <form action="{{ route('search') }}" method="get">

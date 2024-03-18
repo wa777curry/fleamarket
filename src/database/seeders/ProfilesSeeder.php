@@ -21,7 +21,7 @@ class ProfilesSeeder extends Seeder
             'postcode' => '5408570',
             'address' => '大阪府大阪市中央区大手前2丁目',
             'building' => null,
-            'icon_url' => '/storage/icon/seller.jpg',
+            'icon_url' => url('/img/icon/seller.jpg'),
         ]);
 
         Profile::factory()->count(20)->create();

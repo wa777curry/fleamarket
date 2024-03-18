@@ -14,7 +14,7 @@ class ProfileController extends Controller
     {
         // プロフィール情報がある場合は情報を取得
         $profile = auth()->user()->profile;
-        $defaultIconUrl = Storage::url('icon/default.png'); // デフォルトのアイコンURL
+        $defaultIconUrl = url('img/icon/default.png'); // デフォルトのアイコンURL
         return view('mypage.profile', compact('profile', 'defaultIconUrl'));
     }
 
