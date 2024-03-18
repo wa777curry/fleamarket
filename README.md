@@ -6,19 +6,36 @@
 機能や画面遷移のわかりやすいフリマアプリサービスの提供
 
 ## ユーザーテストURL：http://localhost/
+<details>
+
 * 購入者テストアカウント：user@testmail
 * 購入者テストパスワード：password
 
 * 出品者テストアカウント：seller@testmail
 * 出品者テストパスワード：password
+</details>
 
 ## 管理者テストURL：http://localhost/admin/login/
+<details>
+
 * 管理者テストアカウント：admin@testmail
 * 管理者テストパスワード：password
+</details>
 
+## 機能一覧
+* 会員登録
+* 商品検索
+* 商品の購入、出品、コメント機能、お気に入り登録機能
 
+## 使用技術
+* HTML, CSS, JavaScript
+* PHP 8.2.8, Laravel 8.83.27
+* MySQL 15.1
+* Docker, Docker Compose
 
 ## テーブル設計
+<details>
+	
 | adminsテーブル          |                 |             |            |          |                 |
 | :-------------------- | :-------------- | :---------- | :--------- | :------- | :-------------- |
 | カラム名              | 型              | PRIMARY KEY | UNIQUE KEY | NOT NULL | FOREIGN KEY     |
@@ -149,26 +166,39 @@
 | payment_id            | bigint          |             |            | ⚪︎     | payment(id)     |
 | created_at            | timestamp       |             |            |          |                 |
 | updated_at            | timestamp       |             |            |          |                 |
+</details>
 
 ## ER図
+<details>
+	
 ![er drawio](https://github.com/wa777curry/fleamarket/assets/136479019/7eaefb03-03fe-48d8-bb83-52125c84a6cf)
+</details>
 
 ## 環境構築
+### Macの場合
+1. Homebrewをインストールしてください  
+   * 公式サイト：https://brew.sh/ja/  
+1. Githubをインストールしてください  
+   * ターミナルで `brew install git` を実行  
+   * インストール後 `git --version` でバージョンが表示されていれば大丈夫です
 1. Dockerをインストールしてください  
-	URL
-2. githubからプロジェクトをクローンしてください  
-	URL
-3. Docker Composeコマンドでビルドしてください  
-	$ docker-compose up -d --build  
-	Dockerにコンテナが作成されていれば成功です
-4. Dockerコンテナを起動してください
+   * 公式サイト：https://docs.docker.com/desktop/install/mac-install/?_fsi=Kk00kOxB  
+   * 参考サイト：https://matsuand.github.io/docs.docker.jp.onthefly/desktop/mac/install/
+1. githubからプロジェクトをクローンしてください  
+   * リポジトリURL：https://github.com/wa777curry/fleamarket.git
+   * 参考サイト：https://docs.github.com/ja/repositories/creating-and-managing-repositories/cloning-a-repository?platform=mac#cloning-an-empty-repository  
+1. Docker Composeコマンドでビルドしてください  
+   * ターミナルで `docker-compose up -d --build` を実行  
+   * Dockerにコンテナが作成されていれば成功です
+1. Dockerコンテナを起動してください
 
-5. Laravelのパッケージをインストールしてください  
-	docker-compose exec php bash  
-	composer create-project "laravel/laravel=8.*" . --prefer-dist
+1. Laravelのパッケージをインストールしてください  
+   * ターミナルで `docker-compose exec php bash` を実行    
+   * ターミナルで `composer create-project "laravel/laravel=8.*" . --prefer-dist` を実行  
 
-6. .envファイルの作成と修正が必要です  
-	演習0−2
-7. データベースのマイグレーションが必要です
-8. （必要であれば）シーダーファイルでダミーデータを呼び出せます
-9. ブラウザで http://localhostにアクセスしてください
+1. .envファイルの作成と修正が必要です  
+   * 演習0−2  
+1. データベースのマイグレーションが必要です
+    
+1. （必要であれば）シーダーファイルでダミーデータを呼び出せます
+1. ブラウザで http://localhostにアクセスしてください
