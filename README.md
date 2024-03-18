@@ -191,12 +191,17 @@
 1. リポジトリの設定  
    * ローカルにクローンする  
    ```
-   git clone https://github.com/wa777curry/fleamarket.git
+   git clone git@github.com:wa777curry/fleamarket.git
    ```
    * ローカルで変更したものをコミットする
    ```
    git add .
    git commit -m "任意のコミットメッセージ"
+   ```
+   * Githubにリモートリポジトリを作成する
+   ```
+   git remote set-url origin 作成したリポジトリのurl
+   git remote -v
    ```
    * リモートに変更を反映させる
    ```
@@ -259,12 +264,12 @@
      * プロフィール情報
      * 閲覧回数情報
 
-1. Mailhogのインストール
+7. Mailhogのインストール
    ```
    brew install mailhog
    ```
    * Mailhogへのアクセスは http://localhost:8025 です
    * 別途管理者画面からもアクセス可能です
 
-2. トップページを開くには http://localhost へアクセスしてください
+8. トップページを開くには http://localhost へアクセスしてください
 </details>
