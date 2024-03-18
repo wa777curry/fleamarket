@@ -43,11 +43,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Item::class, 'likes');
     }
 
-    public function payments()
-    {
-        return $this->belongsToMany(Payment::class, 'user_payment');
-    }
-
     public function sell_items()
     {
         return $this->hasMany(Item::class, 'seller_id');
@@ -56,10 +51,5 @@ class User extends Authenticatable
     public function views()
     {
         return $this->hasMany(View::class);
-    }
-
-    public function purchase_items()
-    {
-        return $this->belongsToMany(Item::class, 'purchase_items', 'user_id', 'item_id');
     }
 }
