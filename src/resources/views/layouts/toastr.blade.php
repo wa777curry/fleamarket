@@ -5,7 +5,6 @@
         top: 65px;
     }
 
-    /* ここに@mediaの携帯表示の設定してもいいかも */
 </style>
 
 <script>

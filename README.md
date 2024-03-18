@@ -175,30 +175,96 @@
 </details>
 
 ## 環境構築
-### Macの場合
-1. Homebrewをインストールしてください  
-   * 公式サイト：https://brew.sh/ja/  
-1. Githubをインストールしてください  
-   * ターミナルで `brew install git` を実行  
-   * インストール後 `git --version` でバージョンが表示されていれば大丈夫です
-1. Dockerをインストールしてください  
-   * 公式サイト：https://docs.docker.com/desktop/install/mac-install/?_fsi=Kk00kOxB  
-   * 参考サイト：https://matsuand.github.io/docs.docker.jp.onthefly/desktop/mac/install/
-1. githubからプロジェクトをクローンしてください  
-   * リポジトリURL：https://github.com/wa777curry/fleamarket.git
-   * 参考サイト：https://docs.github.com/ja/repositories/creating-and-managing-repositories/cloning-a-repository?platform=mac#cloning-an-empty-repository  
-1. Docker Composeコマンドでビルドしてください  
-   * ターミナルで `docker-compose up -d --build` を実行  
-   * Dockerにコンテナが作成されていれば成功です
-1. Dockerコンテナを起動してください
+### 事前準備
+<details>
 
-1. Laravelのパッケージをインストールしてください  
-   * ターミナルで `docker-compose exec php bash` を実行    
-   * ターミナルで `composer create-project "laravel/laravel=8.*" . --prefer-dist` を実行  
+* Githubのインストール  
+   > 参考サイト：https://kinsta.com/jp/knowledgebase/install-git/
+* Dockerのインストール  
+   > 参考サイト（Mac)：https://matsuand.github.io/docs.docker.jp.onthefly/desktop/mac/install/  
+   > 参考サイト（Win)：https://matsuand.github.io/docs.docker.jp.onthefly/desktop/windows/install/
+</details>
 
-1. .envファイルの作成と修正が必要です  
-   * 演習0−2  
-1. データベースのマイグレーションが必要です
-    
-1. （必要であれば）シーダーファイルでダミーデータを呼び出せます
-1. ブラウザで http://localhostにアクセスしてください
+### 導入手順
+<details>
+
+1. リポジトリの設定  
+   * ローカルにクローンする  
+   ```
+   git clone https://github.com/wa777curry/fleamarket.git
+   ```
+   * ローカルで変更したものをコミットする
+   ```
+   git add .
+   git commit -m "任意のコミットメッセージ"
+   ```
+   * リモートに変更を反映させる
+   ```
+   git push
+   ```
+2. Dockerの設定  
+   ```
+   docker-compose up -d --build
+   ```
+   * Dockerにコンテナが作成されていれば成功です  
+   * Dockerコンテナを起動してください  
+
+3. Laravelのパッケージのインストール  
+   * PHPコンテナ内へのログイン
+   ```
+   docker-compose exec php bash
+   ```
+   * PHPコンテナ内にログインし、パッケージのリストをインストール
+   ```
+   composer install
+   ```
+
+4. .envファイルの作成と修正  
+   * .env.exampleをコピーして、.envファイルを作成します
+   ```
+   cp .env.example .env
+   exit
+   ```
+   * .envファイルを以下のように修正します
+   ```diff PHP
+   DB_CONNECTION=mysql
+   - DB_HOST=127.0.0.1
+   + DB_HOST=mysql
+   DB_PORT=3306
+   - DB_DATABASE=laravel
+   - DB_USERNAME=root
+   - DB_PASSWORD=
+   + DB_DATABASE=laravel_db
+   + DB_USERNAME=laravel_user
+   + DB_PASSWORD=laravel_pass
+   ```
+5. データベースのマイグレーション
+   * PHPコンテナ内でマイグレーションを実行します
+    ```
+    php artisan migrate
+    ```
+6. シーディングの実行
+   * PHPコンテナ内でシーディングを実行します
+   ```
+   php artisan db:seed
+   ```
+   * 以下のテストデータが含まれています
+     * 管理者ログイン情報
+     * ユーザーログイン情報
+     * 商品情報
+     * 商品のカテゴリー、サブカテゴリー、コンディション情報
+     * テストコメント情報
+     * お気に入り情報
+     * 支払方法情報
+     * プロフィール情報
+     * 閲覧回数情報
+
+1. Mailhogのインストール
+   ```
+   brew install mailhog
+   ```
+   * Mailhogへのアクセスは http://localhost:8025 です
+   * 別途管理者画面からもアクセス可能です
+
+2. トップページを開くには http://localhost へアクセスしてください
+</details>

@@ -37,8 +37,6 @@ Route::post('/login', [UserController::class, 'postLogin'])->name('postLogin');
 Route::get('/register', [UserController::class, 'register'])->name('register');
 Route::post('/register', [UserController::class, 'postRegister'])->name('postRegister');
 
-Route::post('/upload', [ViewController::class, 'upload']);
-
 // ログイン後の承認ページ
 Route::middleware(['auth', 'web'])->group(function () {
     Route::get('/logout', [UserController::class, 'logout']);
@@ -53,7 +51,6 @@ Route::middleware(['auth', 'web'])->group(function () {
 
     Route::get('/purchase/{id}', [PurchaseController::class, 'getPurchase'])->name('getPurchase');
     Route::post('/purchase/{id}', [PurchaseController::class, 'postPurchase'])->name('postPurchase');
-
     Route::get('/thanks', [PurchaseController::class, 'thanks'])->name('thanks');
 
     Route::get('/purchase/address/{id}', [PurchaseController::class, 'address'])->name('address');
