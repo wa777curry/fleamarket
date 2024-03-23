@@ -188,51 +188,42 @@
 ### 導入手順
 <details>
 
-1. リポジトリの設定  
-   * ローカルにクローンする  
-   ```
+1. リモートリポジトリからローカルリポジトリにクローンする  
+   * 自分のローカルリポジトリにクローンする  
+   ```shell
+   mkdir {任意の名前}
+   cd {上記で作ったディレクトリ}
    git clone git@github.com:wa777curry/fleamarket.git
    ```
-   * Githubにリモートリポジトリを作成する
-   ```
+
+1. 自分のリモートリポジトリにローカルリポジトリのデータを反映させる  
+（開発環境がいらないときはこの工程は不要）
+   * 自分のGithubに任意の名前でリモートリポジトリを作成する
+   * ローカルリポジトリとリモートリポジトリを紐づける
+   ```shell
    cd クローンされたフォルダ
-   git remote set-url origin 作成したリポジトリのurl
+   git remote set-url origin {作成したリポジトリのURL(git@github.com:〜)}
    git remote -v
    ```
    * ローカルで変更したものをコミットする
-   ```
+   ```shell
    git add .
    git commit -m "任意のコミットメッセージ"
    ```
    * リモートに変更を反映させる
-   ```
+   ```shell
    git push
    ```
-2. Dockerの設定  
-   ```
-   docker-compose up -d --build
-   ```
-   * Dockerにコンテナが作成されていれば成功です  
-   * Dockerコンテナを起動してください  
 
-3. Laravelのパッケージのインストール  
-   * PHPコンテナ内へのログイン
-   ```
-   docker-compose exec php bash
-   ```
-   * PHPコンテナ内にログインし、パッケージのリストをインストール
-   ```
-   composer install
-   ```
-
-4. .envファイルの作成と修正  
+1. .envファイルの作成と修正  
    * .env.exampleをコピーして、.envファイルを作成します
-   ```
+   ```shell
+   cd src
    cp .env.example .env
-   exit
    ```
    * .envファイルを以下のように修正します
-   ```diff PHP
+   ```diff shell
+   open .env
    DB_CONNECTION=mysql
    - DB_HOST=127.0.0.1
    + DB_HOST=mysql
@@ -244,36 +235,65 @@
    + DB_USERNAME=laravel_user
    + DB_PASSWORD=laravel_pass
    ```
-5. データベースのマイグレーション
-   * PHPコンテナ内でマイグレーションを実行します
+
+2. Dockerの設定  
+   ```shell
+   docker-compose up -d --build
+   ```
+   * Dockerにコンテナが作成されていれば成功です  
+
+3. Laravelのパッケージのインストール  
+   * PHPコンテナ内へのログイン
+   ```shell
+   docker-compose exec php bash
+   ```
+   * ログインできたらパッケージをインストール
+   ```php
+   composer install
+   ```
+
+4. APP_KEYの作成  
+   * PHPコンテナ内で以下のコマンドを実行
+   ```php
+   php artisan key:generate
+   ```
+
+4. データベースのマイグレーション
+   * PHPコンテナ内でマイグレーションを実行
+    ```php
+    php artisan migrate:fresh
     ```
-    php artisan migrate
-    ```
+
 6. シーディングの実行
-   * PHPコンテナ内でシーディングを実行します
-   ```
-   php artisan db:seed
-   ```
-   * 以下のテストデータが含まれています
+  * 以下のテストデータが含まれています
      * 管理者ログイン情報
      * ユーザーログイン情報
      * 商品情報
      * 商品のカテゴリー、サブカテゴリー、コンディション情報
-     * テストコメント情報
+     * テストコメント情報（文章はランダムです）
      * お気に入り情報
      * 支払方法情報
      * プロフィール情報
      * 閲覧回数情報
-
-1. アップロードする画像を表示するため、シンボリックリンクを設定
+   * PHPコンテナ内でシーディングを実行
+   ```php
+   php artisan db:seed
    ```
+
+6. アップロードする画像を表示するため、シンボリックリンクを設定
+   * PHPコンテナ内で以下のコマンドを実行
+   ```php
    php artisan storage:link
    ```
-
-2. Mailhogのインストール
+   * PHPコンテナを終了
+   ```php
+   exit
    ```
+
+7. Mailhogのインストール
+   ```shell
    brew install mailhog
    ```
 
-3. トップページを開くには http://localhost へアクセスしてください
+8. トップページを開くには http://localhost へアクセスしてください
 </details>
