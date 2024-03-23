@@ -30,7 +30,7 @@
 ## 使用技術
 * HTML, CSS, JavaScript
 * PHP 8.2.8, Laravel 8.83.27
-* MySQL 15.1
+* MySQL 8.0.26
 * Docker, Docker Compose
 
 ## テーブル設計
